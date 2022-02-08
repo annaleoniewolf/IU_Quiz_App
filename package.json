@@ -1,0 +1,28 @@
+{
+  "name": "iu_quiz_app",
+  "version": "1.0.0",
+  "description": "Quiz App die im Rahmen des Softwareprojekts an der IU Internationalen Hochschule entwickelt wird.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annalafleur/IU_Quiz_App.git"
+  },
+  "author": "Anna Wolf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annalafleur/IU_Quiz_App/issues"
+  },
+  "homepage": "https://github.com/annalafleur/IU_Quiz_App#readme",
+  "dependencies": {
+    "next": "^12.0.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3",
+    "styled-normalize": "^8.0.7"
+  }
+}
