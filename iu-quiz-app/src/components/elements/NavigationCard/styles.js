@@ -35,7 +35,7 @@ export const NavigationCard = styled.div`
 export const Button = styled.div`
     position: absolute;
     left: 53px;
-    bottom: 20px;
+    bottom: 35px;
 `
 export const Title = styled.div`
     position: absolute;

@@ -9,6 +9,12 @@ import SelectGameCard from '../../elements/SelectGameCard'
 
 const NewGameModal = () => {
 
+    const modulOptions = [
+        { value: 'Betriebssysteme, Rechennetze und verteilte Systeme', label: 'Betriebssysteme, Rechennetze und verteilte Systeme' },
+        { value: 'Statistik', label: 'Statistik' },
+        { value: 'Spezifikation', label: 'Spezifikation' }
+      ]
+
     //Konfigurationen werden angepasst an den Modus angezeigt
     const [modus, setModus] = useState('text')
     return (
@@ -19,7 +25,7 @@ const NewGameModal = () => {
                     selected={modus === 'singlePlayer' ? true : false}
                     icon={faBookOpenReader} 
                     title="Einzelspieler Modus"
-                    text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+                    text="Du erhälst 10 Fragen im Multiple-Choice Format, um dich auf ein bestimmtes Modul vorzubereiten."
                     link="/einzelspieler"
                 />
                 <SelectGameCard 
@@ -39,18 +45,33 @@ const NewGameModal = () => {
             </S.GameModeSelection>
             <S.Selection>
                 {modus === "singlePlayer" &&
-                    <Select placeholder="Modul" />
+                    <S.SelectionContainer>
+                        <label>Modul auswählen</label>
+                        <Select placeholder="Modul" options={modulOptions} />
+                    </S.SelectionContainer>
                 }
                 {modus === "duell" &&
                     <S.DuellSelect>
-                        <Select placeholder="Modul" />
-                        <Select placeholder="Lernparter" />
+                        <S.SelectionContainer>
+                            <label>Modul auswählen</label>
+                            <Select placeholder="Modul" options={modulOptions} />
+                        </S.SelectionContainer>
+                        <S.SelectionContainer>
+                            <label>Lernpartner auswählen</label>
+                            <Select placeholder="Lernpartner" options={modulOptions}/>
+                        </S.SelectionContainer>
                     </S.DuellSelect>
                 }
                 {modus === "collab" &&
                     <S.CollabSelect>
-                        <Select placeholder="Modul" />
-                        <Select placeholder="Lernparter" />
+                        <S.SelectionContainer>
+                            <label>Modul auswählen</label>
+                            <Select placeholder="Modul" options={modulOptions} />
+                        </S.SelectionContainer>
+                        <S.SelectionContainer>
+                            <label>Lernpartner auswählen</label>
+                            <Select placeholder="Lernpartner" options={modulOptions} />
+                        </S.SelectionContainer>
                     </S.CollabSelect>
                 }
             </S.Selection>

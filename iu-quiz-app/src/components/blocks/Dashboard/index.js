@@ -16,7 +16,7 @@ const Dashboard = () => {
                     <NavigationCard 
                         icon={faChess} 
                         title="Neues Spiel"
-                        text="Lerne spielerisch! Entweder einzeln, mit deinen Freunden zusammen oder gegeneinander in einem spannenden Duell!"
+                        text="Lerne spielerisch! Du kannst online gegen Freunde spielen oder alleine üben."
                         label="Spiel Starten"
                         modal="NewGame"
                     />
@@ -30,7 +30,7 @@ const Dashboard = () => {
                     <NavigationCard 
                         icon={faUserGroup} 
                         title="Freunde"
-                        text="Setze dich mit deinen Kommilitonen in Verbindung und lade neue Freunde ein."
+                        text="Lerne neue Freunde kennen, mit denen du zusammen lernen kannst."
                         label="Freunde"
                         link="/freunde"
                     />
@@ -43,9 +43,12 @@ const Dashboard = () => {
                     />
                 </S.NavigationCards>
                 <S.Overview>
-                    <Card>
+                    <Card size="small">
+                        <h4>Statistik</h4>
+                    </Card>
+                    <Card size="large">
                         <S.CardContainer>
-                            <h4>Offene Duelle</h4>
+                            <h4>Spiele</h4>
                             <UserOverview
                                 userName="Annika"
                                 module="Betriebssysteme, Rechennetze und verteilte Systeme"
@@ -56,9 +59,6 @@ const Dashboard = () => {
                                 module="Spezifikation"
                             />
                         </S.CardContainer>
-                    </Card>
-                    <Card>
-                        <h4>Durchschnittlich Hast Du</h4>
                     </Card>
                 </S.Overview>
             </S.Container>

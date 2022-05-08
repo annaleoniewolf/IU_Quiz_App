@@ -1,8 +1,8 @@
 import * as S from './styles'
 
-const Card = ({children}) => {
+const Card = ({children, size = "normal"}) => {
     return (
-        <S.Card>
+        <S.Card size={size}>
             {children}
         </S.Card>
     )

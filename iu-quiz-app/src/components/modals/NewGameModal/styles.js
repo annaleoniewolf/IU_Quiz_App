@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../../../styles/theme";
 
 export const NewGameModal = styled.div`
     display: flex;
@@ -20,9 +21,18 @@ export const Selection = styled.div`
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 50px;
     width: 100%;
     height: 170px;
+`
+export const SelectionContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    label {
+        color: ${theme.colors.darkgrey};
+        margin-bottom: 5px;
+    }
 `
 export const DuellSelect = styled.div`
     width: 100%;
