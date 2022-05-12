@@ -17,6 +17,7 @@ const NewGameModal = () => {
 
     //Konfigurationen werden angepasst an den Modus angezeigt
     const [modus, setModus] = useState('text')
+    const [link] = useState(`/${modus}`)
     return (
         <S.NewGameModal>
             <S.GameModeSelection>
@@ -33,14 +34,14 @@ const NewGameModal = () => {
                     selected={modus === 'duell' ? true : false}
                     icon={faChess} 
                     title="Duell Modus"
-                    text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+                    text="In vier Runden mit je drei Fragen kannst du gegen einen deiner Lernpartner antreten."
                 />
                 <SelectGameCard 
                     onClick={() => setModus('collab')}
                     selected={modus === 'collab' ? true : false}
                     icon={faUserGroup} 
                     title="Kollaborativer Modus"
-                    text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+                    text="Spiele mit deinem Lernpartner zusammen und wählt euch gegenseitig Fragen aus."
                 />
             </S.GameModeSelection>
             <S.Selection>
@@ -75,7 +76,7 @@ const NewGameModal = () => {
                     </S.CollabSelect>
                 }
             </S.Selection>
-            <Button label="Spiel Starten" />
+            <Button label="Spiel Starten" link={link} />
         </S.NewGameModal>
     )
 }

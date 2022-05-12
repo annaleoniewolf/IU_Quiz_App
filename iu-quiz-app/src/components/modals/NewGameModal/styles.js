@@ -6,7 +6,6 @@ export const NewGameModal = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 `
 
 export const GameModeSelection = styled.div`
@@ -18,11 +17,12 @@ export const GameModeSelection = styled.div`
 export const Selection = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 20px;
     width: 100%;
     height: 170px;
+    padding: 15px 0px;
 `
 export const SelectionContainer = styled.div`
     display: flex;
