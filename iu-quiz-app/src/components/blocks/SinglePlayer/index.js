@@ -9,8 +9,8 @@ const SinglePlayer = () => {
     //Teplate for einzelspieler objekt -> Modus zieht Fragen aus öffentlichen Fragenkatalog der API, 
     //merkt sich aber den Fortschritt im Einzelspielermodus nur lokal
 
-    const [isLandingOpen] = useState(true)
-    const [isQuestionOpen] = useState(false)
+    const [isLandingOpen] = useState(false)
+    const [isQuestionOpen] = useState(true)
     
     return (
         <S.SinglePlayer>
