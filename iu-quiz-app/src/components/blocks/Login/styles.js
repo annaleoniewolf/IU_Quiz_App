@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../../../styles/theme";
+import { motion } from "framer-motion";
 
 export const Login = styled.div`
     background-image: url("/landing-background.png");
@@ -12,6 +13,7 @@ export const Login = styled.div`
     justify-content: flex-end;
     align-items: center;
     position: relative;
+    overflow: hidden;
 `
 export const Information = styled.div`
     z-index: 20;
@@ -26,6 +28,11 @@ export const Information = styled.div`
     align-items: flex-start;
     justify-content: center;
     padding: 40px;
+
+`
+
+export const InformationContent = styled(motion.div)`
+    overflow: hidden;
     h2 {
         color: #fff;
         font-size: 30px;
@@ -50,7 +57,7 @@ export const Information = styled.div`
     }
 `
 
-export const Content = styled.div`
+export const Content = styled(motion.div)`
     background-color: #fff;
     border-radius: 5px;
     display: flex;
@@ -61,6 +68,7 @@ export const Content = styled.div`
     width: 600px;
     z-index: 50;
     margin-right: 25%;
+    overflow: hidden;
 
     hr {
         border: none;
