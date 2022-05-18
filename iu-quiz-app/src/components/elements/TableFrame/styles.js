@@ -4,6 +4,7 @@ import theme from '../../../styles/theme'
 export const TableFrame = styled.div`
     border: 2px solid ${theme.colors.primary};
     width: 100%;
+    position: relative;
 `
 
 export const Title = styled.div`
