@@ -12,6 +12,11 @@ export const Button = styled.div`
         opacity: 0.7;
     }
 
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
 
     ${({ size }) =>
         size === "normal" &&
