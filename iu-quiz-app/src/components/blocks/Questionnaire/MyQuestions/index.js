@@ -11,26 +11,28 @@ const MyQuestions = () => {
         <S.MyQuestions>
             <p>{`${questionAmount} Fragen`}</p>
             <table>
-                <tr>
-                    <th>Frage</th>
-                    <th>Modul</th>
-                    <th>Bearbeiten</th>
-                    <th>Frage entfernen</th>
-                </tr>
-                <tr>
-                    <td><p>Aus welchen zentralen Elementen besteht die Von-Neumann-Architektur?</p></td>
-                    <td><h6>Betriebssysteme, Rechennetze und verteilte Systeme</h6></td>
-                    <td>
-                        <S.PenButton>
-                            <FontAwesomeIcon icon={faPen} />
-                        </S.PenButton>
-                    </td>
-                    <td>
-                        <S.DeleteButton>
-                            <FontAwesomeIcon icon={faXmarkCircle} />
-                        </S.DeleteButton>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th>Frage</th>
+                        <th>Modul</th>
+                        <th>Bearbeiten</th>
+                        <th>Frage entfernen</th>
+                    </tr>
+                    <tr>
+                        <td><p>Aus welchen zentralen Elementen besteht die Von-Neumann-Architektur?</p></td>
+                        <td><h6>Betriebssysteme, Rechennetze und verteilte Systeme</h6></td>
+                        <td>
+                            <S.PenButton>
+                                <FontAwesomeIcon icon={faPen} />
+                            </S.PenButton>
+                        </td>
+                        <td>
+                            <S.DeleteButton>
+                                <FontAwesomeIcon icon={faXmarkCircle} />
+                            </S.DeleteButton>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <S.Buttons>
                 <Button label="Mehr laden" inactive/>

@@ -1,7 +1,7 @@
 import * as S from './styles'
 import { useState, useEffect } from 'react'
 
-const TableFrame = ({children, activeId, labels, onChange, button, buttonOnClick}) => {
+const TableFrame = ({children, activeId, labels, onChange, button}) => {
 
     const [isActive, setIsActive] = useState(null)
 
@@ -25,11 +25,12 @@ const TableFrame = ({children, activeId, labels, onChange, button, buttonOnClick
                             onClick: () => {
                                 handleClick(index)
                             },
-                            active: index === isActive
+                            active: index === isActive,
+                            
                         }
                         return <S.Tab {...props}><h2>{label}</h2></S.Tab>
                     })}
-                {button && <button onClick={buttonOnClick}>{button}</button>}
+                {button && <button onClick= {() => {handleClick(labels.length)}}> {button}</button>}
             </S.Labels>
             <S.Content>
                 {children}
