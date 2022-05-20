@@ -20,6 +20,10 @@ export const Navigation = styled.div`
             opacity: 0.7;
         }
     }
+    @media (max-width: 800px) {
+        justify-content: space-between;
+        padding: 20px;
+    }
 `
 
 export const Container = styled.div`
@@ -41,5 +45,13 @@ export const Container = styled.div`
            opacity: 0.7;
             cursor: pointer;
         }
+        @media(max-width: 800px) {
+            font-size: 15px;
+            line-height: 20px;
+        }   
     }
+    @media(max-width: 800px) {
+        position: static;
+        gap: 10px;
+    } 
 `
