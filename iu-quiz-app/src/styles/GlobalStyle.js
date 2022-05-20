@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
             line-height: 47px;
             color: ${theme.colors.primary};
             font-weight: 500;
+            @media(max-width: 800px) {
+                font-size: 25px;
+                line-height: 27px;
+            }
         }
         h2 {
             font-size: 18px;
@@ -51,6 +55,10 @@ const GlobalStyle = createGlobalStyle`
             line-height: 18px;
             color: #000;
             margin: 5px 0px;
+            @media(max-width: 800px) {
+                font-size: 12px;
+                line-height: 15px;
+            }
         }
         ul, ol {
             color: ${theme.colors.darkgrey};    
