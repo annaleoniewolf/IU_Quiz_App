@@ -1,9 +1,36 @@
 import * as S from './styles'
+import { useState, useEffect } from 'react'
 
-const TableFrame = ({children, title}) => {
+const TableFrame = ({children, activeId, labels, onChange, button, buttonOnClick}) => {
+
+    const [isActive, setIsActive] = useState(null)
+
+    useEffect(() => {
+		setIsActive(activeId)
+	}, [activeId])
+
+    const handleClick = (index) => {
+		setIsActive(index)
+		onChange(index)
+	}
+
     return (
         <S.TableFrame>
-            <S.Title><h2>{title}</h2></S.Title>
+            <S.Labels>
+                {labels &&
+                    labels.length > 0 &&
+                    labels.map((label, index) => {
+                        const props = {
+                            key: index,
+                            onClick: () => {
+                                handleClick(index)
+                            },
+                            active: index === isActive
+                        }
+                        return <S.Tab {...props}><h2>{label}</h2></S.Tab>
+                    })}
+                {button && <button onClick={buttonOnClick}>{button}</button>}
+            </S.Labels>
             <S.Content>
                 {children}
             </S.Content>
