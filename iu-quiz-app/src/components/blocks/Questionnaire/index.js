@@ -18,19 +18,19 @@ const Questionnaire = () => {
     return (
         <S.Questionnaire>
             <S.Content>
-            <TableFrame 
-                activeId={selectedPanelIndex}
-                labels={["Meine Fragen", "Öffentliche Fragen", "Richtlinien"]} 
-                button="Frage hinzufügen"
-                onChange={(index) => {
-					dispatch(setSelectedPanelIndex(index))
-				}}
-            >
-                {selectedPanelIndex === 0 && <MyQuestions />}
-                {selectedPanelIndex === 1 && <PublicQuestions />}
-                {selectedPanelIndex === 2 && <Guidlines />}
-                {selectedPanelIndex === 3 && <AddQuestion />}
-            </TableFrame>
+                <TableFrame 
+                    activeId={selectedPanelIndex}
+                    labels={["Meine Fragen", "Öffentliche Fragen", "Richtlinien"]} 
+                    button="Frage hinzufügen"
+                    onChange={(index) => {
+                        dispatch(setSelectedPanelIndex(index))
+                    }}
+                >
+                    {selectedPanelIndex === 0 && <MyQuestions />}
+                    {selectedPanelIndex === 1 && <PublicQuestions />}
+                    {selectedPanelIndex === 2 && <Guidlines />}
+                    {selectedPanelIndex === 3 && <AddQuestion />}
+                </TableFrame>
             </S.Content>
         </S.Questionnaire>
     )
