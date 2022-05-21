@@ -22,4 +22,9 @@ export const User = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    p {
+       font-weight: 300; 
+       font-size: 14px;
+       line-height: 14px;
+    }
 `
