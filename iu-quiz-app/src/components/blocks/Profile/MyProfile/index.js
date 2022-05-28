@@ -1,8 +1,7 @@
 import * as S from './styles'
 import { useState } from 'react'
 import { useForm }from 'react-hook-form';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen } from '@fortawesome/free-solid-svg-icons'
+import ImageUploader from '../../../elements/forms/ImageUploader';
 
 const MyProfile = () => {
 
@@ -10,7 +9,7 @@ const MyProfile = () => {
     const { register, handleSubmit} = useForm()
     const [vorname] = useState("Anna")
     const [nachname] = useState("Wolf")
-    const [studienstart, setStudienstart] = useState("Wolf")
+    const [studienstart] = useState("Wolf")
     const [studiengang] = useState("Informatik")
 
     //can be use to sent the data to the api
@@ -20,11 +19,7 @@ const MyProfile = () => {
 
     return (
         <S.MyProfile>
-            <S.ImageEditor>
-                <S.Circle>
-                    <S.Icon><FontAwesomeIcon icon={faPen} /></S.Icon>
-                </S.Circle>
-            </S.ImageEditor>
+            <ImageUploader />
             <S.ProfileInformation>
                 <S.Form onSubmit={handleSubmit(onSubmit)}>
                     <S.Name>

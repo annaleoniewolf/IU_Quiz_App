@@ -9,44 +9,11 @@ export const MyProfile = styled.div`
     padding: 50px 100px; 
 `
 
-export const ImageEditor = styled.div`
-    position: relative;
-    width: 144px;
-    height: 144px;
-    background-color: ${theme.colors.grey};
-    border: 1px solid ${theme.colors.darkgrey};
-    border-radius: 120px;
-`
-
 export const ProfileInformation = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-`
-export const Circle = styled.div`
-    width: 37px;
-    height: 37px;
-    background-color: ${theme.colors.primary};
-    border-radius: 120px;
-    transition: 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-
-    :hover {
-        background-color: #4f6681;
-        cursor: pointer;
-    }
-`
-
-export const Icon = styled.div`
-    svg {
-        color: #fff;
-    }
 `
 
 export const Name = styled.div`
