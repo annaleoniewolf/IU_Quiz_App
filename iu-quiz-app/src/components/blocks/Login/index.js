@@ -1,6 +1,5 @@
 import * as S from './styles'
 import { useForm }from 'react-hook-form';
-import Input from '../../elements/forms/Input';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }} = useForm()
@@ -37,10 +36,13 @@ const Login = () => {
                 <h1>Anmeldung</h1>
                 <hr/>
                 <S.Form onSubmit={handleSubmit(onSubmit)}>
-                    <Input {...register("email", { required: true })} name="email" label="Email" required={true} placeholder="Email" />
+                    <S.Element>
+                        <input  {...register("email", { required: true })} type="email" placeholder='Email' name="email" autoComplete="on" id="email"/>
+                        <label htmlFor="email">Email</label>
+                   </S.Element>
                    <S.Element>
-                    <input  {...register("password", { required: true })} type="password" placeholder='Passwort' name="password" autoComplete="on" id="password"/>
-                    <label htmlFor="password">Passwort</label>
+                        <input  {...register("password", { required: true })} type="password" placeholder='Passwort' name="password" autoComplete="on" id="password"/>
+                        <label htmlFor="password">Passwort</label>
                    </S.Element>
                     {errors.password  && <p>Bitte geben Sie ihre Daten vollständig ein.</p>}
                     <S.SubmitButton type="submit" value="Anmelden"/>

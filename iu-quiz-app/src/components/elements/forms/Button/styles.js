@@ -6,7 +6,7 @@ export const Button = styled.div`
     text-align: center;
     opacity: 1;
     transition: 0.7s;
-
+    margin: 0px auto;
     :hover {
         cursor: pointer;
         opacity: 0.7;
@@ -23,7 +23,7 @@ export const Button = styled.div`
         css`
             width: 170px;
             padding: 15px 0px;
-            margin: 10px 0px;
+            margin: 0px auto;
             font-size: 15px;
             line-height: 18px;
             text-transform: uppercase;
@@ -42,7 +42,7 @@ export const Button = styled.div`
             text-transform: uppercase;
             font-weight: 500;
             color: #fff;
-            margin: 0px;
+            margin: 0px auto;
             letter-spacing: 0.7px;
         `}
         ${({ inactive }) =>
