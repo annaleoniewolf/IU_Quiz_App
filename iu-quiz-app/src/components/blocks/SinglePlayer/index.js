@@ -1,22 +1,31 @@
 import * as S from './styles'
+
+import { useSelector, useDispatch } from 'react-redux'
+import { setSelectedPanelIndex } from'../../../redux/settingsSlice'
+
+import TableFrame from '../../elements/TableFrame'
 import LandingTable from './LandingTable'
-import { useState } from 'react'
 import QuestionRound from './QuestionRound'
 
-//Block Komponente für den Einzelspielermodus
 const SinglePlayer = () => {
 
-    //Teplate for einzelspieler objekt -> Modus zieht Fragen aus öffentlichen Fragenkatalog der API, 
-    //merkt sich aber den Fortschritt im Einzelspielermodus nur lokal
+    const dispatch = useDispatch()
+	const { selectedPanelIndex } = useSelector((state) => state.settings)
 
-    const [isLandingOpen] = useState(false)
-    const [isQuestionOpen] = useState(true)
-    
     return (
         <S.SinglePlayer>
             <S.Content>
-                {isLandingOpen && <LandingTable />}
-                {isQuestionOpen && <QuestionRound />}
+                <TableFrame 
+                    activeId={selectedPanelIndex}
+                    labels={["Fragenübersicht", "Fragen"]} 
+                    onChange={(index) => {
+                        dispatch(setSelectedPanelIndex(index))
+                    }}
+                >
+                    {selectedPanelIndex === 0 && <LandingTable />}
+                    {selectedPanelIndex === 1 && <QuestionRound />}
+                </TableFrame>
+
             </S.Content>
         </S.SinglePlayer>
     )
