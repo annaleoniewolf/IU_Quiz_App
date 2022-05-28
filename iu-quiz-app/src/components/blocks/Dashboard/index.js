@@ -4,6 +4,7 @@ import { faChess, faBookOpen, faUserGroup, faComments } from '@fortawesome/free-
 import NavigationCard from "../../elements/NavigationCard"
 import Card from '../../elements/Card'
 import UserOverview from '../../elements/UserOverview'
+import CakeChart from '../../elements/CakeChart'
 
 
 import * as S from './styles'
@@ -44,7 +45,20 @@ const Dashboard = () => {
                 </S.NavigationCards>
                 <S.Overview>
                     <Card size="small">
-                        <h4>Statistik</h4>
+                        <S.CardContainer>
+                            <h4>Statistik</h4>
+                            <S.CakeCharts>
+                                <S.CakeChart>
+                                    <CakeChart percentage={80} />
+                                    <p>Du hast 80% der Fragen im Duell richtig beantwortet.</p>
+                                </S.CakeChart>
+                                <S.VerticalLine />
+                                <S.CakeChart>
+                                    <CakeChart percentage={55} />
+                                    <p>Du hast 55% der Duelle gewonnen.</p>
+                                </S.CakeChart>
+                            </S.CakeCharts>
+                        </S.CardContainer>
                     </Card>
                     <Card size="large">
                         <S.CardContainer>

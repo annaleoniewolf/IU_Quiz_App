@@ -41,3 +41,29 @@ export const CardContainer = styled.div`
         margin: 20px 0px;
     }
 `
+
+export const CakeChart = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        text-align: center;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 14px;
+    }
+    max-width: 170px;
+`
+
+export const CakeCharts = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+export const VerticalLine = styled.div`
+    background-color: ${theme.colors.grey};
+    width: 1px;
+    height: 100px;
+    margin: 0px 20px;
+`
