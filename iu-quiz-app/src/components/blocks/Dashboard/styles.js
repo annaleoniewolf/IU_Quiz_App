@@ -67,3 +67,19 @@ export const VerticalLine = styled.div`
     height: 100px;
     margin: 0px 20px;
 `
+
+export const GameOverview = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+`
+
+export const SinglePlayOverview = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+`

@@ -1,11 +1,11 @@
 import { faChess, faBookOpen, faUserGroup, faComments } from '@fortawesome/free-solid-svg-icons'
 
-
 import NavigationCard from "../../elements/NavigationCard"
 import Card from '../../elements/Card'
 import UserOverview from '../../elements/UserOverview'
 import CakeChart from '../../elements/CakeChart'
-
+import Button from '../../elements/forms/Button'
+import SinglePlayerGameOverview from '../../elements/SinglePlayerGameOverview'
 
 import * as S from './styles'
 
@@ -63,15 +63,19 @@ const Dashboard = () => {
                     <Card size="large">
                         <S.CardContainer>
                             <h4>Spiele</h4>
-                            <UserOverview
-                                userName="Annika"
-                                module="Betriebssysteme, Rechennetze und verteilte Systeme"
-                            />
+                            <S.SinglePlayOverview>
+                                <SinglePlayerGameOverview module="Spezifikation" />
+                                <Button label="Spielen" size="small" />
+                            </S.SinglePlayOverview>
                             <hr/>
-                            <UserOverview
-                                userName="Thomas"
-                                module="Spezifikation"
-                            />
+                            <S.GameOverview>
+                                <UserOverview
+                                    userName="Annika"
+                                    module="Betriebssysteme, Rechennetze und verteilte Systeme"
+                                />
+                                <Button size="small" label="Spielen" />
+                            </S.GameOverview>
+                            <hr />
                         </S.CardContainer>
                     </Card>
                 </S.Overview>

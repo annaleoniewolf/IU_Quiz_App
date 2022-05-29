@@ -28,11 +28,11 @@ export const singlePlayerGameSlice = createSlice({
     setCurrentQuestion: (state) => {
       
     },
+    activeGame: (state, action) => {
+
+    },
     setActiveGame: (state, action) => {
       state.activeGame = action.payload
-    },
-    incrementByAmount: (state, action) => {
-      state.count += action.payload
     },
   },
 })

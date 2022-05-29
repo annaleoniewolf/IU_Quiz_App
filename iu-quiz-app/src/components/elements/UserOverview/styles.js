@@ -26,5 +26,6 @@ export const User = styled.div`
        font-weight: 300; 
        font-size: 14px;
        line-height: 14px;
+       max-width: 250px;
     }
 `

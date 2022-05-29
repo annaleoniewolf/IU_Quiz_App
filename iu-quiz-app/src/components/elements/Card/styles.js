@@ -11,6 +11,12 @@ export const Card = styled.div`
     align-items: flex-start;
     padding: 20px;
     margin: 20px;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+      scrollbar-width: none; /* for Firefox */
+      overflow-y: scroll; 
+      ::-webkit-scrollbar {
+            display: none; 
+      }
     ${props => props.size === "normal" && css`
         height: 300px;
   `}

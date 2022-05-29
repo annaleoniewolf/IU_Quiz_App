@@ -36,6 +36,7 @@ export const Button = styled.div`
         size === "small" &&
         css`
             padding: 10px;
+            height: 33px;
             width: 90px;
             font-size: 12px;
             line-height: 14px;
