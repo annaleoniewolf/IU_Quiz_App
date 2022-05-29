@@ -9,18 +9,32 @@ export const Dashboard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media(max-width: 1400px) {
+        height: auto;
+    }
 `
 export const Container = styled.div`
     max-width: 1400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media(max-width: 1400px) {
+        flex-direction: column;
+    }
+
 `
 export const NavigationCards = styled.div`
     width: 650px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    @media(max-width: 800px) {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
 `
 export const Overview = styled.div`
     display: flex;
@@ -47,18 +61,25 @@ export const CakeChart = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 170px;
     p {
         text-align: center;
         font-weight: 300;
         font-size: 14px;
         line-height: 14px;
     }
-    max-width: 170px;
+
+    @media(max-width: 800px) {
+        max-width: 100%;
+    }
 `
 
 export const CakeCharts = styled.div`
     display: flex;
     justify-content: space-between;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `
 
 export const VerticalLine = styled.div`
@@ -66,6 +87,11 @@ export const VerticalLine = styled.div`
     width: 1px;
     height: 100px;
     margin: 0px 20px;
+    @media(max-width: 800px) {
+        width: 100%;
+        height: 1px;
+        margin: 20px 0px;
+    }
 `
 
 export const GameOverview = styled.div`
@@ -74,6 +100,9 @@ export const GameOverview = styled.div`
     align-items: center;
     gap: 20px;
     width: 100%;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `
 
 export const SinglePlayOverview = styled.div`
@@ -82,4 +111,7 @@ export const SinglePlayOverview = styled.div`
     align-items: center;
     width: 100%;
     gap: 20px;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `

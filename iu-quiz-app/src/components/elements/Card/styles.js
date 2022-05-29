@@ -19,11 +19,23 @@ export const Card = styled.div`
       }
     ${props => props.size === "normal" && css`
         height: 300px;
+        @media(max-width: 800px) {
+              height: auto;
+              width: auto;
+        }
   `}
   ${props => props.size === "small" && css`
         height: 200px;
+        @media(max-width: 800px) {
+              height: auto;
+              width: auto;
+        }
   `}
   ${props => props.size === "large" && css`
         height: 400px;
+        @media(max-width: 800px) {
+              height: auto;
+              width: auto;
+        }
   `}
 `

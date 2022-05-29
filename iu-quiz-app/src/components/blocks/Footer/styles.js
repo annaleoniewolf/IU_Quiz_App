@@ -11,6 +11,10 @@ export const Footer = styled.div`
     bottom: 0px;
     left: 0px;
 
+    @media (max-width: 1400px) {
+        position: static;
+    }
+
     a {
         color: #fff;
         margin: 0px 20px;
