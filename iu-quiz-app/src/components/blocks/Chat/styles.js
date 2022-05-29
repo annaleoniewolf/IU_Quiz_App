@@ -10,6 +10,7 @@ export const Chat = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    padding: 10px;
 `
 
 export const Container = styled(motion.div)`
@@ -20,6 +21,9 @@ export const Container = styled(motion.div)`
     background-color: #fff;
     border-radius: 5px;
     padding: 50px 100px;
+    @media(max-width: 800px) {
+        padding: 20px;
+    }
 
     hr {
         border: none;

@@ -14,6 +14,13 @@ export const Login = styled.div`
     align-items: center;
     position: relative;
     overflow: hidden;
+    @media(max-width: 1400px) {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
 `
 export const Information = styled.div`
     z-index: 20;
@@ -29,6 +36,17 @@ export const Information = styled.div`
     justify-content: center;
     padding: 40px;
 
+    @media(max-width: 1400px) {
+        clip-path: none;
+        position: static;
+        width: 80%;
+        align-items: center;
+        margin: 20px;
+    }
+    @media(max-width: 800px) {
+        width: 100%;
+    }
+
 `
 
 export const InformationContent = styled(motion.div)`
@@ -38,14 +56,20 @@ export const InformationContent = styled(motion.div)`
         font-size: 30px;
         line-height: 32px;
         font-weight: 500;
-        max-width: 400px;
+        max-width: 300px;
+        @media(max-width: 1400px) {
+            max-width: 600px;
+        }
     }
     p {
         margin: 20px 0px;
         font-size: 16px;
-        max-width: 400px;
+        max-width: 300px;
         line-height: 21px;
         color: #fff;
+        @media(max-width: 1400px) {
+            max-width: 600px;
+        }
     }
 
     hr {
@@ -70,6 +94,15 @@ export const Content = styled(motion.div)`
     margin-right: 25%;
     overflow: hidden;
 
+    @media(max-width: 1400px) {
+        width: 80%;
+        margin: 20px 0px;
+        
+    }
+    @media(max-width: 800px) {
+        width: 100%;
+    }
+
     hr {
         border: none;
         height: 1px;
@@ -92,7 +125,10 @@ export const Element = styled.div`
     margin: 25px 0px;
     height: 23px;
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
+    @media(max-width: 1400px) {
+        max-width: 600px;
+    }
 
     input {
         width: 100%;
