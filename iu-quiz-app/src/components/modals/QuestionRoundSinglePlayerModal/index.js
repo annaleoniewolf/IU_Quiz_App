@@ -19,36 +19,49 @@ const QuestionRoundSinglePlayerModal = () => {
     const handleButton = () => {
 
         //wählt die Antwortmöglichkeit aus, für die sich entschieden wurde
-        dispatch(setQuestions[currentQuestion].selectedAnswer(selected))
+        //dispatch(setQuestions[currentQuestion].selectedAnswer(selected))
+        console.log("Antwort:", selected)
 
         //inkrementiert aktuelle Frage
         dispatch(setCurrentQuestion(currentQuestion+1))
     }
 
+    const handleCloseButton = () => {
+        //close Modal
+    }
+
     return (
         <S.QuestionRoundSinglePlayerModal>
-            <S.Content>
-                <S.Progress> {currentQuestion+1} / 10</S.Progress>
-                <S.ProgressBar>
-                    <ProgressBar percentage={(currentQuestion+1)*10}/>
-                </S.ProgressBar>
-                <h4>{questions[currentQuestion].question}</h4>
-                <S.Answers>
-                    <S.Answer selected={selected === 'A' ? true : false} onClick={() => setSelected('A')}>
-                        <p>{questions[currentQuestion].answerA}</p>
-                    </S.Answer>
-                    <S.Answer selected={selected === 'B' ? true : false}  onClick={() => setSelected('B')}>
-                        <p>{questions[currentQuestion].answerB}</p>
-                    </S.Answer>
-                    <S.Answer selected={selected === 'C' ? true : false}  onClick={() => setSelected('C')}>
-                        <p>{questions[currentQuestion].answerC}</p>
-                    </S.Answer>
-                    <S.Answer selected={selected === 'D' ? true : false}  onClick={() => setSelected('D')}>
-                        <p>{questions[currentQuestion].answerD}</p>
-                    </S.Answer>
-                </S.Answers>
-                <Button label="Weiter" onClick={() => handleButton()} />
-            </S.Content>
+                {currentQuestion < 10 ?
+                    <S.Content>
+                        <S.Progress> {currentQuestion+1} / 10</S.Progress>
+                        <S.ProgressBar>
+                            <ProgressBar percentage={(currentQuestion+1)*10}/>
+                        </S.ProgressBar>
+                        <h4>{questions[currentQuestion].question}</h4>
+                        <S.Answers>
+                            <S.Answer selected={selected === 'A' ? true : false} onClick={() => setSelected('A')}>
+                                <p>{questions[currentQuestion].answerA}</p>
+                            </S.Answer>
+                            <S.Answer selected={selected === 'B' ? true : false}  onClick={() => setSelected('B')}>
+                                <p>{questions[currentQuestion].answerB}</p>
+                            </S.Answer>
+                            <S.Answer selected={selected === 'C' ? true : false}  onClick={() => setSelected('C')}>
+                                <p>{questions[currentQuestion].answerC}</p>
+                            </S.Answer>
+                            <S.Answer selected={selected === 'D' ? true : false}  onClick={() => setSelected('D')}>
+                                <p>{questions[currentQuestion].answerD}</p>
+                            </S.Answer>
+                        </S.Answers>
+                        <Button label="Weiter" onClick={() => handleButton()} />
+                    </S.Content>
+                : 
+                    <S.Content>
+                        Sehr gut du bist durch!
+                        <Button label="Beenden" onClick={() => handleCloseButton()} />
+                    </S.Content>
+                }
+                
         </S.QuestionRoundSinglePlayerModal>
     )
 }
