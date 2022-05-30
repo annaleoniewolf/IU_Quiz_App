@@ -18,3 +18,31 @@ export const Id = styled.div`
 export const Text = styled.div`
     color: ${theme.colors.grey};
 `
+
+export const CheckIcon = styled.div`
+    margin: 0px auto;
+    svg {
+        color: ${theme.colors.green};
+        width: 27px;
+        height: 27px;
+        transition: 0.5s;
+        :hover {
+            opacity: 0.3;
+            cursor: pointer;
+        }
+    }
+`
+
+export const XIcon = styled.div`
+    margin: 0px auto;
+    svg {
+        color: ${theme.colors.red};
+        width: 27px;
+        height: 27px;
+        transition: 0.5s;
+        :hover {
+            opacity: 0.3;
+            cursor: pointer;
+        }
+    }
+`

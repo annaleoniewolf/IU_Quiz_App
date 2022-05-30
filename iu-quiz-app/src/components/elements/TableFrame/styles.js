@@ -5,6 +5,12 @@ export const TableFrame = styled.div`
     border: 2px solid ${theme.colors.primary};
     width: 100%;
     position: relative;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+      scrollbar-width: none; /* for Firefox */
+      overflow-y: scroll; 
+      ::-webkit-scrollbar {
+            display: none; 
+      }
 `
 
 export const Content = styled.div`

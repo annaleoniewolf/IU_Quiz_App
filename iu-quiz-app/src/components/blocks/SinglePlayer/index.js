@@ -5,7 +5,7 @@ import { setSelectedPanelIndex } from'../../../redux/settingsSlice'
 
 import TableFrame from '../../elements/TableFrame'
 import LandingTable from './LandingTable'
-import QuestionRound from './QuestionRound'
+
 
 const SinglePlayer = () => {
 
@@ -17,13 +17,12 @@ const SinglePlayer = () => {
             <S.Content>
                 <TableFrame 
                     activeId={selectedPanelIndex}
-                    labels={["Fragenübersicht", "Fragen"]} 
+                    labels={["Fragenübersicht"]} 
                     onChange={(index) => {
                         dispatch(setSelectedPanelIndex(index))
                     }}
                 >
                     {selectedPanelIndex === 0 && <LandingTable />}
-                    {selectedPanelIndex === 1 && <QuestionRound />}
                 </TableFrame>
 
             </S.Content>
