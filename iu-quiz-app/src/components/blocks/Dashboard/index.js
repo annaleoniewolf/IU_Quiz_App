@@ -7,9 +7,15 @@ import CakeChart from '../../elements/CakeChart'
 import Button from '../../elements/forms/Button'
 import SinglePlayerGameOverview from '../../elements/SinglePlayerGameOverview'
 
+import { useSelector } from 'react-redux'
+
+
 import * as S from './styles'
 
 const Dashboard = () => {
+
+    const { activeGame } = useSelector((state) => state.singlePlayerGame)
+
     return (
         <S.Dashboard>
             <S.Container>
@@ -63,11 +69,15 @@ const Dashboard = () => {
                     <Card size="large">
                         <S.CardContainer>
                             <h4>Spiele</h4>
-                            <S.SinglePlayOverview>
-                                <SinglePlayerGameOverview module="Spezifikation" />
-                                <Button label="Spielen" size="small" />
-                            </S.SinglePlayOverview>
-                            <hr/>
+                            {activeGame === true &&
+                                <>
+                                    <S.SinglePlayOverview>
+                                        <SinglePlayerGameOverview module="Spezifikation" />
+                                        <Button label="Spielen" size="small" />
+                                    </S.SinglePlayOverview>
+                                    <hr/>
+                                </>
+                            }
                             <S.GameOverview>
                                 <UserOverview
                                     userName="Annika"

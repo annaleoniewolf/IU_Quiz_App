@@ -3,7 +3,7 @@ import SelectModul from 'react-select'
 
 
 
-const Select = ({ placeholder, options }) => {
+const Select = ({ placeholder, options, defaultValue, onChange }) => {
 
 
     return (
@@ -11,6 +11,8 @@ const Select = ({ placeholder, options }) => {
              <SelectModul 
                 options={options} 
                 placeholder={placeholder} 
+                defaultInputValue={defaultValue}
+                onChange={onChange}
                 theme={(theme) => ({
                     ...theme,
                     colors: {
