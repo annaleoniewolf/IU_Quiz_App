@@ -3,8 +3,12 @@ import { useContext } from 'react';
 
 import * as S from './styles'
 import { ModalContext } from '../../../context/ModalContext';
+
 import NewGameModal from '../NewGameModal'
 import StopModal from '../StopModal'
+import QuestionRoundSinglePlayerModal from '../QuestionRoundSinglePlayerModal'
+
+
 import CloseButton from '../../elements/forms/CloseButton'
 
 ReactModal.setAppElement('#root')
@@ -45,6 +49,7 @@ const Modal = () => {
                 <S.ModalContent>
                     {type === "NewGame" && <NewGameModal />}
                     {type === "Stop" && <StopModal />}
+                    {type === "QuestionRoundSinglePlayer" && <QuestionRoundSinglePlayerModal/>}
                 </S.ModalContent>
             </ReactModal>
         </S.Modal>

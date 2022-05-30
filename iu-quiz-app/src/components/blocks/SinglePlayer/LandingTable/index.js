@@ -18,10 +18,16 @@ const LandingTable = () => {
 
     //Spiel beenden Modal
     const { setOpen, setType} = useContext(ModalContext)
-    const handleModal = () => {
+    const handleStopModal = () => {
         setType("Stop")
         setOpen(true)
     }
+    //Fragen Modal
+    const handleQuestionRoundSinglePlayerModal = () => {
+        setType("QuestionRoundSinglePlayer")
+        setOpen(true)
+    }
+
     return (
         <S.LandingTable>
             <p>{module && module}</p>
@@ -72,8 +78,8 @@ const LandingTable = () => {
                 </tbody>
             </table>
             <S.Buttons>
-                <Button label="Spiel Starten" />
-                <Button label="Beenden" red onClick={() => handleModal()} />
+                <Button label="Spiel Starten" onClick={() => handleQuestionRoundSinglePlayerModal()} />
+                <Button label="Beenden" red onClick={() => handleStopModal()} />
             </S.Buttons>
         </S.LandingTable>
     )
