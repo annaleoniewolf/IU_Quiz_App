@@ -10,4 +10,11 @@ export const CloseButton = styled.div`
 `
 export const ModalContent = styled.div`
     padding: 20px 20px;
+    max-height: 70vh;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+      scrollbar-width: none; /* for Firefox */
+      overflow-y: scroll; 
+      ::-webkit-scrollbar {
+            display: none; 
+      }
 `

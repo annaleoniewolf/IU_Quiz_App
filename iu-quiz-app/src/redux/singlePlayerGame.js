@@ -20,6 +20,21 @@ export const singlePlayerGameSlice = createSlice({
       state.module = ''
     },
 
+    /*//updatet selectedAnswer
+    setQuestionsSelectedAnswer: (state, action) => {
+
+      const {currentQuestion, selected} = action.payload
+
+      //findet Index von dem Element, welches geupdatet werden soll
+      //const index = state.questions.findIndex(questions.id !== action.payload)
+
+      //legt vorrübergehend neues Array an
+      const newArray = [...state.questions]
+      newArray[currentQuestion].selectedAnswer = selected
+
+      state.questions = newArray
+    },*/
+
     //Fragen
     setQuestions: (state, action) => {
       state.questions = action.payload
@@ -41,6 +56,6 @@ export const singlePlayerGameSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setModule, clearModule, setQuestions, clearQuestions, setCurrentQuestion, activeGame, setActiveGame } = singlePlayerGameSlice.actions
+export const { setModule, setQuestionsSelectedAnswer, clearModule, setQuestions, clearQuestions, setCurrentQuestion, activeGame, setActiveGame } = singlePlayerGameSlice.actions
 
 export default singlePlayerGameSlice.reducer

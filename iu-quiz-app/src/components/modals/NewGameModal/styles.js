@@ -12,6 +12,11 @@ export const GameModeSelection = styled.div`
     display: flex;
     justify-content: center;
     gap: 10px;
+    @media(max-width: 1300px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 `
 
 export const Selection = styled.div`

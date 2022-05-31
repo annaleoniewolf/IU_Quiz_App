@@ -16,6 +16,13 @@ export const SelectGameCard = styled.div`
         text-align: center;
         font-weight: 300;
     }
+
+    @media(max-width: 1300px) {
+        width: 80%;
+    }
+    @media(max-width: 800px) {
+        width: 100%;
+    }
     :hover {
         background-color: ${theme.colors.primary};
         cursor: pointer;
