@@ -8,6 +8,9 @@ export const Friends = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media(max-width: 1400px) {
+        height: auto;
+    }
 `
 
 export const Content = styled.div`
@@ -44,4 +47,10 @@ export const Button = styled.div`
     position: absolute;
     left: 45%;
     bottom: 50px;
+    @media(max-width: 800px) {
+        left: 40%;
+    }
+    @media(max-width: 500px) {
+        left: 30%;
+    }
 `

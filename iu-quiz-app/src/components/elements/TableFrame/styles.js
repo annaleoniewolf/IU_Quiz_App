@@ -4,13 +4,18 @@ import theme from '../../../styles/theme'
 export const TableFrame = styled.div`
     border: 2px solid ${theme.colors.primary};
     width: 100%;
+    margin: 30px 0px;
     position: relative;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
-      scrollbar-width: none; /* for Firefox */
-      overflow-y: scroll; 
-      ::-webkit-scrollbar {
-            display: none; 
-      }
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+    ::-webkit-scrollbar {
+        display: none; 
+    }
+    @media(max-width: 1300px) {
+        
+        border: none;
+    }
 `
 
 export const Content = styled.div`
@@ -19,6 +24,10 @@ export const Content = styled.div`
     padding: 20px;
     min-height: 650px;
     max-height: 650px;
+    @media(max-width: 1300px) {
+        min-height: 650px;
+        height: auto;
+    }
 `
 export const Labels = styled.div`
     display: flex;
@@ -28,6 +37,11 @@ export const Labels = styled.div`
     width: 100%;
     padding: 20px;
     gap: 40px;
+
+    @media(max-width: 800px) {
+        flex-direction: column;
+        gap: 10px;
+    }
 
     button {
         background-color: #fff;
@@ -47,13 +61,10 @@ export const Labels = styled.div`
 `
 
 export const Tab = styled.div`
-
-
     h2 {
         color: #fff;
         font-weight: 400;
     }
-
 	cursor: pointer;
 	-webkit-user-select: none; /* Safari */
 	user-select: none;
@@ -66,21 +77,4 @@ export const Tab = styled.div`
 			`
 		)
 	}}
-	@media (max-width: 600px) {
-		font-size: 12px;
-		padding: 6px 12px;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
-	@media (max-width: 600px) {
-		font-size: 12px;
-		padding: 6px 12px;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
-	@media (max-width: 440px) {
-		width: 75px;
-	}
 `
