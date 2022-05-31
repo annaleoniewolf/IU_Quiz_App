@@ -48,7 +48,10 @@ const GlobalStyle = createGlobalStyle`
             color: ${theme.colors.primary};
         }
         h6 {
-            
+            font-size: 16px;
+            line-height: 18px;
+            font-weight: 400;
+            color: ${theme.colors.primary};
         }
         p {
             font-size: 15px;

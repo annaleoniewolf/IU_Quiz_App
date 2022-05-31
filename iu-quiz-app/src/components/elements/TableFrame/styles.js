@@ -6,12 +6,7 @@ export const TableFrame = styled.div`
     width: 100%;
     margin: 30px 0px;
     position: relative;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
-    overflow-y: scroll; 
-    ::-webkit-scrollbar {
-        display: none; 
-    }
+
     @media(max-width: 1300px) {
         
         border: none;
@@ -27,6 +22,12 @@ export const Content = styled.div`
     @media(max-width: 1300px) {
         min-height: 650px;
         height: auto;
+    }
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+    ::-webkit-scrollbar {
+        display: none; 
     }
 `
 export const Labels = styled.div`

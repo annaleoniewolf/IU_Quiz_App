@@ -7,8 +7,18 @@ import UserOverview from '../../../elements/UserOverview'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 
 const MyFriends = () => {
+
+    //Dimension für Responsive
     const { width } = useWindowDimensions();
-    const [myFriendsAmount] = useState(1)
+
+    const [myFriends] = useState([
+        {"vorname": "Annika", "nachname": "Backes", "info": "4.Semester, Bachelor Informatik"},
+        {"vorname": "Jamal", "nachname": "Baydaoui", "info": "4.Semester, Bachelor Informatik"},
+        {"vorname": "Thomas", "nachname": "Pörsch", "info": "4.Semester, Bachelor Informatik"},
+        {"vorname": "David", "nachname": "Pierzyna", "info": "4.Semester, Bachelor Informatik"}
+    ])
+
+    const [myFriendsAmount] = useState(myFriends.length)
     return (
 
         <S.MyFriends>
@@ -22,38 +32,78 @@ const MyFriends = () => {
                             <th>Blockieren</th>
                             <th>Freund entfernen</th>
                         </tr>
-                        <tr>
-                            <td>
-                                <UserOverview 
-                                    userName="Annika Mustermann"
-                                    info="4. Semester, Bachelor Informatik"
-                                />
-                            </td>
-                            <td>
-                                <S.MessageButton>
-                                    <FontAwesomeIcon icon={faComments} />
-                                </S.MessageButton>
-                            </td>
-                            <td>
-                                <S.BanButton>
-                                    <FontAwesomeIcon icon={faBan} />
-                                </S.BanButton>
-                            </td>
-                            <td>
-                                <S.DeleteButton>
-                                    <FontAwesomeIcon icon={faXmarkCircle} />
-                                </S.DeleteButton>
-                            </td>
-                        </tr>
+                        {myFriends &&
+                            myFriends.map(({vorname, nachname, info}, index) => {
+                                return(
+                                    <tr key={index}>
+                                        <td>
+                                            <UserOverview 
+                                                userName={`${vorname} ${nachname}`}
+                                                info={info}
+                                            />
+                                        </td>
+                                        <td>
+                                            <S.MessageButton>
+                                                <FontAwesomeIcon icon={faComments} />
+                                            </S.MessageButton>
+                                        </td>
+                                        <td>
+                                            <S.BanButton>
+                                                <FontAwesomeIcon icon={faBan} />
+                                            </S.BanButton>
+                                        </td>
+                                        <td>
+                                            <S.DeleteButton>
+                                                <FontAwesomeIcon icon={faXmarkCircle} />
+                                            </S.DeleteButton>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             :
-            <div>Neue Tabelle!</div>
+            <S.Responsive>
+                {myFriends &&
+                            myFriends.map(({vorname, nachname, info}, index) => {
+                                return(
+                                    <S.ResponsiveItem key={index}>
+                                        <S.Profile>
+                                            <h5>Profil</h5>
+                                            <UserOverview 
+                                                userName={`${vorname} ${nachname}`}
+                                                info={info}
+                                            />
+                                        </S.Profile>
+                                        <hr className="itemLine" />
+                                        <S.Options>
+                                            <S.Option>
+                                                <h6>Nachricht</h6>
+                                                <S.MessageButton>
+                                                    <FontAwesomeIcon icon={faComments} />
+                                                </S.MessageButton>
+                                            </S.Option>
+                                            <S.Option>
+                                                <h6>Blockieren</h6>
+                                                <S.BanButton>
+                                                    <FontAwesomeIcon icon={faBan} />
+                                                </S.BanButton>
+                                            </S.Option>
+                                            <S.Option>
+                                                <h6>Freund entfernen</h6>
+                                                <S.DeleteButton>
+                                                    <FontAwesomeIcon icon={faXmarkCircle} />
+                                                </S.DeleteButton>
+                                            </S.Option>
+                                        </S.Options>
+                                        <hr/>
+                                    </S.ResponsiveItem >
+                                )
+                            })
+                        }
+            </S.Responsive>
         }
-            
-            <S.Buttons>
-                <Button label="Mehr laden" inactive/>
-            </S.Buttons>
         </S.MyFriends>
     )
 }
