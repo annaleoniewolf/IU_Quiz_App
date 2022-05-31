@@ -59,3 +59,50 @@ export const AcceptButton = styled.div`
         }
     }
 `
+
+export const Responsive = styled.div``
+
+export const ResponsiveItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 10px 0px;
+
+    hr {
+        margin: 10px 0px;
+        background-color: ${theme.colors.grey};
+        width: 100%;
+        height: 1px;
+        border: none;
+
+        
+    }
+    .itemLine {
+        border: 1px dashed ${theme.colors.grey};
+        height: 0px;
+        background-color: transparent;
+        margin: 15px auto;
+    }
+`
+
+export const Profile = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    
+`
+
+export const Options = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+`
+export const Option = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+`

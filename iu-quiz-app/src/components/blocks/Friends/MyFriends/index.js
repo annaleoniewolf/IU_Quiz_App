@@ -2,7 +2,6 @@ import * as S from './styles'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments, faXmarkCircle, faBan } from '@fortawesome/free-solid-svg-icons'
-import Button from '../../../elements/forms/Button'
 import UserOverview from '../../../elements/UserOverview'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 
@@ -20,7 +19,6 @@ const MyFriends = () => {
 
     const [myFriendsAmount] = useState(myFriends.length)
     return (
-
         <S.MyFriends>
             <p>{`${myFriendsAmount} Freund(e)`}</p>
             {width > 800 ?
