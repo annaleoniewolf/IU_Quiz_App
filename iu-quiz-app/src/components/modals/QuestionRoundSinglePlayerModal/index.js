@@ -20,13 +20,22 @@ const QuestionRoundSinglePlayerModal = () => {
 
         //wählt die Antwortmöglichkeit aus, für die sich entschieden wurde
         dispatch(setSelectedQuestions(selected))
-        console.log("Selected Questions:", selectedQuestions)
 
         //inkrementiert aktuelle Frage
         dispatch(setCurrentQuestion(currentQuestion+1))
-        console.log("Current Question:", currentQuestion)
-        
+      
         setSelected(null)
+    }
+
+    //Zählt Ergebnispunkte zusammen
+    const countPoints = () => {
+        let count = 0
+        for (let i = 0; i < questions.length; i++) {
+            if (selectedQuestions[i] === questions[i].correctAnswer) {
+                count++
+            }
+        }
+        return count
     }
 
     return (
@@ -58,6 +67,7 @@ const QuestionRoundSinglePlayerModal = () => {
                     <S.FeedbackContent>
                         <S.Feedback>
                             <p>Du bist durch!</p>
+                            <p>{`Du hattest ${countPoints()} / 10 Antworten richtig!`}</p>
                         </S.Feedback>
                     </S.FeedbackContent>
                 }

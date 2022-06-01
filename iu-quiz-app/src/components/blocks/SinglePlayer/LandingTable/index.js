@@ -32,6 +32,11 @@ const LandingTable = () => {
         setType("QuestionRoundSinglePlayer")
         setOpen(true)
     }
+    //Details zu den Fragen Modal
+    const openDetails = () => {
+        setType("SinglePlayerQuestionsDetails")
+        setOpen(true)
+    }
 
     console.log("SelectedQuestions:", selectedQuestions)
 
@@ -55,7 +60,7 @@ const LandingTable = () => {
                                             {console.log("SelectedQuestoinIndex", (correctAnswer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined))}
                                             <td><S.Id>{id+1}</S.Id></td>
                                             <td>
-                                                {selectedQuestions[index] === null ?
+                                                {selectedQuestions[index] === undefined ?
                                                     <S.Text>noch nicht beantwortet</S.Text>
                                                 :   
                                                     <S.QuestionText>{question}</S.QuestionText>
@@ -77,7 +82,7 @@ const LandingTable = () => {
                                                 {selectedQuestions[index] === undefined ?
                                                     <Button label="DETAILS" size="small" inactive/>
                                                 :
-                                                    <Button label="Details" size="small" />
+                                                    <Button label="Details" size="small" onClick={() => openDetails()} />
                                                 }
                                             </td>
                                         </tr>
@@ -94,7 +99,7 @@ const LandingTable = () => {
                                     <S.ResponsiveItem key={index}>
                                         <S.Question>
                                             <h5>{id+1}. Frage</h5>
-                                            {selectedQuestions[index] === null ?
+                                            {selectedQuestions[index] === undefined ?
                                                     <S.Text>noch nicht beantwortet</S.Text>
                                                 :   
                                                     <S.QuestionText>{question}</S.QuestionText>
@@ -120,7 +125,7 @@ const LandingTable = () => {
                                                 {selectedAnswer === undefined ?
                                                     <Button label="DETAILS" size="small" inactive/>
                                                 :
-                                                    <Button label="Details" size="small" />
+                                                    <Button label="Details" size="small" onClick={() => openDetails()}/>
                                                 }
                                             </S.Option>
                                         </S.Options>

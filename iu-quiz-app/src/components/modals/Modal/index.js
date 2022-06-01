@@ -8,6 +8,7 @@ import NewGameModal from '../NewGameModal'
 import StopModal from '../StopModal'
 import QuestionRoundSinglePlayerModal from '../QuestionRoundSinglePlayerModal'
 import QuestionnairePublicQuestionDetails from '../QuestionnairePublicQuestionDetails';
+import SinglePlayerQuestionDetails from '../SinglePlayerQuestionDetails';
 
 
 import CloseButton from '../../elements/forms/CloseButton'
@@ -52,6 +53,7 @@ const Modal = () => {
                     {type === "Stop" && <StopModal />}
                     {type === "QuestionRoundSinglePlayer" && <QuestionRoundSinglePlayerModal/>}
                     {type === "QuestionnairePublicQuestionDetails" && <QuestionnairePublicQuestionDetails/>}
+                    {type === "SinglePlayerQuestionsDetails" && <SinglePlayerQuestionDetails />}
                 </S.ModalContent>
             </ReactModal>
         </S.Modal>
