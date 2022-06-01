@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 
 
 import * as S from './styles'
+import { NavLink } from 'react-router-dom'
 
 const Dashboard = () => {
 
@@ -73,7 +74,9 @@ const Dashboard = () => {
                                 <>
                                     <S.SinglePlayOverview>
                                         <SinglePlayerGameOverview module="Spezifikation" />
-                                        <Button label="Spielen" size="small" />
+                                        <NavLink to="/einzelspieler">
+                                            <Button label="Spielen" size="small" />
+                                        </NavLink>
                                     </S.SinglePlayOverview>
                                     <hr/>
                                 </>

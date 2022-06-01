@@ -8,7 +8,7 @@ import Select from '../../elements/forms/Select'
 import SelectGameCard from '../../elements/SelectGameCard'
 
 import {  useSelector, useDispatch } from 'react-redux'
-import { setModule, setActiveGame, setQuestions, setCurrentQuestion, clearQuestions } from '../../../redux/singlePlayerGame'
+import { setModule, setActiveGame, setQuestions, setCurrentQuestion, clearQuestions, clearSelectedQuestions } from '../../../redux/singlePlayerGame'
 
 import { ModalContext } from '../../../context/ModalContext';
 
@@ -147,6 +147,7 @@ const NewGameModal = () => {
             dispatch(setModule(selectedModul.value))
 
             dispatch(clearQuestions())
+            dispatch(clearSelectedQuestions())
             //wählt random Fragen für die Runde aus
             dispatch(setQuestions(randomQuestions))
 
@@ -158,13 +159,12 @@ const NewGameModal = () => {
 
             //schließt modal
             setOpen(false)
-
-            console.log("Module:", module)
-            console.log("Fragen:", questions)
-            console.log("Aktive Frage:", currentQuestion)
-            console.log("Aktives Spiel", activeGame)
         }
     }
+    console.log("Module:", module)
+    console.log("Fragen:", questions)
+    console.log("Aktive Frage:", currentQuestion)
+    console.log("Aktives Spiel", activeGame)
 
     return (
         <S.NewGameModal>

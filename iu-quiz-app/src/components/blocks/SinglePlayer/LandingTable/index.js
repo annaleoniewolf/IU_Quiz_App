@@ -19,7 +19,7 @@ const LandingTable = () => {
 
 
     //Redux
-    const { module, questions } = useSelector((state) => state.singlePlayerGame)
+    const { module, questions, selectedQuestions } = useSelector((state) => state.singlePlayerGame)
 
     //Spiel beenden Modal
     const { setOpen, setType} = useContext(ModalContext)
@@ -32,6 +32,8 @@ const LandingTable = () => {
         setType("QuestionRoundSinglePlayer")
         setOpen(true)
     }
+
+    console.log("SelectedQuestions:", selectedQuestions)
 
     return (
         <S.LandingTable>
@@ -47,31 +49,32 @@ const LandingTable = () => {
                                 <th>Details</th>
                             </tr>
                             {questions &&
-                                questions.map(({id, question, selectedAnswer, correctAnswer}, index) => {
+                                questions.map(({id, question, correctAnswer}, index) => {
                                     return (
                                         <tr key={index}>
+                                            {console.log("SelectedQuestoinIndex", (correctAnswer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined))}
                                             <td><S.Id>{id+1}</S.Id></td>
                                             <td>
-                                                {selectedAnswer === null ?
+                                                {selectedQuestions[index] === null ?
                                                     <S.Text>noch nicht beantwortet</S.Text>
                                                 :   
-                                                    <S.Text>{question}</S.Text>
+                                                    <S.QuestionText>{question}</S.QuestionText>
                                                 }
                                             </td>
                                             <td>
-                                                {correctAnswer === selectedAnswer &&
+                                                {correctAnswer === selectedQuestions[index] &&
                                                     <S.CheckIcon>
                                                         <FontAwesomeIcon icon={faCheck} />
                                                     </S.CheckIcon>
                                                 }
-                                                {((correctAnswer === selectedAnswer ) && (correctAnswer !== null)) &&
+                                                {((correctAnswer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined)) &&
                                                     <S.XIcon>
                                                         <FontAwesomeIcon icon={faX} />
                                                     </S.XIcon>
                                                 }
                                             </td>
                                             <td>
-                                                {selectedAnswer === null ?
+                                                {selectedQuestions[index] === undefined ?
                                                     <Button label="DETAILS" size="small" inactive/>
                                                 :
                                                     <Button label="Details" size="small" />
@@ -91,22 +94,22 @@ const LandingTable = () => {
                                     <S.ResponsiveItem key={index}>
                                         <S.Question>
                                             <h5>{id+1}. Frage</h5>
-                                            {selectedAnswer === null ?
-                                                <S.Text>noch nicht beantwortet</S.Text>
-                                            :   
-                                                <S.Text>{question}</S.Text>
-                                            }
+                                            {selectedQuestions[index] === null ?
+                                                    <S.Text>noch nicht beantwortet</S.Text>
+                                                :   
+                                                    <S.QuestionText>{question}</S.QuestionText>
+                                                }
                                         </S.Question>
                                         <hr className="itemLine" />
                                         <S.Options>
                                             <S.Option>
                                                 <h6>Richtig beantwortet</h6>
-                                                {correctAnswer === selectedAnswer &&
+                                                {correctAnswer === selectedQuestions[index] &&
                                                     <S.CheckIcon>
                                                         <FontAwesomeIcon icon={faCheck} />
                                                     </S.CheckIcon>
                                                 }
-                                                {((correctAnswer === selectedAnswer ) && (correctAnswer !== null)) &&
+                                                {((correctAnswer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined)) &&
                                                     <S.XIcon>
                                                         <FontAwesomeIcon icon={faX} />
                                                     </S.XIcon>
@@ -114,7 +117,7 @@ const LandingTable = () => {
                                             </S.Option>
                                             <S.Option>
                                                 <h6>Frage melden</h6>
-                                                {selectedAnswer === null ?
+                                                {selectedAnswer === undefined ?
                                                     <Button label="DETAILS" size="small" inactive/>
                                                 :
                                                     <Button label="Details" size="small" />

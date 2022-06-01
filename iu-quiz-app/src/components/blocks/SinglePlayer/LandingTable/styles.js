@@ -5,11 +5,25 @@ export const LandingTable = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    
 `
 
 export const Overview = styled.div`
     min-height: 45vh;
     width: 100%;
+
+    td, th {
+        h6 {
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 14px;
+            text-align: center;
+        }
+        text-align: center;
+        :nth-child(2) {
+            text-align: left;
+        }
+    }
 `
 
 export const Buttons = styled.div`
@@ -27,6 +41,9 @@ export const Id = styled.div`
 
 export const Text = styled.div`
     color: ${theme.colors.grey};
+`
+export const QuestionText = styled.div`
+    
 `
 
 export const CheckIcon = styled.div`

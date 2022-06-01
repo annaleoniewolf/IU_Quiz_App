@@ -5,13 +5,13 @@ import ProgressBar from '../../elements/ProgressBar'
 
 import { useState } from 'react'
 import {  useSelector, useDispatch } from 'react-redux'
-import { setCurrentQuestion, setQuestions } from '../../../redux/singlePlayerGame'
+import { setCurrentQuestion, setSelectedQuestions } from '../../../redux/singlePlayerGame'
 
 const QuestionRoundSinglePlayerModal = () => {
 
     //Redux
     const dispatch = useDispatch()
-    const { questions, currentQuestion } = useSelector((state) => state.singlePlayerGame)
+    const { questions, currentQuestion, selectedQuestions } = useSelector((state) => state.singlePlayerGame)
 
     const [selected, setSelected] = useState(null)
 
@@ -19,15 +19,14 @@ const QuestionRoundSinglePlayerModal = () => {
     const handleButton = () => {
 
         //wählt die Antwortmöglichkeit aus, für die sich entschieden wurde
-        //dispatch(setQuestions[currentQuestion].selectedAnswer(selected))
-        console.log("Antwort:", selected)
+        dispatch(setSelectedQuestions(selected))
+        console.log("Selected Questions:", selectedQuestions)
 
         //inkrementiert aktuelle Frage
         dispatch(setCurrentQuestion(currentQuestion+1))
-    }
-
-    const handleCloseButton = () => {
-        //close Modal
+        console.log("Current Question:", currentQuestion)
+        
+        setSelected(null)
     }
 
     return (
@@ -60,7 +59,6 @@ const QuestionRoundSinglePlayerModal = () => {
                         <S.Feedback>
                             <p>Du bist durch!</p>
                         </S.Feedback>
-                        <Button label="Beenden" onClick={() => handleCloseButton()} />
                     </S.FeedbackContent>
                 }
                 

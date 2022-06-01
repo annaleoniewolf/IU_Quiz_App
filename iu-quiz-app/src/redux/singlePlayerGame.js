@@ -4,9 +4,10 @@ export const singlePlayerGameSlice = createSlice({
   name: 'singlePlayerGame',
   initialState: {
     module: '',
-    questions: {},
+    questions: [],
     currentQuestion: 0,
     activeGame: false,
+    selectedQuestions: []
 
   },
   reducers: {
@@ -19,29 +20,20 @@ export const singlePlayerGameSlice = createSlice({
     clearModule: (state) => {
       state.module = ''
     },
-
-    /*//updatet selectedAnswer
-    setQuestionsSelectedAnswer: (state, action) => {
-
-      const {currentQuestion, selected} = action.payload
-
-      //findet Index von dem Element, welches geupdatet werden soll
-      //const index = state.questions.findIndex(questions.id !== action.payload)
-
-      //legt vorrübergehend neues Array an
-      const newArray = [...state.questions]
-      newArray[currentQuestion].selectedAnswer = selected
-
-      state.questions = newArray
-    },*/
-
     //Fragen
     setQuestions: (state, action) => {
       state.questions = action.payload
     },
+    //Fügt ausgewählte Frage selectedQuestions hinzu
+    setSelectedQuestions: (state, action) => {
+      state.selectedQuestions.push(action.payload)
+    },
+    clearSelectedQuestions: (state) => {
+      state.selectedQuestions = []
+    },
     //Löscht Fragen
     clearQuestions: (state) => {
-      state.questions = {}
+      state.questions = []
     },
     //Aktuelle Frage
     setCurrentQuestion: (state, action) => {
@@ -56,6 +48,6 @@ export const singlePlayerGameSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setModule, setQuestionsSelectedAnswer, clearModule, setQuestions, clearQuestions, setCurrentQuestion, activeGame, setActiveGame } = singlePlayerGameSlice.actions
+export const { setModule, setQuestionsSelectedAnswer, clearSelectedQuestions, clearModule, setQuestions, setSelectedQuestions, clearQuestions, setCurrentQuestion, activeGame, setActiveGame } = singlePlayerGameSlice.actions
 
 export default singlePlayerGameSlice.reducer
