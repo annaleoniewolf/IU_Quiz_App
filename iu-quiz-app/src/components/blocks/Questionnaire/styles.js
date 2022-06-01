@@ -7,6 +7,9 @@ export const Questionnaire = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media(max-width: 1400px) {
+        height: auto;
+    }
 `
 
 export const Content = styled.div`

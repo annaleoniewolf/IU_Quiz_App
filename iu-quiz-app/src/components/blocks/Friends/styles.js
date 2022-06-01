@@ -35,22 +35,3 @@ export const Content = styled.div`
         }
     }
 `
-
-export const Chat = styled.div`
-    svg {
-        color: ${theme.colors.primary}!important;
-        opacity: 0.5;
-    }
-`
-
-export const Button = styled.div`
-    position: absolute;
-    left: 45%;
-    bottom: 50px;
-    @media(max-width: 800px) {
-        left: 40%;
-    }
-    @media(max-width: 500px) {
-        left: 30%;
-    }
-`
