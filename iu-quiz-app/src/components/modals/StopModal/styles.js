@@ -6,9 +6,13 @@ export const StopModal = styled.div`
     justify-content: center;
     align-items: center;
     p {
-        padding: 10px 0px;
+        padding: 15px 0px 30px 0px;
+        text-align: center;
     }
     @media(max-width: 800px) {
         padding: 0px;
     }
+     a {
+         text-decoration: none;
+     }
 `

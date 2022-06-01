@@ -1,12 +1,21 @@
 import * as S from './styles'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons'
 import Button from '../../../elements/forms/Button'
 import Select from "../../../elements/forms/Select"
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
+import { ModalContext } from '../../../../context/ModalContext'
 
 const PublicQuestions = () => {
+
+    //Details Modal
+    const { setOpen, setType} = useContext(ModalContext)
+
+    const openDetails = () => {
+        setType("QuestionnairePublicQuestionDetails")
+        setOpen(true)
+    }
 
     //Dimension für Responsive
     const { width } = useWindowDimensions();
@@ -119,7 +128,7 @@ const PublicQuestions = () => {
                                             <td><p>{question}</p></td>
                                             <td><h6>{module}</h6></td>
                                             <td>
-                                                <Button size="small" label="Details"/>
+                                                <Button size="small" label="Details" onClick={() => openDetails()}/>
                                             </td>
                                             <td>
                                                 <S.BanButton>
@@ -151,7 +160,7 @@ const PublicQuestions = () => {
                                         <S.Options>
                                             <S.Option>
                                                 <h6>Details</h6>
-                                                <Button size="small" label="Details"/>
+                                                <Button size="small" label="Details" onClick={() => openDetails()}/>
                                             </S.Option>
                                             <S.Option>
                                                 <h6>Frage melden</h6>
