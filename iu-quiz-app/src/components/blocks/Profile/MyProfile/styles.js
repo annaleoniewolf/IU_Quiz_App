@@ -7,6 +7,12 @@ export const MyProfile = styled.div`
     gap: 10%;
     align-items: center;
     padding: 50px 100px; 
+    @media (max-width: 800px) {
+        padding: 30px 20px;
+    }
+    @media (max-width: 400px) {
+        padding: 20px 0px;
+    }
 `
 
 export const ProfileInformation = styled.div`
@@ -21,6 +27,10 @@ export const Name = styled.div`
     justify-content: space-between;
     gap: 15px;
     width: 600px;
+    @media(max-width: 800px) {
+        flex-direction: column;
+        width: 100%;
+    }
 `
 
 export const Form = styled.form`

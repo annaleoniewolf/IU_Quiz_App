@@ -9,8 +9,8 @@ const MyProfile = () => {
     const { register, handleSubmit} = useForm()
     const [vorname] = useState("Anna")
     const [nachname] = useState("Wolf")
-    const [studienstart] = useState(new Date())
-    const [studiengang] = useState("Informatik")
+    //const [studienstart] = useState(new Date())
+    const [studiengang] = useState("Bachelor Informatik")
 
     //can be use to sent the data to the api
     const onSubmit = (data) => {
@@ -37,7 +37,7 @@ const MyProfile = () => {
                             <label htmlFor="studiengang">Studiengang</label>
                         </S.Element>
                         <S.Element>
-                            <input  {...register("studienstart", { required: true })} type="date" placeholder={studienstart} name="studienstart" autoComplete="on" id="studienstart"/>
+                            <input  {...register("studienstart", { required: true })} type="date" name="studienstart" autoComplete="on" id="studienstart"/>
                             <label htmlFor="studienstart">Studienstart</label>
                         </S.Element>
                     <S.SubmitButton type="submit" value="Speichern"/>
