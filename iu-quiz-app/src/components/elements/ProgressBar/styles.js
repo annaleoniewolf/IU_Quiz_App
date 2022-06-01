@@ -1,22 +1,18 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../../styles/theme";
 
 export const ProgressBar = styled.div`
-.wrapper {
-  border: 2px solid ${theme.colors.primary};
-}
+  width: 100%;
+  border: 1px solid ${theme.colors.primary};
+`
 
-.container {
-  background-color: #fff;
-}
-
-.barCompleted {
+export const Percentage = styled.div`
+  height: 20px;
   background-color: ${theme.colors.primary};
-  width: 80%;
-}
-
-.label {
-  font-size: 20px;
-  color: ${theme.colors.primary};
-}
+  transition: 0.5s;
+  ${({ percentage }) =>
+  percentage &&
+  css`
+      width: ${percentage}%;
+  `}
 `

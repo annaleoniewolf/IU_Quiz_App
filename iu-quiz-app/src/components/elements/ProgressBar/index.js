@@ -1,17 +1,10 @@
 import * as S from './styles'
-import ProgressBarModul from "@ramonak/react-progress-bar"
 
 const ProgressBar = ({percentage}) => {
+    console.log(percentage)
     return (
-        <S.ProgressBar>
-            <ProgressBarModul 
-                completed={percentage}
-                className="wrapper"
-                barContainerClassName="container"
-                completedClassName="barCompleted"
-                labelClassName="label" 
-                customLabel=""
-            />
+        <S.ProgressBar> 
+            <S.Percentage percentage={percentage} />
         </S.ProgressBar>
     )
 }

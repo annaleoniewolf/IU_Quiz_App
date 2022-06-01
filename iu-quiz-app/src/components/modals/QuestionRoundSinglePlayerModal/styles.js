@@ -20,6 +20,9 @@ export const Answers = styled.div`
     gap: 10px;
     max-width: 800px;
     padding: 20px;
+    @media(max-width: 1300px) {
+        padding: 0px 0px 20px 0px;
+    }
 `
 
 export const Answer = styled.div`
@@ -35,6 +38,13 @@ export const Answer = styled.div`
         p {
             color: #fff;
         }
+    }
+
+    @media(max-width: 1300px) {
+        width: 45%;
+    }
+    @media(max-width: 800px) {
+        width: 100%;
     }
 
     ${({selected}) => {
@@ -60,6 +70,9 @@ export const Answer = styled.div`
 export const ProgressBar = styled.div`
     width: 800px;
     padding: 20px;
+    @media(max-width: 1300px) {
+        width: 100%;
+    }
 `
 
 export const Progress = styled.p`

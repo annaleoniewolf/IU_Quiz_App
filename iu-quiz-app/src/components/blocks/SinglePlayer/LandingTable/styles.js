@@ -17,6 +17,7 @@ export const Buttons = styled.div`
     justify-content: center;
     gap: 20px;
     padding: 20px 0px;
+    margin: 0px auto;
 `
 export const Id = styled.div`
     color: ${theme.colors.primary};
