@@ -25,6 +25,18 @@ export const Buttons = styled.div`
     gap: 20px;
     padding: 20px 0px;
 `
+export const BanButton = styled.div`
+    svg{
+        color: ${theme.colors.red};
+        width: 27px;
+        height: 27px;
+        transition: 0.5s;
+        :hover {
+            opacity: 0.3;
+            cursor: pointer;
+        }
+    }
+`
 
 export const Select = styled.div`
     max-width: 500px;

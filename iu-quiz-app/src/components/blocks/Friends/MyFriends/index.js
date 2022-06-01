@@ -64,42 +64,42 @@ const MyFriends = () => {
             :
             <S.Responsive>
                 {myFriends &&
-                            myFriends.map(({vorname, nachname, info}, index) => {
-                                return(
-                                    <S.ResponsiveItem key={index}>
-                                        <S.Profile>
-                                            <h5>Profil</h5>
-                                            <UserOverview 
-                                                userName={`${vorname} ${nachname}`}
-                                                info={info}
-                                            />
-                                        </S.Profile>
-                                        <hr className="itemLine" />
-                                        <S.Options>
-                                            <S.Option>
-                                                <h6>Nachricht</h6>
-                                                <S.MessageButton>
-                                                    <FontAwesomeIcon icon={faComments} />
-                                                </S.MessageButton>
-                                            </S.Option>
-                                            <S.Option>
-                                                <h6>Blockieren</h6>
-                                                <S.BanButton>
-                                                    <FontAwesomeIcon icon={faBan} />
-                                                </S.BanButton>
-                                            </S.Option>
-                                            <S.Option>
-                                                <h6>Freund entfernen</h6>
-                                                <S.DeleteButton>
-                                                    <FontAwesomeIcon icon={faXmarkCircle} />
-                                                </S.DeleteButton>
-                                            </S.Option>
-                                        </S.Options>
-                                        <hr/>
-                                    </S.ResponsiveItem >
-                                )
-                            })
-                        }
+                    myFriends.map(({vorname, nachname, info}, index) => {
+                        return(
+                            <S.ResponsiveItem key={index}>
+                                <S.Profile>
+                                    <h5>Profil</h5>
+                                    <UserOverview 
+                                        userName={`${vorname} ${nachname}`}
+                                        info={info}
+                                    />
+                                </S.Profile>
+                                <hr className="itemLine" />
+                                <S.Options>
+                                    <S.Option>
+                                        <h6>Nachricht</h6>
+                                        <S.MessageButton>
+                                            <FontAwesomeIcon icon={faComments} />
+                                        </S.MessageButton>
+                                    </S.Option>
+                                    <S.Option>
+                                        <h6>Blockieren</h6>
+                                        <S.BanButton>
+                                            <FontAwesomeIcon icon={faBan} />
+                                        </S.BanButton>
+                                    </S.Option>
+                                    <S.Option>
+                                        <h6>Freund entfernen</h6>
+                                        <S.DeleteButton>
+                                            <FontAwesomeIcon icon={faXmarkCircle} />
+                                        </S.DeleteButton>
+                                    </S.Option>
+                                </S.Options>
+                                <hr/>
+                            </S.ResponsiveItem >
+                        )
+                    })
+                }
             </S.Responsive>
         }
         </S.MyFriends>
