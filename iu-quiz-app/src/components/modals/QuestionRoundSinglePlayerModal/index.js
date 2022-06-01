@@ -56,10 +56,12 @@ const QuestionRoundSinglePlayerModal = () => {
                         <Button label="Weiter" onClick={() => handleButton()} />
                     </S.Content>
                 : 
-                    <S.Content>
-                        Sehr gut du bist durch!
+                    <S.FeedbackContent>
+                        <S.Feedback>
+                            <p>Du bist durch!</p>
+                        </S.Feedback>
                         <Button label="Beenden" onClick={() => handleCloseButton()} />
-                    </S.Content>
+                    </S.FeedbackContent>
                 }
                 
         </S.QuestionRoundSinglePlayerModal>

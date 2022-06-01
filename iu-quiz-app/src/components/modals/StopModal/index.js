@@ -9,7 +9,9 @@ const StopModal = () => {
         <S.StopModal>
             <h2>Wirklich beenden?</h2>
             <p>
-                Sind Sie sicher, dass sie die Lernrunde beenden wollen?<br />Ihr gesamter Fortschritt geht dadurch verloren.
+                Sind Sie sicher, dass sie die Lernrunde beenden wollen?
+                <br />
+                Sie können ihr aktuelles Spiel zu einem späteren Zeitpunkt fortsetzen.
             </p>
             <Button label="Beenden" red />
         </S.StopModal>

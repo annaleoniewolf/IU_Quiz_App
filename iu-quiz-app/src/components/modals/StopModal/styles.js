@@ -8,4 +8,7 @@ export const StopModal = styled.div`
     p {
         padding: 10px 0px;
     }
+    @media(max-width: 800px) {
+        padding: 0px;
+    }
 `

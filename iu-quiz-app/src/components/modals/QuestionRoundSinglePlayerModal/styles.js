@@ -78,3 +78,14 @@ export const ProgressBar = styled.div`
 export const Progress = styled.p`
     margin: 0px;
 `
+
+export const FeedbackContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+export const Feedback = styled.div`
+
+`
