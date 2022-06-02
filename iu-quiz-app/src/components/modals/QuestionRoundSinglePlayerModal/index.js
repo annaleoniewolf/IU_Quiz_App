@@ -6,6 +6,8 @@ import ProgressBar from '../../elements/ProgressBar'
 import { useState } from 'react'
 import {  useSelector, useDispatch } from 'react-redux'
 import { setCurrentQuestion, setSelectedQuestions } from '../../../redux/singlePlayerGame'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFaceFrown, faFaceSmileBeam, faSmileWink } from '@fortawesome/free-solid-svg-icons'
 
 const QuestionRoundSinglePlayerModal = () => {
 
@@ -65,10 +67,59 @@ const QuestionRoundSinglePlayerModal = () => {
                     </S.Content>
                 : 
                     <S.FeedbackContent>
-                        <S.Feedback>
-                            <p>Du bist durch!</p>
-                            <p>{`Du hattest ${countPoints()} / 10 Antworten richtig!`}</p>
-                        </S.Feedback>
+                            {countPoints() <= 5 && 
+                                <S.Feedback
+                                    initial={{ opacity: 0 }} 
+                                    animate={{ opacity: 1 }} 
+                                    transition={{ duration: 5, type: 'spring' }}
+                                >
+                                    <S.SadFace>
+                                        <FontAwesomeIcon icon={faFaceFrown} />
+                                    </S.SadFace>
+                                    <h5>Schade!</h5>
+                                    <p>
+                                        {`Du hattest leider nur ${countPoints()} / 10 Antworten richtig!`}
+                                        <br /> 
+                                        Am besten versuchst du es gleich noch mal!
+                                    </p>
+                                </S.Feedback>
+                            }
+                            {(countPoints() > 5 && countPoints() < 8) &&
+                                <S.Feedback
+                                    initial={{ opacity: 0 }} 
+                                    animate={{ opacity: 1 }} 
+                                    transition={{ duration: 5, type: 'spring' }}
+                                >
+                                    <S.WinkFace>
+                                        <FontAwesomeIcon icon={faSmileWink} />
+                                    </S.WinkFace>
+                                    <h5>Schon gar nicht schlecht!</h5>
+                                    <p>
+                                        {`Du hattest ${countPoints()} / 10 Antworten richtig!`}
+                                        <br />
+                                        Das kann sich schon sehen lassen!
+                                    </p>
+                                </S.Feedback>
+                            }
+                            {(countPoints() >= 8) &&
+                                <S.Feedback
+                                    initial={{ opacity: 0 }} 
+                                    animate={{ opacity: 1 }} 
+                                    transition={{ duration: 5, type: 'spring' }}
+                                >
+                                    <S.HappyFace>
+                                        <FontAwesomeIcon icon={faFaceSmileBeam} />
+                                    </S.HappyFace>
+                                    <h5>Sehr gut, weiter so!</h5>
+                                    <p>
+                                        {`Du hattest ganze ${countPoints()} / 10 Antworten richtig!`}
+                                        <br /> 
+                                        Dieses Ergebnis kann sich sehen lassen!
+                                    </p>
+                                </S.Feedback>
+                            }
+                            
+                            
                     </S.FeedbackContent>
                 }
                 

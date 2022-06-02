@@ -58,10 +58,7 @@ const GlobalStyle = createGlobalStyle`
             line-height: 18px;
             color: #000;
             margin: 5px 0px;
-            @media(max-width: 800px) {
-                font-size: 12px;
-                line-height: 15px;
-            }
+            
         }
         ul, ol {
             color: ${theme.colors.darkgrey};    

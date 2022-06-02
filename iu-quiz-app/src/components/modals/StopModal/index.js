@@ -19,9 +19,10 @@ const StopModal = () => {
         <S.StopModal>
             <h2>Wirklich beenden?</h2>
             <p>
-                Sind Sie sicher, dass sie die Lernrunde beenden wollen?
+                Bist du sicher, dass sie die Lernrunde beenden wollen?
                 <br />
-                Sie können ihr aktuelles Spiel zu einem späteren Zeitpunkt fortsetzen.
+                Du kannst dein aktuelles Spiel zu einem späteren Zeitpunkt fortsetzen.
+                <br/> Möchtest du eine neue Runde beginnen kehre zum Dashboard zurück und erstelle ein neues Spiel!
             </p>
             <NavLink to="/">
                 <Button label="Beenden" red onClick={() => {handleButton()}}/>
