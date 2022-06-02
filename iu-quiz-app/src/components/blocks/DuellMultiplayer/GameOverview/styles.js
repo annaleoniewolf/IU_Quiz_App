@@ -9,13 +9,18 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    p {
+        text-align: center;
+    }
 `
 export const Frames = styled.div`
     display: flex;
     justify-content: center;
     gap: 40px;
     margin: 20px;
+    @media(max-width: 800px) {
+        flex-direction: column;
+    }
 `
 export const Frame = styled.div`
     display: flex;

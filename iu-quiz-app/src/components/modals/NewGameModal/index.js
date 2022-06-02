@@ -7,7 +7,7 @@ import Button from '../../elements/forms/Button'
 import Select from '../../elements/forms/Select'
 import SelectGameCard from '../../elements/SelectGameCard'
 
-import {  useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setModule, setActiveGame, setQuestions, setCurrentQuestion, clearQuestions, clearSelectedQuestions } from '../../../redux/singlePlayerGame'
 
 import { ModalContext } from '../../../context/ModalContext';
@@ -25,9 +25,6 @@ const NewGameModal = () => {
 
     //Selektiertes Modul
     const [selectedModul, setSelectedModul] = useState('')
-
-    //Local Storgage Modul
-    const { module, activeGame, currentQuestion, questions } = useSelector((state) => state.singlePlayerGame)
 
     //Placeholder Module
     const modulOptions = [
@@ -159,12 +156,10 @@ const NewGameModal = () => {
 
             //schließt modal
             setOpen(false)
+        } else if (modus === "duell") {
+            setOpen(false)
         }
     }
-    console.log("Module:", module)
-    console.log("Fragen:", questions)
-    console.log("Aktive Frage:", currentQuestion)
-    console.log("Aktives Spiel", activeGame)
 
     return (
         <S.NewGameModal>
@@ -235,7 +230,7 @@ const NewGameModal = () => {
                     </S.CollabSelect>
                 }
             </S.Selection>
-            <NavLink to={"/einzelspieler"}>
+            <NavLink to={modus ? `/${modus}` : "/"}>
                 <Button label="Spiel Starten" onClick={() => {handleButton()}} />
             </NavLink>
         </S.NewGameModal>

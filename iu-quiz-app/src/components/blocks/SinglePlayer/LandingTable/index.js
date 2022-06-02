@@ -38,7 +38,6 @@ const LandingTable = () => {
         setOpen(true)
     }
 
-    console.log("SelectedQuestions:", selectedQuestions)
 
     return (
         <S.LandingTable>
@@ -57,7 +56,6 @@ const LandingTable = () => {
                                 questions.map(({id, question, correctAnswer}, index) => {
                                     return (
                                         <tr key={index}>
-                                            {console.log("SelectedQuestoinIndex", (correctAnswer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined))}
                                             <td><S.Id>{id+1}</S.Id></td>
                                             <td>
                                                 {selectedQuestions[index] === undefined ?

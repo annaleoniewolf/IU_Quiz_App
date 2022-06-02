@@ -30,8 +30,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "...die Nullhypothese anzunehmen",
             answerC: "...die Alternativhypothese eindeutig zu beweisen",
             answerD: "...die Alternativhypothese zu verwerfen",
-            correctAnswer: "A",
-            selectedAnswer: null
+            correctAnswer: "A"
         },
         {
             id: 1,
@@ -40,8 +39,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "der p-Wert genau dem kritischen Wert entspricht.",
             answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
             answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            correctAnswer: "D",
-            selectedAnswer: null
+            correctAnswer: "D"
         },
         {
             id: 2,
@@ -50,8 +48,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
             answerC: "wird die Alternativhypothese richtigerweise angenommen.",
             answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            correctAnswer: "D",
-            selectedAnswer: null
+            correctAnswer: "D"
         },
         { 
             id: 3,
@@ -60,8 +57,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "...die Nullhypothese anzunehmen",
             answerC: "...die Alternativhypothese eindeutig zu beweisen",
             answerD: "...die Alternativhypothese zu verwerfen",
-            correctAnswer: "A",
-            selectedAnswer: null
+            correctAnswer: "A"
         },
         {
             id: 4,
@@ -70,8 +66,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "der p-Wert genau dem kritischen Wert entspricht.",
             answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
             answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            correctAnswer: "D",
-            selectedAnswer: null
+            correctAnswer: "D"
         },
         {
             id: 5,
@@ -80,8 +75,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
             answerC: "wird die Alternativhypothese richtigerweise angenommen.",
             answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            correctAnswer: "D",
-            selectedAnswer: null
+            correctAnswer: "D"
         },
         { 
             id: 6,
@@ -90,8 +84,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "...die Nullhypothese anzunehmen",
             answerC: "...die Alternativhypothese eindeutig zu beweisen",
             answerD: "...die Alternativhypothese zu verwerfen",
-            correctAnswer: "A",
-            selectedAnswer: null
+            correctAnswer: "A"
         },
         {
             id: 7,
@@ -100,8 +93,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "der p-Wert genau dem kritischen Wert entspricht.",
             answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
             answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            correctAnswer: "D",
-            selectedAnswer: null
+            correctAnswer: "D"
         },
         {
             id: 8,
@@ -110,8 +102,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
             answerC: "wird die Alternativhypothese richtigerweise angenommen.",
             answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            correctAnswer: "D",
-            selectedAnswer: null
+            correctAnswer: "D"
         },
         { 
             id: 9,
@@ -120,8 +111,7 @@ const QuestionRoundDuellModal = () => {
             answerB: "...die Nullhypothese anzunehmen",
             answerC: "...die Alternativhypothese eindeutig zu beweisen",
             answerD: "...die Alternativhypothese zu verwerfen",
-            correctAnswer: "A",
-            selectedAnswer: null
+            correctAnswer: "A"
         }
     ]
 
