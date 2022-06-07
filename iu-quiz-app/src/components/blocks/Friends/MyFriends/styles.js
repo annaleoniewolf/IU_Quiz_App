@@ -39,11 +39,7 @@ export const DeleteButton = styled.div`
         color: ${theme.colors.red};
         width: 27px;
         height: 27px;
-        transition: 0.5s;
-        :hover {
-            opacity: 0.3;
-            cursor: pointer;
-        }
+        opacity: 0.3;
     }
 `
 
