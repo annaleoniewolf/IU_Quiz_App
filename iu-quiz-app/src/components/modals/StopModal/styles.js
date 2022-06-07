@@ -7,6 +7,9 @@ export const StopModal = styled.div`
     align-items: center;
     p {
         padding: 15px 0px 30px 0px;
+        line-height: 20px;
+        text-align: center;
+        max-width: 500px;
     }
     @media(max-width: 800px) {
         padding: 0px;

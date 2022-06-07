@@ -55,7 +55,7 @@ const Modal = () => {
                     {type === "QuestionRoundSinglePlayer" && <QuestionRoundSinglePlayerModal/>}
                     {type === "QuestionnairePublicQuestionDetails" && <QuestionnairePublicQuestionDetails/>}
                     {type === "SinglePlayerQuestionsDetails" && <SinglePlayerQuestionDetails />}
-                    {type === "QuestionRoundDuellModal" && <QuestionRoundDuellModal />}
+                    {type === "QuestionRoundDuell" && <QuestionRoundDuellModal />}
                 </S.ModalContent>
             </ReactModal>
         </S.Modal>

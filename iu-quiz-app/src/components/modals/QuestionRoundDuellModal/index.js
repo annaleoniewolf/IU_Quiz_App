@@ -1,7 +1,6 @@
 import * as S from './styles'
 
-import Button from '../../elements/forms/Button'
-import ProgressBar from '../../elements/ProgressBar'
+import Timer from '../../elements/Timer'
 
 import { useState } from 'react'
 
@@ -15,12 +14,6 @@ const QuestionRoundDuellModal = () => {
     const [currentQuestion] = useState(0)
 
     const [result] = useState(5)
-
-    //weiter button handler
-    const handleButton = () => {
-  
-        setSelected(null)
-    }
 
     const questions = [
         { 
@@ -130,10 +123,7 @@ const QuestionRoundDuellModal = () => {
         <S.QuestionRoundDuellModal>
                 {currentQuestion < 10 ?
                     <S.Content>
-                        <S.Progress> {currentQuestion+1} / 10</S.Progress>
-                        <S.ProgressBar>
-                            <ProgressBar percentage={(currentQuestion+1)*10}/>
-                        </S.ProgressBar>
+                        <Timer expiryTimestamp={1}/>
                         <h4>{questions[currentQuestion].question}</h4>
                         <S.Answers>
                             <S.Answer selected={selected === 'A' ? true : false} onClick={() => setSelected('A')}>
@@ -149,7 +139,6 @@ const QuestionRoundDuellModal = () => {
                                 <p>{questions[currentQuestion].answerD}</p>
                             </S.Answer>
                         </S.Answers>
-                        <Button label="Weiter" onClick={() => handleButton()} />
                     </S.Content>
                 : 
                     <S.FeedbackContent>

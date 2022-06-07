@@ -69,7 +69,7 @@ const Dashboard = () => {
                     </Card>
                     <Card size="large">
                         <S.CardContainer>
-                            <h4>Spiele</h4>
+                            <h4> Laufende Spiele</h4>
                             {activeGame === true &&
                                 <>
                                     <S.SinglePlayOverview>
