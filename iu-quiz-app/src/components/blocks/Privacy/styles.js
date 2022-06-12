@@ -9,25 +9,37 @@ export const Privacy = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    @media (max-width: 800px) {
-        overflow: auto;
+    @media(max-width: 1400px) {
+        height: auto;
     }
 `
 
 export const Container = styled(motion.div)`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     background-color: #fff;
     border-radius: 5px;
     padding: 50px 50px;
-    width: 800px;
+    height: 600px;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+    ::-webkit-scrollbar {
+        display: none; 
+    }
+    width: 80%;
+    max-width: 1300px;
     margin: 20px;
     position: relative;
     @media (max-width: 800px ) {
         margin: 5px;
+    }
+    @media(max-width: 1400px) {
+        height: auto;
+        width: 100%;
+        padding: 50px 25px;
     }
 
     hr {
@@ -45,6 +57,18 @@ export const Container = styled(motion.div)`
 
     p {
         margin: 20px 0px 30px 0px;
+    }
+
+    ul {
+        li {
+            font-size: 16px;
+            color: #000;
+        }
+    }
+
+    a {
+        color: ${theme.colors.primary};
+        word-break: break-all;
     }
 
 `

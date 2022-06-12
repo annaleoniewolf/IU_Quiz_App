@@ -1,24 +1,24 @@
 import * as S from './styles'
 import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComments, faXmarkCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
-import UserOverview from '../../../elements/UserOverview'
-import useWindowDimensions from '../../../hooks/useWindowDimensions'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { faComments, faXmarkCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
+//import UserOverview from '../../../elements/UserOverview'
+//import useWindowDimensions from '../../../hooks/useWindowDimensions'
 
 const PendingFriends = () => {
 
     //Dimension für Responsive
-    const { width } = useWindowDimensions();
+    //const { width } = useWindowDimensions();
 
-    const [pendingFriends] = useState([
+    /*const [pendingFriends] = useState([
         {"vorname": "Jane", "nachname": "Doe", "info": "3.Semester, Bachelor Informatik"}
-    ])
-    const [pendingFriendsAmount] = useState(pendingFriends.length)
+    ])*/
+    const [pendingFriendsAmount] = useState(0)
 
     return (
         <S.PendingFriends>
             <p>{`${pendingFriendsAmount} Ausstehende Anfrage(n)`}</p>
-            {width > 800 ?
+            {/*width > 800 ?
                 <table>
                     <tbody>
                         <tr>
@@ -98,7 +98,7 @@ const PendingFriends = () => {
                         })
                     }
                 </S.Responsive>
-            }
+                */}
 
         </S.PendingFriends>
     )

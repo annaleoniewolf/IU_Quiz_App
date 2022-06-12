@@ -50,4 +50,7 @@ export const CollabSelect = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
+    p {
+        color: ${theme.colors.red};
+    }
 `

@@ -6,6 +6,7 @@ import { ModalContext } from './context/ModalContext'
 import { useState } from 'react';
 
 
+
 import Navigation from './components/blocks/Navigation'
 import Footer from './components/blocks/Footer';
 import Pages from './pages/Pages';
@@ -13,22 +14,22 @@ import Modal from './components/modals/Modal'
 
 
 
-
 function App() {
   const [open, setOpen] = useState(false)
   const [type, setType] = useState("")
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <ModalContext.Provider value={{open, setOpen, type, setType}}>
-        <BrowserRouter>
-          <Modal type="NewGame" />
-          <Navigation />
-          <Pages />
-          <Footer />
-        </BrowserRouter>
-      </ModalContext.Provider>
-    </ThemeProvider>
+
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <ModalContext.Provider value={{open, setOpen, type, setType}}>
+          <BrowserRouter>
+            <Modal type="NewGame" />
+            <Navigation />
+            <Pages />
+            <Footer />
+          </BrowserRouter>
+        </ModalContext.Provider>
+      </ThemeProvider>
   );
 }
 

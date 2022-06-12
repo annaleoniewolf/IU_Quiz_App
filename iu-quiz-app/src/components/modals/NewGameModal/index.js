@@ -25,6 +25,7 @@ const NewGameModal = () => {
 
     //Selektiertes Modul
     const [selectedModul, setSelectedModul] = useState('')
+    const [selectedFriend] = useState('')
 
     //Placeholder Module
     const modulOptions = [
@@ -215,24 +216,20 @@ const NewGameModal = () => {
                 }
                 {modus === "collab" &&
                     <S.CollabSelect>
-                        <S.SelectionContainer>
-                            <label>Modul auswählen</label>
-                            <Select 
-                                defaultValue={selectedModul}
-                                onChange={setSelectedModul}
-                                options={modulOptions}
-                            />
-                        </S.SelectionContainer>
-                        <S.SelectionContainer>
-                            <label>Lernpartner auswählen</label>
-                            <Select placeholder="Lernpartner" options={modulOptions} />
-                        </S.SelectionContainer>
+                        <p>Der kollaborative Spielmodus wird von der Prototyp Version nicht unterstützt!</p>
                     </S.CollabSelect>
                 }
             </S.Selection>
-            <NavLink to={modus ? `/${modus}` : "/"}>
-                <Button label="Spiel Starten" onClick={() => {handleButton()}} />
-            </NavLink>
+            {(modus === "einzelspieler" && selectedModul !== '') &&
+                    <NavLink to={"/einzelspieler"}>
+                        <Button label="Spiel Starten" onClick={() => {handleButton()}} />
+                    </NavLink>
+            }
+            {(modus === "duell" && selectedModul !== '' && selectedFriend !== '') &&
+                    <NavLink to={"/duell"}>
+                        <Button label="Spiel Starten" onClick={() => {handleButton()}} />
+                    </NavLink>
+            }
         </S.NewGameModal>
     )
 }
