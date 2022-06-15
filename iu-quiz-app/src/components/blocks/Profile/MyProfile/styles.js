@@ -14,6 +14,14 @@ export const MyProfile = styled.div`
         padding: 20px 0px;
     }
 `
+export const ProfileImage = styled.div`
+    background-color: #d0d0d0;
+    width: 160px;
+    height: 160px;
+    border-radius: 90px;
+    overflow: hidden;
+    border: 1px solid ${theme.colors.grey};
+`
 
 export const ProfileInformation = styled.div`
     display: flex;
@@ -49,6 +57,7 @@ export const Element = styled.div`
     max-width: 600px;
 
     input {
+        position: relative;
         width: 100%;
         border: 1px solid ${theme.colors.grey};
         border-radius: 2px;
@@ -56,59 +65,19 @@ export const Element = styled.div`
         padding: 1rem;
         background: none;
         z-index: 1;
-    }
+    }     
 
-    input:focus + label,
-        input:valid + label {
-            top: -.5rem;
-            left: .8rem;
-            color: ${theme.colors.primary};
-            font-weight: 500;
-            z-index: 10;
-        }
-        input:not(:placeholder-shown) input:not(:focus) + label {
-            top: -.5rem;
-            left: .8rem;
-            font-weight: 500;
-            z-index: 10;
-        }
-
-        input:focus,
-        input:valid {
-            border: 1.5px solid ${theme.colors.primary};
-        }
-    
-        label {
+    label {
             position: absolute;
-            left: 1rem;
-            top: 1rem;
-            padding: 0 .25rem;
+            left: 17px;
+            top: -9px;
             background-color: #fff;
-            color: ${theme.colors.darkgrey};
-            transition: .3s;
+            color: ${theme.colors.grey};
+            font-weight: 400;
+            z-index: 50;
         }
 `
 
-export const SubmitButton = styled.input`
-    width: 170px;
-    padding: 15px 0px;
-    margin: 10px 0px;
-    font-size: 15px;
-    line-height: 18px;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #fff;
-    margin: 0px;
-    letter-spacing: 0.7px;
-    background-color: ${theme.colors.primary};
-    text-align: center;
-    opacity: 1;
-    margin-top: 30px;
-    border: none;
-    transition: 0.7s;
-
-    :hover {
-        cursor: pointer;
-        opacity: 0.7;
-    }
+export const Button = styled.div`
+    padding: 20px;
 `
