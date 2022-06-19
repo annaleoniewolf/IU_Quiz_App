@@ -79,5 +79,5 @@ export const Element = styled.div`
 `
 
 export const Button = styled.div`
-    padding: 20px;
+    padding: 30px;
 `

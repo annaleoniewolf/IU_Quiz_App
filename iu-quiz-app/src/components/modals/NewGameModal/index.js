@@ -195,6 +195,7 @@ const NewGameModal = () => {
                             defaultValue={selectedModul}
                             onChange={setSelectedModul}
                             options={modulOptions}
+                            placeholder="Modul"
                         />
                     </S.SelectionContainer>
                 }
@@ -206,6 +207,7 @@ const NewGameModal = () => {
                                 defaultValue={selectedModul}
                                 onChange={setSelectedModul}
                                 options={modulOptions}
+                                placeholder="Modul"
                             />
                         </S.SelectionContainer>
                         <S.SelectionContainer>
