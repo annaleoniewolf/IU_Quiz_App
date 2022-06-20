@@ -136,6 +136,7 @@ const MyQuestions = () => {
                         <tr>
                             <th>Frage</th>
                             <th>Modul</th>
+                            <th>Details</th>
                             <th>Bearbeiten</th>
                             <th>Frage entfernen</th>
                         </tr>
@@ -145,6 +146,9 @@ const MyQuestions = () => {
                                     <tr key={index}>
                                         <td><p>{question}</p></td>
                                         <td><h6>{module}</h6></td>
+                                        <td>
+                                            <Button size="small" label="Details" />
+                                        </td>
                                         <td>
                                             <S.EditButton>
                                                 <FontAwesomeIcon icon={faPen} />
@@ -177,6 +181,10 @@ const MyQuestions = () => {
                                         <p>{module}</p>
                                     </S.Question>
                                     <hr className="itemLine" />
+                                    <S.Question>
+                                        <Button label="Details" size="small" />
+                                    </S.Question>
+                                    <hr className="itemLine" />
                                     <S.Options>
                                         <S.Option>
                                             <h6>Bearbeiten</h6>
@@ -186,7 +194,7 @@ const MyQuestions = () => {
                                         </S.Option>
                                         <S.Option>
                                             <h6>Frage entfernen</h6>
-                                            <S.DeleteButton>
+                                            <S.DeleteButton onClick={() => handleDeleteQuestionModal()}>
                                                 <FontAwesomeIcon icon={faXmarkCircle} />
                                             </S.DeleteButton>
                                         </S.Option>
@@ -196,15 +204,7 @@ const MyQuestions = () => {
                             )
                         })
                     }
-                        <S.Buttons>
-                            <Button label="Mehr laden" inactive/>
-                        </S.Buttons>
                 </S.Responsive>
-            }
-            {width > 800 &&
-                <S.Buttons>
-                    <Button label="Mehr laden" inactive/>
-                </S.Buttons>
             }
         </S.MyQuestions>
     )

@@ -11,8 +11,10 @@ export const MyQuestions = styled.div`
             max-width: 180px;
         }
         text-align: center;
+        width: 10%;
         :first-child {
             text-align: left;
+            width: 60%;
         }
     }
 `
