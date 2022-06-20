@@ -3,7 +3,11 @@ import Button from '../../../elements/forms/Button'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle, faPen } from '@fortawesome/free-solid-svg-icons'
+
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
+
+import { useContext } from 'react'
+import { ModalContext } from '../../../../context/ModalContext'
 
 const MyQuestions = () => {
 
@@ -116,6 +120,13 @@ const MyQuestions = () => {
 
     const [questionAmount] = useState(myQuestions.length)
 
+    //Frage löschen Modal
+    const { setOpen, setType} = useContext(ModalContext)
+    const handleDeleteQuestionModal = () => {
+        setType("DeleteQuestion")
+        setOpen(true)
+    }
+
     return (
         <S.MyQuestions>
             <p>{`${questionAmount} Fragen`}</p>
@@ -140,7 +151,7 @@ const MyQuestions = () => {
                                             </S.EditButton>
                                         </td>
                                         <td>
-                                            <S.DeleteButton>
+                                            <S.DeleteButton onClick={() => handleDeleteQuestionModal()}>
                                                 <FontAwesomeIcon icon={faXmarkCircle} />
                                             </S.DeleteButton>
                                         </td>

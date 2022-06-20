@@ -98,3 +98,16 @@ export const AnswerSelector = styled.div`
         background-color: ${theme.colors.green};
     }
 `
+
+export const Select = styled.div`
+    label {
+        color: ${theme.colors.grey};
+    }
+`
+
+export const InputBox = styled.div``
+
+export const Header = styled.div``
+
+export const TextAreaContainer = styled.div``
+
