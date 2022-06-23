@@ -2,10 +2,21 @@ import { NavLink } from 'react-router-dom'
 import UserOverview from '../../elements/UserOverview'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments } from '@fortawesome/free-solid-svg-icons'
+import { ModalContext } from '../../../context/ModalContext'
+import { useContext } from 'react'
 
 import * as S from './styles'
 
 const Navigation = () => {
+
+    //Abmelden Modal
+    const { setOpen, setType} = useContext(ModalContext)
+
+    const openLogoutModal = () => {
+        setType("Logout")
+        setOpen(true)
+    }
+
     return (
         <S.Navigation>
             <NavLink to={'/'}>
@@ -18,7 +29,9 @@ const Navigation = () => {
                 <NavLink to={'/profil'}>
                     <UserOverview />
                 </NavLink>
-                <p>Abmelden</p>
+                <S.Logout onClick={() => {openLogoutModal()}}>
+                    <p>Abmelden</p>
+                </S.Logout>
             </S.Container>
         </S.Navigation>
     )

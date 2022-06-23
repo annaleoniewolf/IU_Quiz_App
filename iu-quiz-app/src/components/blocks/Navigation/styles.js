@@ -68,3 +68,6 @@ export const Icon = styled.div`
         }
     }
 `
+
+export const Logout = styled.div``
+
