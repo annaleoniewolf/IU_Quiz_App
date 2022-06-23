@@ -44,23 +44,8 @@ export const Labels = styled.div`
         gap: 10px;
     }
 
-    button {
-        background-color: #fff;
-        border: none;
-        color: ${theme.colors.primary};
-        font-weight: 600;
-        border: 1px solid ${theme.colors.primary};
-        transition: 0.5s;
-        :hover {
-            cursor: pointer;
-            background-color: ${theme.colors.primary};
-            color: #fff;
-            border: 1px solid #fff;
-        }
-        padding: 5px 10px;
-    }
+    
 `
-
 export const Tab = styled.div`
     h2 {
         color: #fff;
@@ -78,4 +63,32 @@ export const Tab = styled.div`
 			`
 		)
 	}}
+`
+
+export const Button = styled.div`
+    button {
+        background-color: #fff;
+        border: none;
+        color: ${theme.colors.primary};
+        font-weight: 600;
+        border: 1px solid ${theme.colors.primary};
+        transition: 0.5s;
+        :hover {
+            cursor: pointer;
+            background-color: ${theme.colors.primary};
+            color: #fff;
+            border: 1px solid #fff;
+        }
+        padding: 5px 10px;
+        ${({ active }) => {
+		return (
+			active &&
+			css`
+				background-color: ${theme.colors.primary};
+                border-color: #fff;
+                color: #fff;
+			`
+		)
+	    }}
+    }
 `
