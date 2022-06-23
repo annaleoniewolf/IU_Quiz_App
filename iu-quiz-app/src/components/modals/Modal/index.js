@@ -12,6 +12,9 @@ import SinglePlayerQuestionDetails from '../SinglePlayerQuestionDetails';
 import QuestionRoundDuellModal from '../QuestionRoundDuellModal';
 import DeleteQuestionModal from '../DeleteQuestionModal';
 import LogoutModal from '../LogoutModal';
+import StopDuellModal from '../StopDuellModal';
+import QuitDuellModal from '../QuitDuellModal';
+import ResultDuellModal from '../ResultDuellModal';
 
 
 import CloseButton from '../../elements/forms/CloseButton'
@@ -60,6 +63,9 @@ const Modal = () => {
                     {type === "QuestionRoundDuell" && <QuestionRoundDuellModal />}
                     {type === "DeleteQuestion" && <DeleteQuestionModal />}
                     {type === "Logout" && <LogoutModal />}
+                    {type === "StopDuell" && <StopDuellModal />}
+                    {type === "QuitDuell" && <QuitDuellModal />}
+                    {type === "ResultDuell" && <ResultDuellModal />}
                 </S.ModalContent>
             </ReactModal>
         </S.Modal>

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import theme from "../../../styles/theme"
 
-export const StopModal = styled.div`
+export const QuitDuellModal = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,6 +19,7 @@ export const StopModal = styled.div`
          text-decoration: none;
      }
 `
+
 export const Icon = styled.div`
     svg {
         color: ${theme.colors.primary};

@@ -39,12 +39,17 @@ const GameOverview = () => {
     //Aufgeben Modal
     const { setOpen, setType} = useContext(ModalContext)
     const handleQuitModal = () => {
-        setType("Stop")
+        setType("QuitDuell")
         setOpen(true)
     }
     //Fragen Modal
     const handleQuestionRoundDuell = () => {
         setType("QuestionRoundDuell")
+        setOpen(true)
+    }
+    //Beenden Modal
+    const handleStopModal = () => {
+        setType("StopDuell")
         setOpen(true)
     }
 
@@ -81,6 +86,7 @@ const GameOverview = () => {
                 </S.Frames>
                 <S.Buttons>
                     <Button label="Spielen" onClick={() => handleQuestionRoundDuell()} />
+                    <Button label="Beenden" onClick={() => handleStopModal()} />
                     <Button label="Aufgeben" red onClick={() => handleQuitModal()}/>
                 </S.Buttons>
             </S.Content>

@@ -1,19 +1,12 @@
 import * as S from './styles'
-
 import Timer from '../../elements/Timer'
-
 import { useState } from 'react'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFaceFrown, faFaceSmileBeam, faSmileWink } from '@fortawesome/free-solid-svg-icons'
 
 const QuestionRoundDuellModal = () => {
 
-
     const [selected, setSelected] = useState(null)
     const [currentQuestion] = useState(0)
-
-    const [result] = useState(5)
 
     const questions = [
         { 
@@ -108,96 +101,27 @@ const QuestionRoundDuellModal = () => {
         }
     ]
 
-    /*Zählt Ergebnispunkte zusammen
-    const countPoints = () => {
-        let count = 0
-        for (let i = 0; i < questions.length; i++) {
-            if (selectedQuestions[i] === questions[i].correctAnswer) {
-                count++
-            }
-        }
-        return count
-    }*/
 
     return (
         <S.QuestionRoundDuellModal>
-                {currentQuestion < 10 ?
-                    <S.Content>
-                        <Timer expiryTimestamp={1}/>
-                        <h4>{questions[currentQuestion].question}</h4>
-                        <S.Answers>
-                            <S.Answer selected={selected === 'A' ? true : false} onClick={() => setSelected('A')}>
-                                <p>{questions[currentQuestion].answerA}</p>
-                            </S.Answer>
-                            <S.Answer selected={selected === 'B' ? true : false}  onClick={() => setSelected('B')}>
-                                <p>{questions[currentQuestion].answerB}</p>
-                            </S.Answer>
-                            <S.Answer selected={selected === 'C' ? true : false}  onClick={() => setSelected('C')}>
-                                <p>{questions[currentQuestion].answerC}</p>
-                            </S.Answer>
-                            <S.Answer selected={selected === 'D' ? true : false}  onClick={() => setSelected('D')}>
-                                <p>{questions[currentQuestion].answerD}</p>
-                            </S.Answer>
-                        </S.Answers>
-                    </S.Content>
-                : 
-                    <S.FeedbackContent>
-                            {result <= 5 && 
-                                <S.Feedback
-                                    initial={{ opacity: 0 }} 
-                                    animate={{ opacity: 1 }} 
-                                    transition={{ duration: 5, type: 'spring' }}
-                                >
-                                    <S.SadFace>
-                                        <FontAwesomeIcon icon={faFaceFrown} />
-                                    </S.SadFace>
-                                    <h5>Schade!</h5>
-                                    <p>
-                                        {`Du hattest leider nur ${result} / 10 Antworten richtig!`}
-                                        <br /> 
-                                        Am besten versuchst du es gleich noch mal!
-                                    </p>
-                                </S.Feedback>
-                            }
-                            {(result > 5 && result < 8) &&
-                                <S.Feedback
-                                    initial={{ opacity: 0 }} 
-                                    animate={{ opacity: 1 }} 
-                                    transition={{ duration: 5, type: 'spring' }}
-                                >
-                                    <S.WinkFace>
-                                        <FontAwesomeIcon icon={faSmileWink} />
-                                    </S.WinkFace>
-                                    <h5>Schon gar nicht schlecht!</h5>
-                                    <p>
-                                        {`Du hattest ${result} / 10 Antworten richtig!`}
-                                        <br />
-                                        Das kann sich schon sehen lassen!
-                                    </p>
-                                </S.Feedback>
-                            }
-                            {(result >= 8) &&
-                                <S.Feedback
-                                    initial={{ opacity: 0 }} 
-                                    animate={{ opacity: 1 }} 
-                                    transition={{ duration: 5, type: 'spring' }}
-                                >
-                                    <S.HappyFace>
-                                        <FontAwesomeIcon icon={faFaceSmileBeam} />
-                                    </S.HappyFace>
-                                    <h5>Sehr gut, weiter so!</h5>
-                                    <p>
-                                        {`Du hattest ganze ${result} / 10 Antworten richtig!`}
-                                        <br /> 
-                                        Dieses Ergebnis kann sich sehen lassen!
-                                    </p>
-                                </S.Feedback>
-                            }
-                            
-                            
-                    </S.FeedbackContent>
-                }
-                
+            <S.Content>
+                <Timer expiryTimestamp={1}/>
+                <h4>{questions[currentQuestion].question}</h4>
+                <S.Answers>
+                    <S.Answer selected={selected === 'A' ? true : false} onClick={() => setSelected('A')}>
+                        <p>{questions[currentQuestion].answerA}</p>
+                    </S.Answer>
+                    <S.Answer selected={selected === 'B' ? true : false}  onClick={() => setSelected('B')}>
+                        <p>{questions[currentQuestion].answerB}</p>
+                    </S.Answer>
+                    <S.Answer selected={selected === 'C' ? true : false}  onClick={() => setSelected('C')}>
+                        <p>{questions[currentQuestion].answerC}</p>
+                    </S.Answer>
+                    <S.Answer selected={selected === 'D' ? true : false}  onClick={() => setSelected('D')}>
+                        <p>{questions[currentQuestion].answerD}</p>
+                    </S.Answer>
+                </S.Answers>
+            </S.Content>   
         </S.QuestionRoundDuellModal>
     )
 }

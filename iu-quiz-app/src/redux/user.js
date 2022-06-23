@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	isLoggedIn : false
+	isLoggedIn : true
+	//selectedQuestion (questionid für query)
 }
 
 export const userSlice = createSlice({

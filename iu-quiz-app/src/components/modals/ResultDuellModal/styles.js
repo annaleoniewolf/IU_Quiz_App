@@ -1,7 +1,19 @@
 import styled from "styled-components"
 import theme from "../../../styles/theme"
 
-export const StopModal = styled.div`
+export const ResultDuellModal = styled.div`
+    
+`
+
+export const Icon = styled.div`
+    svg {
+        color: ${theme.colors.primary};
+        width: 70px;
+        height: 70px;
+    }
+    margin: 20px 0px;
+`
+export const Result = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,12 +30,4 @@ export const StopModal = styled.div`
      a {
          text-decoration: none;
      }
-`
-export const Icon = styled.div`
-    svg {
-        color: ${theme.colors.primary};
-        width: 70px;
-        height: 70px;
-    }
-    margin: 20px 0px;
 `
