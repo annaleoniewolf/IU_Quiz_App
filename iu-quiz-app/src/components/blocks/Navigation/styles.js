@@ -2,6 +2,10 @@ import styled from "styled-components"
 import theme from "../../../styles/theme"
 
 export const Navigation = styled.div`
+
+`
+
+export const Content = styled.div`
     display: flex;
     justify-content: center;
     padding: 20px 0px;
