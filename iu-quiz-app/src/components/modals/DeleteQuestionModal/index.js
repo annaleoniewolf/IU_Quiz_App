@@ -2,8 +2,10 @@ import * as S from './styles'
 import Button from '../../elements/forms/Button'
 
 import { useContext } from 'react';
-
 import { ModalContext } from '../../../context/ModalContext';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBan } from '@fortawesome/free-solid-svg-icons'
 
 const DeleteQuestionModal = () => {
 
@@ -17,6 +19,9 @@ const DeleteQuestionModal = () => {
 
     return (
         <S.DeleteQuestionModal>
+            <S.Icon>
+                <FontAwesomeIcon icon={faBan} />
+            </S.Icon>
             <h5>Frage löschen?</h5>
             <p>
                 Bist du sicher, dass du diese Frage löschen willst?

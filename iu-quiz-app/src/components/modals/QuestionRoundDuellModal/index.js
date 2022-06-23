@@ -6,7 +6,7 @@ import { useState } from 'react'
 const QuestionRoundDuellModal = () => {
 
     const [selected, setSelected] = useState(null)
-    const [currentQuestion] = useState(0)
+    const [currentQuestion] = useState(4)
 
     const questions = [
         { 

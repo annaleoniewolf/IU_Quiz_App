@@ -7,7 +7,7 @@ import { ModalContext } from '../../../context/ModalContext';
 import NewGameModal from '../NewGameModal'
 import StopModal from '../StopModal'
 import QuestionRoundSinglePlayerModal from '../QuestionRoundSinglePlayerModal'
-import QuestionnairePublicQuestionDetails from '../QuestionnairePublicQuestionDetails';
+import QuestionDetails from '../QuestionDetails';
 import SinglePlayerQuestionDetails from '../SinglePlayerQuestionDetails';
 import QuestionRoundDuellModal from '../QuestionRoundDuellModal';
 import DeleteQuestionModal from '../DeleteQuestionModal';
@@ -58,7 +58,7 @@ const Modal = () => {
                     {type === "NewGame" && <NewGameModal />}
                     {type === "Stop" && <StopModal />}
                     {type === "QuestionRoundSinglePlayer" && <QuestionRoundSinglePlayerModal/>}
-                    {type === "QuestionnairePublicQuestionDetails" && <QuestionnairePublicQuestionDetails/>}
+                    {type === "QuestionDetails" && <QuestionDetails/>}
                     {type === "SinglePlayerQuestionsDetails" && <SinglePlayerQuestionDetails />}
                     {type === "QuestionRoundDuell" && <QuestionRoundDuellModal />}
                     {type === "DeleteQuestion" && <DeleteQuestionModal />}

@@ -13,7 +13,7 @@ const PublicQuestions = () => {
     const { setOpen, setType} = useContext(ModalContext)
 
     const openDetails = () => {
-        setType("QuestionnairePublicQuestionDetails")
+        setType("QuestionDetails")
         setOpen(true)
     }
 

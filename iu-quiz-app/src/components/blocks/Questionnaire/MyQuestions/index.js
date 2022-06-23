@@ -11,9 +11,6 @@ import { ModalContext } from '../../../../context/ModalContext'
 
 const MyQuestions = () => {
 
-    //Dimension für Responsive
-    const { width } = useWindowDimensions();
-
     //placeholder  data
     const myQuestions = [
         { 
@@ -120,8 +117,17 @@ const MyQuestions = () => {
 
     const [questionAmount] = useState(myQuestions.length)
 
-    //Frage löschen Modal
+    //Dimension für Responsive
+    const { width } = useWindowDimensions();
+
+    //Details Modal
     const { setOpen, setType} = useContext(ModalContext)
+    const openDetails = () => {
+        setType("QuestionDetails")
+        setOpen(true)
+    }
+
+    //Frage löschen Modal
     const handleDeleteQuestionModal = () => {
         setType("DeleteQuestion")
         setOpen(true)
@@ -147,7 +153,7 @@ const MyQuestions = () => {
                                         <td><p>{question}</p></td>
                                         <td><h6>{module}</h6></td>
                                         <td>
-                                            <Button size="small" label="Details" />
+                                            <Button size="small" label="Details" onClick={() => openDetails()} />
                                         </td>
                                         <td>
                                             <S.EditButton>

@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 
 
-const QuestionnairePublicQuestionDetails = () => {
+const QuestionDetails = () => {
     //needs a get publicQuestionById Query
     const [questionByID] = useState({
         "question": "Bei einem rechtsseitigen Test bezüglich des Erwartungswerts soll nachgewiesen werden...",
@@ -15,7 +15,7 @@ const QuestionnairePublicQuestionDetails = () => {
     })
 
     return (
-        <S.QuestionnairePublicQuestionDetails>
+        <S.QuestionDetails>
             <h5>Frage:</h5>
             <p>{questionByID.question}</p>
             <hr/>
@@ -38,8 +38,8 @@ const QuestionnairePublicQuestionDetails = () => {
                 <h6>Antwortmöglichkeit D:</h6>
             </S.Answer>
             <p>{questionByID.answerD}</p>
-        </S.QuestionnairePublicQuestionDetails>
+        </S.QuestionDetails>
     )
 }
 
-export default QuestionnairePublicQuestionDetails
+export default QuestionDetails

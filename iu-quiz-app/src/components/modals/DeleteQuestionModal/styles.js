@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import theme from "../../../styles/theme"
 
 export const DeleteQuestionModal = styled.div`
     display: flex;
@@ -17,4 +18,12 @@ export const DeleteQuestionModal = styled.div`
      a {
          text-decoration: none;
      }
+`
+
+export const Icon = styled.div`
+    svg {
+        color: ${theme.colors.primary};
+        width: 61px;
+        height: 93px;
+    }
 `
