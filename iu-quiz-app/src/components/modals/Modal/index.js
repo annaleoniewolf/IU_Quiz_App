@@ -15,6 +15,7 @@ import LogoutModal from '../LogoutModal';
 import StopDuellModal from '../StopDuellModal';
 import QuitDuellModal from '../QuitDuellModal';
 import ResultDuellModal from '../ResultDuellModal';
+import EditQuestionModal from '../EditQuestionModal';
 
 
 import CloseButton from '../../elements/forms/CloseButton'
@@ -66,6 +67,7 @@ const Modal = () => {
                     {type === "StopDuell" && <StopDuellModal />}
                     {type === "QuitDuell" && <QuitDuellModal />}
                     {type === "ResultDuell" && <ResultDuellModal />}
+                    {type === "EditQuestion" && <EditQuestionModal />}
                 </S.ModalContent>
             </ReactModal>
         </S.Modal>

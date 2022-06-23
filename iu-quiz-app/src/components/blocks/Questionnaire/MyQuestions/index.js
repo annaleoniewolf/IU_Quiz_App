@@ -127,6 +127,12 @@ const MyQuestions = () => {
         setOpen(true)
     }
 
+    //Frage bearbeiten Modal
+    const openEdit = () => {
+        setType("EditQuestion")
+        setOpen(true)
+    }
+
     //Frage löschen Modal
     const handleDeleteQuestionModal = () => {
         setType("DeleteQuestion")
@@ -156,7 +162,7 @@ const MyQuestions = () => {
                                             <Button size="small" label="Details" onClick={() => openDetails()} />
                                         </td>
                                         <td>
-                                            <S.EditButton>
+                                            <S.EditButton onClick={() => {openEdit()}}>
                                                 <FontAwesomeIcon icon={faPen} />
                                             </S.EditButton>
                                         </td>
@@ -188,13 +194,13 @@ const MyQuestions = () => {
                                     </S.Question>
                                     <hr className="itemLine" />
                                     <S.Question>
-                                        <Button label="Details" size="small" />
+                                        <Button size="small" label="Details" onClick={() => openDetails()} />
                                     </S.Question>
                                     <hr className="itemLine" />
                                     <S.Options>
                                         <S.Option>
                                             <h6>Bearbeiten</h6>
-                                            <S.EditButton>
+                                            <S.EditButton onClick={() => {openEdit()}}>
                                                 <FontAwesomeIcon icon={faPen} />
                                             </S.EditButton>
                                         </S.Option>
