@@ -6,6 +6,8 @@ import Button from '../../../elements/forms/Button'
 import Select from "../../../elements/forms/Select"
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 import { ModalContext } from '../../../../context/ModalContext'
+import GET_MODULES from '../../../../apollo/queries/getModules'
+import { useQuery } from "@apollo/client";
 
 const PublicQuestions = () => {
 
@@ -19,6 +21,10 @@ const PublicQuestions = () => {
 
     //Dimension für Responsive
     const { width } = useWindowDimensions();
+
+    //getModules Query
+    const { loading, error, data } = useQuery(GET_MODULES);
+    console.log(data)
 
     //placeholder  data
     const publicQuestions = [

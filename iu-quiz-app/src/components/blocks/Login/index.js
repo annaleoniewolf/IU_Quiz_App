@@ -1,13 +1,36 @@
 import * as S from './styles'
 import { useForm }from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@apollo/react-hooks'
+import LOGIN from '../../../apollo/mutations/login';
 
 const Login = () => {
+  
+    let navigate = useNavigate()
+
+    //form
     const { register, handleSubmit, formState: { errors }} = useForm()
 
-    //can be use to sent the data to the api
-    const onSubmit = (data) => {
-        console.log(data)
+    //Login Mutation
+    const [loginUser, { data }] = useMutation(LOGIN)
+    
+    //führt login mutation aus, wenn form submitted wird  
+    const onSubmit = (abc) => {
+        loginUser({ variables: { email: abc.email, password:abc.password } })
+        .then((data) => {
+            if (data.data.login.default.success){
+                localStorage.setItem("token", data.data.login.jwt)
+                navigate('/')
+            } else {
+                console.log(data.data.login.default.message)
+            }    
+        })
+        .catch((ex) => {
+            console.log(ex)
+        })
     }
+
+    //const { token } = useSelector((state) => state.auth)
 
     return (
         <S.Login>
@@ -37,11 +60,24 @@ const Login = () => {
                 <hr/>
                 <S.Form onSubmit={handleSubmit(onSubmit)}>
                     <S.Element>
-                        <input  {...register("email", { required: true })} type="email" placeholder='E-Mail' name="email" autoComplete="on" id="email"/>
+                        <input
+                            {...register("email", { required: true })} 
+                            type="email"
+                            placeholder='E-Mail' 
+                            name="email" 
+                            autoComplete="on" 
+                            id="email" 
+                        />
                         <label htmlFor="email">E-Mail</label>
                    </S.Element>
                    <S.Element>
-                        <input  {...register("password", { required: true })} type="password" placeholder='Passwort' name="password" autoComplete="on" id="password"/>
+                        <input
+                            {...register("password", { required: true })} 
+                            type="password" placeholder='Passwort' 
+                            name="password" 
+                            autoComplete="on" 
+                            id="password" 
+                        />
                         <label htmlFor="password">Passwort</label>
                    </S.Element>
                     {errors.password  && <p>Bitte geben Sie ihre Daten vollständig ein.</p>}
