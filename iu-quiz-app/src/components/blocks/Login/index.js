@@ -12,7 +12,7 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors }} = useForm()
 
     //Login Mutation
-    const [loginUser, { data }] = useMutation(LOGIN)
+    const [loginUser] = useMutation(LOGIN)
     
     //führt login mutation aus, wenn form submitted wird  
     const onSubmit = (abc) => {

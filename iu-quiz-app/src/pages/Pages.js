@@ -13,6 +13,7 @@ import Chat from "./Chat"
 
 
 const Pages = () => {
+    const token = localStorage.getItem("token")
     return (
         <Routes>
             <Route path="/" element={<Dashboard />} />
@@ -23,7 +24,12 @@ const Pages = () => {
             <Route path="/freunde" element={<Freunde />} />
             <Route path="/einzelspieler" element={<Einzelspieler />} />
             <Route path="/duell" element={<Duell />} />
-            <Route path="/login" element={<Login />} />
+            {token ? 
+                <Route path="/login" element={<Dashboard />} />
+            : 
+                <Route path="/login" element={<Login />} />
+            }
+            
             <Route path="/profil" element={<Profil />} />
         </Routes>
     )
