@@ -11,8 +11,10 @@ export const PublicQuestions = styled.div`
             min-width: 180px;
         }
         text-align: center;
+        width: 10%;
         :first-child {
             text-align: left;
+            width: 70%;
         }
     }
     display: flex;

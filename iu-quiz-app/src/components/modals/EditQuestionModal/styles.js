@@ -1,13 +1,27 @@
 import styled, { css } from "styled-components"
-import theme from "../../../../styles/theme"
+import theme from "../../../styles/theme"
 
-export const AddQuestion = styled.div`
+export const EditQuestionModal = styled.div`
     display: flex;
-    justify-content: space-between;
-    padding: 40px;
-    @media(max-width: 600px) {
-        padding: 20px 0px;
+    flex-direction: column;
+    align-items: center;
+
+    hr {
+        width: 50%;
+        border: none;
+        height: 1px;
+        background-color: ${theme.colors.grey};
+        margin: 10px 0px 20px;
     }
+`
+
+export const Icon = styled.div`
+    svg {
+        color: ${theme.colors.primary};
+        width: 50px;
+        height: 50px;
+    }
+    margin: 20px 0px;
 `
 
 export const Columns = styled.div`
@@ -42,7 +56,6 @@ export const Form = styled.form`
 export const SubmitButton = styled.input`
     width: 200px;
     padding: 15px 0px;
-    margin: 10px 0px;
     font-size: 15px;
     line-height: 18px;
     text-transform: uppercase;
@@ -53,7 +66,6 @@ export const SubmitButton = styled.input`
     background-color: ${theme.colors.primary};
     text-align: center;
     opacity: 1;
-    margin-top: 30px;
     border: none;
     transition: 0.7s;
 
@@ -74,6 +86,10 @@ export const Textarea = styled.div`
     }
     textarea {
         width: 100%;
+        min-width: 450px;
+        @media (max-width: 600px) {
+            min-width: 250px;
+        }
         height: 70px;
         border-color: ${theme.colors.primary};
         resize: none;
@@ -160,4 +176,3 @@ export const InputBox = styled.div``
 export const Header = styled.div``
 
 export const TextAreaContainer = styled.div``
-

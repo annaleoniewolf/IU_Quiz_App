@@ -7,7 +7,7 @@ export const Login = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 85vh;
+    height: 93vh;
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -145,7 +145,7 @@ export const Element = styled.div`
             top: -.5rem;
             left: .8rem;
             color: ${theme.colors.primary};
-            font-weight: 500;
+            font-weight: 400;
             z-index: 10;
         }
         input:not(:placeholder-shown) input:not(:focus) + label {

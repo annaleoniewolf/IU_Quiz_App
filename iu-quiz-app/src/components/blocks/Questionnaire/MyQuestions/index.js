@@ -3,12 +3,13 @@ import Button from '../../../elements/forms/Button'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle, faPen } from '@fortawesome/free-solid-svg-icons'
+
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 
-const MyQuestions = () => {
+import { useContext } from 'react'
+import { ModalContext } from '../../../../context/ModalContext'
 
-    //Dimension für Responsive
-    const { width } = useWindowDimensions();
+const MyQuestions = () => {
 
     //placeholder  data
     const myQuestions = [
@@ -116,6 +117,28 @@ const MyQuestions = () => {
 
     const [questionAmount] = useState(myQuestions.length)
 
+    //Dimension für Responsive
+    const { width } = useWindowDimensions();
+
+    //Details Modal
+    const { setOpen, setType} = useContext(ModalContext)
+    const openDetails = () => {
+        setType("QuestionDetails")
+        setOpen(true)
+    }
+
+    //Frage bearbeiten Modal
+    const openEdit = () => {
+        setType("EditQuestion")
+        setOpen(true)
+    }
+
+    //Frage löschen Modal
+    const handleDeleteQuestionModal = () => {
+        setType("DeleteQuestion")
+        setOpen(true)
+    }
+
     return (
         <S.MyQuestions>
             <p>{`${questionAmount} Fragen`}</p>
@@ -125,6 +148,7 @@ const MyQuestions = () => {
                         <tr>
                             <th>Frage</th>
                             <th>Modul</th>
+                            <th>Details</th>
                             <th>Bearbeiten</th>
                             <th>Frage entfernen</th>
                         </tr>
@@ -135,12 +159,15 @@ const MyQuestions = () => {
                                         <td><p>{question}</p></td>
                                         <td><h6>{module}</h6></td>
                                         <td>
-                                            <S.EditButton>
+                                            <Button size="small" label="Details" onClick={() => openDetails()} />
+                                        </td>
+                                        <td>
+                                            <S.EditButton onClick={() => {openEdit()}}>
                                                 <FontAwesomeIcon icon={faPen} />
                                             </S.EditButton>
                                         </td>
                                         <td>
-                                            <S.DeleteButton>
+                                            <S.DeleteButton onClick={() => handleDeleteQuestionModal()}>
                                                 <FontAwesomeIcon icon={faXmarkCircle} />
                                             </S.DeleteButton>
                                         </td>
@@ -166,16 +193,20 @@ const MyQuestions = () => {
                                         <p>{module}</p>
                                     </S.Question>
                                     <hr className="itemLine" />
+                                    <S.Question>
+                                        <Button size="small" label="Details" onClick={() => openDetails()} />
+                                    </S.Question>
+                                    <hr className="itemLine" />
                                     <S.Options>
                                         <S.Option>
                                             <h6>Bearbeiten</h6>
-                                            <S.EditButton>
+                                            <S.EditButton onClick={() => {openEdit()}}>
                                                 <FontAwesomeIcon icon={faPen} />
                                             </S.EditButton>
                                         </S.Option>
                                         <S.Option>
                                             <h6>Frage entfernen</h6>
-                                            <S.DeleteButton>
+                                            <S.DeleteButton onClick={() => handleDeleteQuestionModal()}>
                                                 <FontAwesomeIcon icon={faXmarkCircle} />
                                             </S.DeleteButton>
                                         </S.Option>
@@ -185,15 +216,7 @@ const MyQuestions = () => {
                             )
                         })
                     }
-                        <S.Buttons>
-                            <Button label="Mehr laden" inactive/>
-                        </S.Buttons>
                 </S.Responsive>
-            }
-            {width > 800 &&
-                <S.Buttons>
-                    <Button label="Mehr laden" inactive/>
-                </S.Buttons>
             }
         </S.MyQuestions>
     )

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import theme from "../../../styles/theme"
 
-export const StopModal = styled.div`
+export const LogoutModal = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,11 +19,11 @@ export const StopModal = styled.div`
          text-decoration: none;
      }
 `
+
 export const Icon = styled.div`
     svg {
         color: ${theme.colors.primary};
-        width: 70px;
-        height: 70px;
+        width: 61px;
+        height: 93px;
     }
-    margin: 20px 0px;
 `

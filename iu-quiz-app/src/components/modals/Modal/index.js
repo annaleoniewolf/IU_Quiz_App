@@ -7,9 +7,15 @@ import { ModalContext } from '../../../context/ModalContext';
 import NewGameModal from '../NewGameModal'
 import StopModal from '../StopModal'
 import QuestionRoundSinglePlayerModal from '../QuestionRoundSinglePlayerModal'
-import QuestionnairePublicQuestionDetails from '../QuestionnairePublicQuestionDetails';
+import QuestionDetails from '../QuestionDetails';
 import SinglePlayerQuestionDetails from '../SinglePlayerQuestionDetails';
 import QuestionRoundDuellModal from '../QuestionRoundDuellModal';
+import DeleteQuestionModal from '../DeleteQuestionModal';
+import LogoutModal from '../LogoutModal';
+import StopDuellModal from '../StopDuellModal';
+import QuitDuellModal from '../QuitDuellModal';
+import ResultDuellModal from '../ResultDuellModal';
+import EditQuestionModal from '../EditQuestionModal';
 
 
 import CloseButton from '../../elements/forms/CloseButton'
@@ -53,9 +59,15 @@ const Modal = () => {
                     {type === "NewGame" && <NewGameModal />}
                     {type === "Stop" && <StopModal />}
                     {type === "QuestionRoundSinglePlayer" && <QuestionRoundSinglePlayerModal/>}
-                    {type === "QuestionnairePublicQuestionDetails" && <QuestionnairePublicQuestionDetails/>}
+                    {type === "QuestionDetails" && <QuestionDetails/>}
                     {type === "SinglePlayerQuestionsDetails" && <SinglePlayerQuestionDetails />}
                     {type === "QuestionRoundDuell" && <QuestionRoundDuellModal />}
+                    {type === "DeleteQuestion" && <DeleteQuestionModal />}
+                    {type === "Logout" && <LogoutModal />}
+                    {type === "StopDuell" && <StopDuellModal />}
+                    {type === "QuitDuell" && <QuitDuellModal />}
+                    {type === "ResultDuell" && <ResultDuellModal />}
+                    {type === "EditQuestion" && <EditQuestionModal />}
                 </S.ModalContent>
             </ReactModal>
         </S.Modal>

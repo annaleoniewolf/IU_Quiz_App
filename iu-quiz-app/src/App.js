@@ -23,7 +23,7 @@ function App() {
         <GlobalStyle />
         <ModalContext.Provider value={{open, setOpen, type, setType}}>
           <BrowserRouter>
-            <Modal type="NewGame" />
+            <Modal />
             <Navigation />
             <Pages />
             <Footer />

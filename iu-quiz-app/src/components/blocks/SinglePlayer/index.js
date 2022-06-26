@@ -1,28 +1,19 @@
 import * as S from './styles'
 
-import { useSelector, useDispatch } from 'react-redux'
-import { setSelectedPanelIndex } from'../../../redux/settingsSlice'
-
 import TableFrame from '../../elements/TableFrame'
 import LandingTable from './LandingTable'
 
 
 const SinglePlayer = () => {
 
-    const dispatch = useDispatch()
-	const { selectedPanelIndex } = useSelector((state) => state.settings)
-
     return (
         <S.SinglePlayer>
             <S.Content>
                 <TableFrame 
-                    activeId={selectedPanelIndex}
+                    activeId={0}
                     labels={["Fragenübersicht"]} 
-                    onChange={(index) => {
-                        dispatch(setSelectedPanelIndex(index))
-                    }}
                 >
-                    {selectedPanelIndex === 0 && <LandingTable />}
+                    <LandingTable />
                 </TableFrame>
 
             </S.Content>

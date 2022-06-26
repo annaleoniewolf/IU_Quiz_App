@@ -1,7 +1,7 @@
 import * as S from './styles'
 import { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons'
+import { faBan } from '@fortawesome/free-solid-svg-icons'
 import Button from '../../../elements/forms/Button'
 import Select from "../../../elements/forms/Select"
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
@@ -13,7 +13,7 @@ const PublicQuestions = () => {
     const { setOpen, setType} = useContext(ModalContext)
 
     const openDetails = () => {
-        setType("QuestionnairePublicQuestionDetails")
+        setType("QuestionDetails")
         setOpen(true)
     }
 
@@ -132,7 +132,7 @@ const PublicQuestions = () => {
                                             </td>
                                             <td>
                                                 <S.BanButton>
-                                                    <FontAwesomeIcon icon={faXmarkCircle} />
+                                                    <FontAwesomeIcon icon={faBan} />
                                                 </S.BanButton>
                                             </td>
                                         </tr>
@@ -165,7 +165,7 @@ const PublicQuestions = () => {
                                             <S.Option>
                                                 <h6>Frage melden</h6>
                                                 <S.BanButton>
-                                                    <FontAwesomeIcon icon={faXmarkCircle} />
+                                                    <FontAwesomeIcon icon={faBan} />
                                                 </S.BanButton>
                                             </S.Option>
                                         </S.Options>

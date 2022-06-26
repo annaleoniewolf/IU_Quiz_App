@@ -1,13 +1,20 @@
 import * as S from './styles'
-import { useState } from 'react'
-import Select from '../../../elements/forms/Select'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen} from '@fortawesome/free-solid-svg-icons'
+import Select from '../../elements/forms/Select';
+import { useState } from 'react';
 
-const AddQuestion = () => {
+
+const EditQuestionModal = () => {
 
     const [correctAnswer, setCorrectAnswer] = useState(null)
 
     return (
-        <S.AddQuestion>
+        <S.EditQuestionModal>
+            <S.Icon>
+                <FontAwesomeIcon icon={faPen} />
+            </S.Icon>
+            <hr />
             <S.Form>
                 <S.Columns>
                     <S.Column>
@@ -67,10 +74,10 @@ const AddQuestion = () => {
                         </S.Textarea>
                     </S.Column>
                 </S.Columns>
-                <S.SubmitButton type="submit" value="Frage hinzufügen"/>
+                <S.SubmitButton type="submit" value="Speichern"/>
             </S.Form>
-        </S.AddQuestion>
+        </S.EditQuestionModal>
     )
 }
 
-export default AddQuestion
+export default EditQuestionModal

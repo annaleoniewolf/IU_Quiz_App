@@ -37,8 +37,8 @@ const Login = () => {
                 <hr/>
                 <S.Form onSubmit={handleSubmit(onSubmit)}>
                     <S.Element>
-                        <input  {...register("email", { required: true })} type="email" placeholder='Email' name="email" autoComplete="on" id="email"/>
-                        <label htmlFor="email">Email</label>
+                        <input  {...register("email", { required: true })} type="email" placeholder='E-Mail' name="email" autoComplete="on" id="email"/>
+                        <label htmlFor="email">E-Mail</label>
                    </S.Element>
                    <S.Element>
                         <input  {...register("password", { required: true })} type="password" placeholder='Passwort' name="password" autoComplete="on" id="password"/>

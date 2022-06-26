@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 import theme from '../../../styles/theme'
 
-export const QuestionnairePublicQuestionDetails = styled.div`
+export const QuestionDetails = styled.div`
     hr {
         width: 100%;
         background-color: ${theme.colors.grey};

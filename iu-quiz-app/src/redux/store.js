@@ -1,13 +1,13 @@
 
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './counter'
 import singlePlayerGameReducer from './singlePlayerGame'
-import settingsRuducer from './settingsSlice'
+import settingsReducer from './settingsSlice'
+import userReducer from './user'
 
 export default configureStore({
   reducer: {
-      counter: counterReducer,
       singlePlayerGame: singlePlayerGameReducer,
-      settings: settingsRuducer
+      settings: settingsReducer,
+      user: userReducer
   },
 })

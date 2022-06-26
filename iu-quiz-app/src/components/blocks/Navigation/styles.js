@@ -2,6 +2,10 @@ import styled from "styled-components"
 import theme from "../../../styles/theme"
 
 export const Navigation = styled.div`
+
+`
+
+export const Content = styled.div`
     display: flex;
     justify-content: center;
     padding: 20px 0px;
@@ -20,7 +24,7 @@ export const Navigation = styled.div`
             opacity: 0.7;
         }
     }
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
         justify-content: space-between;
         padding: 20px;
     }
@@ -55,3 +59,19 @@ export const Container = styled.div`
         gap: 10px;
     } 
 `
+
+export const Icon = styled.div`
+    svg {
+        color: ${theme.colors.primary};
+        opacity: 0.3;
+        width: 56px;
+        height: 43px;
+        @media (max-width: 500px) {
+            width: 34px;
+            height: 26px;
+        }
+    }
+`
+
+export const Logout = styled.div``
+

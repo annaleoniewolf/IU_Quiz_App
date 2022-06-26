@@ -136,3 +136,15 @@ export const Option = styled.div`
     align-items: center;
     gap: 7px;
 `
+export const ErrorMessage = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: center;
+    width: 100%;
+    p {
+        color: ${theme.colors.red};
+        margin: 40px 0px 20px 0px;
+    }
+    
+`

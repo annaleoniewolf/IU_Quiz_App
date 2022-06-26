@@ -30,7 +30,13 @@ const TableFrame = ({children, activeId, labels, onChange, button}) => {
                         }
                         return <S.Tab {...props}><h2>{label}</h2></S.Tab>
                     })}
-                {button && <button onClick= {() => {handleClick(labels.length)}}> {button}</button>}
+                {button && 
+                    <S.Button active={labels.length === isActive ? true : false}>
+                        <button  onClick= {() => {handleClick(labels.length)}}> 
+                            {button}
+                        </button>
+                    </S.Button>
+                }
             </S.Labels>
             <S.Content>
                 {children}

@@ -7,7 +7,7 @@ import { faBookOpen} from '@fortawesome/free-solid-svg-icons'
 
 import { ModalContext } from '../../../context/ModalContext';
 
-const StopModal = () => {
+const StopDuellModal = () => {
 
      //Modal
      const { setOpen } = useContext(ModalContext)
@@ -18,22 +18,19 @@ const StopModal = () => {
     }
 
     return (
-        <S.StopModal>
+        <S.StopDuellModal>
             <S.Icon>
                 <FontAwesomeIcon icon={faBookOpen} />
             </S.Icon>
             <h5>Zurück zum Dashboard?</h5>
             <p>
-                Bist du sicher, dass du die Lernrunde beenden willst?
-                <br />
                 Du kannst dein aktuelles Spiel zu einem späteren Zeitpunkt fortsetzen.
-                <br/> Möchtest du eine neue Runde beginnen kehre zum Dashboard zurück und erstelle ein neues Spiel!
             </p>
             <NavLink to="/">
                 <Button label="Beenden" onClick={() => {handleButton()}}/>
             </NavLink>
-        </S.StopModal>
+        </S.StopDuellModal>
     )
 }
 
-export default StopModal
+export default StopDuellModal
