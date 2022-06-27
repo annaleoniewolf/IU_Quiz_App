@@ -12,6 +12,9 @@ import { setModule, setActiveGame, setQuestions, setCurrentQuestion, clearQuesti
 
 import { ModalContext } from '../../../context/ModalContext';
 
+import GET_MODULES from '../../../apollo/queries/getModules'
+import { useQuery } from "@apollo/client"
+
 const NewGameModal = () => {
     //Redux
     const dispatch = useDispatch()
@@ -27,12 +30,22 @@ const NewGameModal = () => {
     const [selectedModul, setSelectedModul] = useState('')
     const [selectedFriend] = useState('')
 
-    //Placeholder Module
-    const modulOptions = [
-        { value: 'Betriebssysteme, Rechennetze und verteilte Systeme', label: 'Betriebssysteme, Rechennetze und verteilte Systeme' },
-        { value: 'Statistik', label: 'Statistik' },
-        { value: 'Spezifikation', label: 'Spezifikation' }
-    ]
+    //getMyProfile Query
+    const { data } = useQuery(GET_MODULES); 
+  
+    const generateModuleOptions = () => {
+        if (data) {
+            console.log("test")
+            const generatedModules = data.getModules.map(item => {
+                const container = {};
+                container.label = item.name;
+                container.value = item.name
+            
+                return container;
+            })
+            return generatedModules
+        }
+    }
 
     //Placeholder Questions
     const randomQuestions = [
@@ -194,7 +207,7 @@ const NewGameModal = () => {
                         <Select 
                             defaultValue={selectedModul}
                             onChange={setSelectedModul}
-                            options={modulOptions}
+                            options={generateModuleOptions()}
                             placeholder="Modul"
                         />
                     </S.SelectionContainer>
@@ -206,13 +219,13 @@ const NewGameModal = () => {
                             <Select 
                                 defaultValue={selectedModul}
                                 onChange={setSelectedModul}
-                                options={modulOptions}
+                                options={generateModuleOptions()}
                                 placeholder="Modul"
                             />
                         </S.SelectionContainer>
                         <S.SelectionContainer>
                             <label>Lernpartner auswählen</label>
-                            <Select placeholder="Lernpartner" options={modulOptions}/>
+                            <Select placeholder="Lernpartner" options={generateModuleOptions()}/>
                         </S.SelectionContainer>
                     </S.DuellSelect>
                 }

@@ -15,7 +15,7 @@ import { NavLink } from 'react-router-dom'
 
 const Dashboard = () => {
 
-    const { activeGame } = useSelector((state) => state.singlePlayerGame)
+    const { activeGame, module } = useSelector((state) => state.singlePlayerGame)
 
     return (
         <S.Dashboard>
@@ -73,7 +73,7 @@ const Dashboard = () => {
                             {activeGame === true &&
                                 <>
                                     <S.SinglePlayOverview>
-                                        <SinglePlayerGameOverview module="Spezifikation" />
+                                        <SinglePlayerGameOverview module={module} />
                                         <NavLink to="/einzelspieler">
                                             <Button label="Spielen" size="small" />
                                         </NavLink>
