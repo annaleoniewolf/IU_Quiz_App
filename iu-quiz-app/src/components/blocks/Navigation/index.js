@@ -4,14 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments } from '@fortawesome/free-solid-svg-icons'
 import { ModalContext } from '../../../context/ModalContext'
 import { useContext } from 'react'
-import { useSelector } from 'react-redux'
+
+import GET_MY_PROFILE from '../../../apollo/queries/getMyProfile'
+import { useQuery } from "@apollo/client"
 
 
 import * as S from './styles'
 
 const Navigation = () => {
 
-	const { isLoggedIn } = useSelector((state) => state.user)
+    //getMyProfile Query
+    const { data } = useQuery(GET_MY_PROFILE);  
+
+    //auth token
+    const token = localStorage.getItem("token")
 
     //Abmelden Modal
     const { setOpen, setType} = useContext(ModalContext)
@@ -23,7 +29,7 @@ const Navigation = () => {
 
     return (
         <S.Navigation>
-            {isLoggedIn === true ?
+            {token && data ?
                 <S.Content>
                     <NavLink to={'/'}>
                         <h1>IU Quiz APP</h1>
@@ -33,7 +39,9 @@ const Navigation = () => {
                             <FontAwesomeIcon icon={faComments} />
                         </S.Icon>
                         <NavLink to={'/profil'}>
-                            <UserOverview />
+                            <UserOverview 
+                                image={data.getMyProfile.avatar_url}
+                            />
                         </NavLink>
                         <S.Logout onClick={() => {openLogoutModal()}}>
                             <p>Abmelden</p>
