@@ -3,119 +3,18 @@ import Button from '../../../elements/forms/Button'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle, faPen } from '@fortawesome/free-solid-svg-icons'
+import Select from "../../../elements/forms/Select"
 
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 
 import { useContext } from 'react'
 import { ModalContext } from '../../../../context/ModalContext'
 
+import { useQuery } from '@apollo/client/react'
+import GET_ALL_QUESTIONS from '../../../../apollo/queries/getAllQuestions'
+import GET_MODULES from '../../../../apollo/queries/getModules'
+
 const MyQuestions = () => {
-
-    //placeholder  data
-    const myQuestions = [
-        { 
-            id: 0,
-            question: "Ziel von statistischen Testverfahren ist es,...", 
-            answerA: "...die Nullhypothese zu verwerfen",
-            answerB: "...die Nullhypothese anzunehmen",
-            answerC: "...die Alternativhypothese eindeutig zu beweisen",
-            answerD: "...die Alternativhypothese zu verwerfen",
-            module: "Statistik",
-            correctAnswer: "A"
-        },
-        {
-            id: 1,
-            question: "Die Nullhypothese kann verworfen werden, wenn...",
-            answerA: "der p-Wert genau dem Signifikanzniveau entspricht.",
-            answerB: "der p-Wert genau dem kritischen Wert entspricht.",
-            answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
-            answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            module: "Statistik",
-            correctAnswer: "D"
-        },
-        {
-            id: 2,
-            question: "Beim Fehler 1. Art...",
-            answerA: "wird die Nullhypothese fälschlicherweise angenommen.",
-            answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
-            answerC: "wird die Alternativhypothese richtigerweise angenommen.",
-            answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            module: "Statistik",
-            correctAnswer: "D"
-        },
-        { 
-            id: 3,
-            question: "Ziel von statistischen Testverfahren ist es,...", 
-            answerA: "...die Nullhypothese zu verwerfen",
-            answerB: "...die Nullhypothese anzunehmen",
-            answerC: "...die Alternativhypothese eindeutig zu beweisen",
-            answerD: "...die Alternativhypothese zu verwerfen",
-            module: "Statistik",
-            correctAnswer: "A"
-        },
-        {
-            id: 4,
-            question: "Die Nullhypothese kann verworfen werden, wenn...",
-            answerA: "der p-Wert genau dem Signifikanzniveau entspricht.",
-            answerB: "der p-Wert genau dem kritischen Wert entspricht.",
-            answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
-            answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            module: "Statistik",
-            correctAnswer: "D"
-        },
-        {
-            id: 5,
-            question: "Beim Fehler 1. Art...",
-            answerA: "wird die Nullhypothese fälschlicherweise angenommen.",
-            answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
-            answerC: "wird die Alternativhypothese richtigerweise angenommen.",
-            answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            module: "Statistik",
-            correctAnswer: "D"
-        },
-        { 
-            id: 6,
-            question: "Ziel von statistischen Testverfahren ist es,...", 
-            answerA: "...die Nullhypothese zu verwerfen",
-            answerB: "...die Nullhypothese anzunehmen",
-            answerC: "...die Alternativhypothese eindeutig zu beweisen",
-            answerD: "...die Alternativhypothese zu verwerfen",
-            module: "Statistik",
-            correctAnswer: "A"
-        },
-        {
-            id: 7,
-            question: "Die Nullhypothese kann verworfen werden, wenn...",
-            answerA: "der p-Wert genau dem Signifikanzniveau entspricht.",
-            answerB: "der p-Wert genau dem kritischen Wert entspricht.",
-            answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
-            answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            module: "Statistik",
-            correctAnswer: "D"
-        },
-        {
-            id: 8,
-            question: "Beim Fehler 1. Art...",
-            answerA: "wird die Nullhypothese fälschlicherweise angenommen.",
-            answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
-            answerC: "wird die Alternativhypothese richtigerweise angenommen.",
-            answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            module: "Statistik",
-            correctAnswer: "D"
-        },
-        { 
-            id: 9,
-            question: "Ziel von statistischen Testverfahren ist es,...", 
-            answerA: "...die Nullhypothese zu verwerfen",
-            answerB: "...die Nullhypothese anzunehmen",
-            answerC: "...die Alternativhypothese eindeutig zu beweisen",
-            answerD: "...die Alternativhypothese zu verwerfen",
-            module: "Statistik",
-            correctAnswer: "A"
-        }
-    ]
-
-    const [questionAmount] = useState(myQuestions.length)
 
     //Dimension für Responsive
     const { width } = useWindowDimensions();
@@ -139,25 +38,63 @@ const MyQuestions = () => {
         setOpen(true)
     }
 
+    //getModules Query
+    const { data: moduleData } = useQuery(GET_MODULES);
+
+    const generateModuleOptions = () => {
+        if (moduleData) {
+            const generatedModules = moduleData.getModules.map(item => {
+                const container = {};
+                container.label = item.name;
+                container.value = item.uuid
+            
+                return container;
+            })
+            return generatedModules
+        }
+    }
+    //Wählt module aus
+    const [module, setModule] = useState({module_uuid: null})
+    const selectHandler = (event) => {
+        const value = event.value
+        setModule(module => {
+           module.module_uuid = value
+        })
+        refetch({filter: module})
+    }
+
+    //getAllQuestionsQuery
+
+    const { data: questionData, refetch } = useQuery(GET_ALL_QUESTIONS);
+
     return (
         <S.MyQuestions>
-            <p>{`${questionAmount} Fragen`}</p>
+            {questionData && <p>{`${questionData.getAllQuestions.length} Frage(n)`}</p>}
+            <S.Select>
+                <label>Modul auswählen</label>
+                <Select placeholder="Modul" options={generateModuleOptions()} onChange={selectHandler}/>
+            </S.Select>
             {width > 800 ?
                 <table>
                     <tbody>
-                        <tr>
-                            <th>Frage</th>
-                            <th>Modul</th>
-                            <th>Details</th>
-                            <th>Bearbeiten</th>
-                            <th>Frage entfernen</th>
-                        </tr>
-                        {myQuestions &&
-                            myQuestions.map(({ question, module }, index) => {
+                        {questionData ? 
+                            <tr>
+                                <th>Frage</th>
+                                <th>Modul</th>
+                                <th>Details</th>
+                                <th>Bearbeiten</th>
+                                <th>Frage entfernen</th>
+                            </tr>
+                        :
+                            <tr></tr>
+                        }
+
+                        {questionData &&
+                            questionData.getAllQuestions.map(({ question, module : { name: moduleName } }, index) => {
                                 return (
                                     <tr key={index}>
                                         <td><p>{question}</p></td>
-                                        <td><h6>{module}</h6></td>
+                                        <td><h6>{moduleName}</h6></td>
                                         <td>
                                             <Button size="small" label="Details" onClick={() => openDetails()} />
                                         </td>
@@ -179,8 +116,8 @@ const MyQuestions = () => {
                 </table>
             :
                 <S.Responsive>
-                    {myQuestions &&
-                        myQuestions.map(({question, module}, index) => {
+                    {questionData &&
+                        questionData.getAllQuestions.map(({question, module : { name: moduleName }}, index) => {
                             return(
                                 <S.ResponsiveItem key={index}>
                                     <S.Question>
@@ -190,7 +127,7 @@ const MyQuestions = () => {
                                     <hr className="itemLine" />
                                     <S.Question>
                                         <h5>Modul</h5>
-                                        <p>{module}</p>
+                                        <p>{moduleName}</p>
                                     </S.Question>
                                     <hr className="itemLine" />
                                     <S.Question>

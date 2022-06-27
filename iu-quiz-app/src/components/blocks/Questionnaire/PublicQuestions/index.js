@@ -51,13 +51,12 @@ const PublicQuestions = () => {
     //getAllQuestionsQuery
 
     const { data: questionData, refetch } = useQuery(GET_ALL_QUESTIONS);
-    console.log(questionData)
 
     return (
         <S.PublicQuestions>
-            {questionData && <p>{`${questionData.getAllQuestions.length} Fragen`}</p>}
+            {questionData && <p>{`${questionData.getAllQuestions.length} Frage(n)`}</p>}
             <S.Select>
-                <label>Filtern nach Modul</label>
+                <label>Modus auswählen</label>
                 <Select placeholder="Modul" options={generateModuleOptions()} onChange={selectHandler}/>
             </S.Select>
             <S.Questions>
@@ -72,9 +71,7 @@ const PublicQuestions = () => {
                                     <th>Frage Melden</th>
                                 </tr>
                             :
-                            <tr>
-                                <th>Bitte wählen Sie eine Frage aus</th>
-                            </tr>
+                            <tr></tr>
 
                         }
                             
@@ -134,9 +131,6 @@ const PublicQuestions = () => {
                     </S.Responsive>
                 }
             </S.Questions>
-                <S.Buttons>
-                    <Button label="Mehr laden" inactive/>
-                </S.Buttons>
         </S.PublicQuestions>
     )
 }
