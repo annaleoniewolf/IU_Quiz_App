@@ -5,10 +5,16 @@ import { faComments, faXmarkCircle, faBan } from '@fortawesome/free-solid-svg-ic
 import UserOverview from '../../../elements/UserOverview'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 
+import GET_MY_PROFILE from '../../../../apollo/queries/getMyProfile'
+import { useQuery } from "@apollo/client"
+
 const MyFriends = () => {
 
     //Dimension für Responsive
     const { width } = useWindowDimensions();
+
+    //getMyProfile Query
+    const { data } = useQuery(GET_MY_PROFILE);   
 
     const [myFriends] = useState([
         {"vorname": "Annika", "nachname": "Backes", "info": "4.Semester, Bachelor Informatik"},
@@ -17,10 +23,9 @@ const MyFriends = () => {
         {"vorname": "David", "nachname": "Pierzyna", "info": "4.Semester, Bachelor Informatik"}
     ])
 
-    const [myFriendsAmount] = useState(myFriends.length)
     return (
         <S.MyFriends>
-            <p>{`${myFriendsAmount} Freund(e)`}</p>
+            {data && <p>{`${data.getMyProfile.friends.length} Freund(e)`}</p>}
             {width > 800 ?
                 <table>
                     <tbody>
@@ -30,14 +35,15 @@ const MyFriends = () => {
                             <th>Blockieren</th>
                             <th>Freund entfernen</th>
                         </tr>
-                        {myFriends &&
-                            myFriends.map(({vorname, nachname, info}, index) => {
+                        {data &&
+                            data.getMyProfile.friends.map(({first_name, last_name, degree, avatar_url}, index) => {
                                 return(
                                     <tr key={index}>
                                         <td>
                                             <UserOverview 
-                                                userName={`${vorname} ${nachname}`}
-                                                info={info}
+                                                userName={`${first_name} ${last_name}`}
+                                                info={degree}
+                                                image={avatar_url}
                                             />
                                         </td>
                                         <td>
