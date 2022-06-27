@@ -39,10 +39,6 @@ export const singlePlayerGameSlice = createSlice({
     setCurrentQuestion: (state, action) => {
       state.currentQuestion = action.payload
     },
-    //Löscht Aktuelle Fragen
-    clearCurrentQuestion: (state) => {
-      state.questions = []
-    },
 
     //Gibt es ein laufendes Spiel?
     setActiveGame: (state, action) => {
@@ -52,6 +48,6 @@ export const singlePlayerGameSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setModule, setQuestionsSelectedAnswer, clearSelectedQuestions, clearModule, setQuestions, setSelectedQuestions, clearQuestions, setCurrentQuestion, clearCurrentQuestion, activeGame, setActiveGame } = singlePlayerGameSlice.actions
+export const { setModule, setQuestionsSelectedAnswer, clearSelectedQuestions, clearModule, setQuestions, setSelectedQuestions, clearQuestions, setCurrentQuestion, activeGame, setActiveGame } = singlePlayerGameSlice.actions
 
 export default singlePlayerGameSlice.reducer
