@@ -21,6 +21,11 @@ export const ProfileImage = styled.div`
     border-radius: 90px;
     overflow: hidden;
     border: 1px solid ${theme.colors.grey};
+    img {
+        max-width:100%;
+        max-height:100%;
+    }
+    
 `
 
 export const ProfileInformation = styled.div`
