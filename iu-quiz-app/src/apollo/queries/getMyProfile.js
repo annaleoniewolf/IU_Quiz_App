@@ -8,6 +8,12 @@ const GET_MY_PROFILE = gql`
         degree
         study_start
         avatar_url
+        friends {
+          first_name
+          last_name
+          avatar_url
+          degree
+        }
     }
   }
 `

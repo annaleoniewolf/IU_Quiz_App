@@ -4,7 +4,7 @@ const UserOverview = ({ userName, module, image, info }) => {
     return (
         <S.UserOverview>
             <S.Image>
-                <img src="https://picsum.photos/60/60?random=1" alt="avatar" />
+                 {image && <img src={image} alt="avatar" />}
             </S.Image>
             <S.User>
                 <h5>{userName}</h5>
