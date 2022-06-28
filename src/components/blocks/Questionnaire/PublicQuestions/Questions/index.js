@@ -7,17 +7,23 @@ import GET_ALL_QUESTIONS from '../../../../../apollo/queries/getAllQuestions'
 import useWindowDimensions from '../../../../hooks/useWindowDimensions'
 import { useContext } from 'react'
 import { ModalContext } from '../../../../../context/ModalContext'
+import { useDispatch } from 'react-redux'
+import { setQuestionId } from '../../../../../redux/questionSlice'
 
 const Questions = ({ module }) => {
      //Dimension für Responsive
      const { width } = useWindowDimensions();
+     //Redux
+     const dispatch = useDispatch()
 
      //Details Modal
      const { setOpen, setType} = useContext(ModalContext)
-     const openDetails = () => {
-         setType("QuestionDetails")
-         setOpen(true)
-     }
+       //Details zu den Fragen Modal
+    const openDetails = (id) => {
+        dispatch(setQuestionId(id))
+        setType("QuestionDetails")
+        setOpen(true)
+    }
 
     //getAllQuestionsQuery
     const { data: questionData } = useQuery(GET_ALL_QUESTIONS, {
@@ -48,12 +54,12 @@ const Questions = ({ module }) => {
                         }
                             
                             {questionData &&
-                                questionData.getAllQuestions.map(({ question }, index) => {
+                                questionData.getAllQuestions.map(({ question, uuid }, index) => {
                                     return (
                                         <tr key={index}>
                                             <td><p>{question}</p></td>
                                             <td>
-                                                <Button size="small" label="Details" onClick={() => openDetails()}/>
+                                                <Button size="small" label="Details" onClick={() => openDetails(uuid)}/>
                                             </td>
                                             <td>
                                                 <S.BanButton>
@@ -69,7 +75,7 @@ const Questions = ({ module }) => {
                 :
                     <S.Responsive>
                         {questionData &&
-                            questionData.getAllQuestions.map(({question}, index) => {
+                            questionData.getAllQuestions.map(({question, uuid}, index) => {
                                 return(
                                     <S.ResponsiveItem key={index}>
                                         <S.Question>
@@ -80,7 +86,7 @@ const Questions = ({ module }) => {
                                         <S.Options>
                                             <S.Option>
                                                 <h6>Details</h6>
-                                                <Button size="small" label="Details" onClick={() => openDetails()}/>
+                                                <Button size="small" label="Details" onClick={() => openDetails(uuid)}/>
                                             </S.Option>
                                             <S.Option>
                                                 <h6>Frage melden</h6>
