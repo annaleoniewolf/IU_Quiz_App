@@ -39,6 +39,7 @@ const LandingTable = () => {
         setType("SinglePlayerQuestionsDetails")
         setOpen(true)
     }
+    console.log(questions)
 
 
     return (
@@ -57,10 +58,10 @@ const LandingTable = () => {
                                         <th>Details</th>
                                     </tr>
                                     {questions &&
-                                        questions.map(({id, question, correctAnswer}, index) => {
+                                        questions.map(({ question, correct_answer}, index) => {
                                             return (
                                                 <tr key={index}>
-                                                    <td><S.Id>{id+1}</S.Id></td>
+                                                    <td><S.Id>{index+1}</S.Id></td>
                                                     <td>
                                                         {selectedQuestions[index] === undefined ?
                                                             <S.Text>noch nicht beantwortet</S.Text>
@@ -69,12 +70,12 @@ const LandingTable = () => {
                                                         }
                                                     </td>
                                                     <td>
-                                                        {correctAnswer === selectedQuestions[index] &&
+                                                        {correct_answer === selectedQuestions[index] &&
                                                             <S.CheckIcon>
                                                                 <FontAwesomeIcon icon={faCheck} />
                                                             </S.CheckIcon>
                                                         }
-                                                        {((correctAnswer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined)) &&
+                                                        {((correct_answer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined)) &&
                                                             <S.XIcon>
                                                                 <FontAwesomeIcon icon={faX} />
                                                             </S.XIcon>
@@ -96,11 +97,11 @@ const LandingTable = () => {
                         : 
                             <S.Responsive>
                                 {questions &&
-                                    questions.map(({id, question, selectedAnswer, correctAnswer}, index) => {
+                                    questions.map(({ question, selectedAnswer, correctAnswer}, index) => {
                                         return(
                                             <S.ResponsiveItem key={index}>
                                                 <S.Question>
-                                                    <h5>{id+1}. Frage</h5>
+                                                    <h5>{index+1}. Frage</h5>
                                                     {selectedQuestions[index] === undefined ?
                                                             <S.Text>noch nicht beantwortet</S.Text>
                                                         :   

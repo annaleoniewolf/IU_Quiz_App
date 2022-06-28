@@ -13,6 +13,7 @@ import { setModule, setActiveGame, setQuestions, setCurrentQuestion, clearQuesti
 import { ModalContext } from '../../../context/ModalContext';
 
 import GET_MODULES from '../../../apollo/queries/getModules'
+import GET_RANDOM_QUESTIONS_FOR_MODULE from "../../../apollo/queries/getRandomQuestionsForModule";
 import { useQuery } from "@apollo/client"
 
 const NewGameModal = () => {
@@ -35,11 +36,10 @@ const NewGameModal = () => {
   
     const generateModuleOptions = () => {
         if (data) {
-            console.log("test")
             const generatedModules = data.getModules.map(item => {
                 const container = {};
                 container.label = item.name;
-                container.value = item.name
+                container.value = item.uuid
             
                 return container;
             })
@@ -47,120 +47,36 @@ const NewGameModal = () => {
         }
     }
 
-    //Placeholder Questions
-    const randomQuestions = [
-        { 
-            id: 0,
-            question: "Ziel von statistischen Testverfahren ist es,...", 
-            answerA: "...die Nullhypothese zu verwerfen",
-            answerB: "...die Nullhypothese anzunehmen",
-            answerC: "...die Alternativhypothese eindeutig zu beweisen",
-            answerD: "...die Alternativhypothese zu verwerfen",
-            correctAnswer: "A",
-            selectedAnswer: null
-        },
-        {
-            id: 1,
-            question: "Die Nullhypothese kann verworfen werden, wenn...",
-            answerA: "der p-Wert genau dem Signifikanzniveau entspricht.",
-            answerB: "der p-Wert genau dem kritischen Wert entspricht.",
-            answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
-            answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            correctAnswer: "D",
-            selectedAnswer: null
-        },
-        {
-            id: 2,
-            question: "Beim Fehler 1. Art...",
-            answerA: "wird die Nullhypothese fälschlicherweise angenommen.",
-            answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
-            answerC: "wird die Alternativhypothese richtigerweise angenommen.",
-            answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            correctAnswer: "D",
-            selectedAnswer: null
-        },
-        { 
-            id: 3,
-            question: "Ziel von statistischen Testverfahren ist es,...", 
-            answerA: "...die Nullhypothese zu verwerfen",
-            answerB: "...die Nullhypothese anzunehmen",
-            answerC: "...die Alternativhypothese eindeutig zu beweisen",
-            answerD: "...die Alternativhypothese zu verwerfen",
-            correctAnswer: "A",
-            selectedAnswer: null
-        },
-        {
-            id: 4,
-            question: "Die Nullhypothese kann verworfen werden, wenn...",
-            answerA: "der p-Wert genau dem Signifikanzniveau entspricht.",
-            answerB: "der p-Wert genau dem kritischen Wert entspricht.",
-            answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
-            answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            correctAnswer: "D",
-            selectedAnswer: null
-        },
-        {
-            id: 5,
-            question: "Beim Fehler 1. Art...",
-            answerA: "wird die Nullhypothese fälschlicherweise angenommen.",
-            answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
-            answerC: "wird die Alternativhypothese richtigerweise angenommen.",
-            answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            correctAnswer: "D",
-            selectedAnswer: null
-        },
-        { 
-            id: 6,
-            question: "Ziel von statistischen Testverfahren ist es,...", 
-            answerA: "...die Nullhypothese zu verwerfen",
-            answerB: "...die Nullhypothese anzunehmen",
-            answerC: "...die Alternativhypothese eindeutig zu beweisen",
-            answerD: "...die Alternativhypothese zu verwerfen",
-            correctAnswer: "A",
-            selectedAnswer: null
-        },
-        {
-            id: 7,
-            question: "Die Nullhypothese kann verworfen werden, wenn...",
-            answerA: "der p-Wert genau dem Signifikanzniveau entspricht.",
-            answerB: "der p-Wert genau dem kritischen Wert entspricht.",
-            answerC: "der p-Wert größer ist als die Irrtumswahrscheinlichkeit.",
-            answerD: "der p-Wert kleiner ist als die Irrtumswahrscheinlichkeit",
-            correctAnswer: "D",
-            selectedAnswer: null
-        },
-        {
-            id: 8,
-            question: "Beim Fehler 1. Art...",
-            answerA: "wird die Nullhypothese fälschlicherweise angenommen.",
-            answerB: "wird die Alternativhypothese fälschlicherweise verworfen.",
-            answerC: "wird die Alternativhypothese richtigerweise angenommen.",
-            answerD: "wird die Nullhypothese fälschlicherweise abgelehnt.",
-            correctAnswer: "D",
-            selectedAnswer: null
-        },
-        { 
-            id: 9,
-            question: "Ziel von statistischen Testverfahren ist es,...", 
-            answerA: "...die Nullhypothese zu verwerfen",
-            answerB: "...die Nullhypothese anzunehmen",
-            answerC: "...die Alternativhypothese eindeutig zu beweisen",
-            answerD: "...die Alternativhypothese zu verwerfen",
-            correctAnswer: "A",
-            selectedAnswer: null
+    //getAllQuestionsQuery
+    const { data: questionData, refetch } = useQuery(GET_RANDOM_QUESTIONS_FOR_MODULE, {
+        variables: {
+            filter: {
+                module_uuid: selectedModul,
+                amount: 10
+            }
         }
-    ]
+    });
+    //console.log("questions", questionData.getRandomQuestionsForModule)
+
+    //Select
+    const selectHandler = (event) => {
+        const value = event.value
+        console.log(value)
+        setSelectedModul(value)
+        refetch({filter: {module_uuid: selectedModul, amount: 10}})
+    }
 
     //Spiel Starten Button Handler
     const handleButton = () => {
         if (modus === "einzelspieler") {
+            
             //updated ausgewähltes Modul für den Spielmodus
             dispatch(setModule(selectedModul.value))
 
             dispatch(clearQuestions())
             dispatch(clearSelectedQuestions())
             //wählt random Fragen für die Runde aus
-            dispatch(setQuestions(randomQuestions))
+            dispatch(setQuestions(questionData.getRandomQuestionsForModule))
 
             //setzt aktuelle Frage auf die erste
             dispatch(setCurrentQuestion(0))
@@ -206,7 +122,7 @@ const NewGameModal = () => {
                         <label>Modul auswählen</label>
                         <Select 
                             defaultValue={selectedModul}
-                            onChange={setSelectedModul}
+                            onChange={selectHandler}
                             options={generateModuleOptions()}
                             placeholder="Modul"
                         />
@@ -237,7 +153,7 @@ const NewGameModal = () => {
             </S.Selection>
             {(modus === "einzelspieler" && selectedModul !== '') &&
                     <NavLink to={"/einzelspieler"}>
-                        <Button label="Spiel Starten" onClick={() => {handleButton()}} />
+                        <Button label="Spiel Starten" onClick={() => {handleButton()}}/>
                     </NavLink>
             }
             {(modus === "duell" && selectedModul !== '' && selectedFriend !== '') &&

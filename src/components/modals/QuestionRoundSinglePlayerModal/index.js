@@ -33,7 +33,7 @@ const QuestionRoundSinglePlayerModal = () => {
     const countPoints = () => {
         let count = 0
         for (let i = 0; i < questions.length; i++) {
-            if (selectedQuestions[i] === questions[i].correctAnswer) {
+            if (selectedQuestions[i] === questions[i].correct_answer) {
                 count++
             }
         }
@@ -51,16 +51,16 @@ const QuestionRoundSinglePlayerModal = () => {
                         <h4>{questions[currentQuestion].question}</h4>
                         <S.Answers>
                             <S.Answer selected={selected === 'A' ? true : false} onClick={() => setSelected('A')}>
-                                <p>{questions[currentQuestion].answerA}</p>
+                                <p>{questions[currentQuestion].answer_a}</p>
                             </S.Answer>
                             <S.Answer selected={selected === 'B' ? true : false}  onClick={() => setSelected('B')}>
-                                <p>{questions[currentQuestion].answerB}</p>
+                                <p>{questions[currentQuestion].answer_b}</p>
                             </S.Answer>
                             <S.Answer selected={selected === 'C' ? true : false}  onClick={() => setSelected('C')}>
-                                <p>{questions[currentQuestion].answerC}</p>
+                                <p>{questions[currentQuestion].answer_c}</p>
                             </S.Answer>
                             <S.Answer selected={selected === 'D' ? true : false}  onClick={() => setSelected('D')}>
-                                <p>{questions[currentQuestion].answerD}</p>
+                                <p>{questions[currentQuestion].answer_d}</p>
                             </S.Answer>
                         </S.Answers>
                         <Button label="Weiter" onClick={() => handleButton()} />
