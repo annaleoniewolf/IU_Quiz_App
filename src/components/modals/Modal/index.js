@@ -8,7 +8,6 @@ import NewGameModal from '../NewGameModal'
 import StopModal from '../StopModal'
 import QuestionRoundSinglePlayerModal from '../QuestionRoundSinglePlayerModal'
 import QuestionDetails from '../QuestionDetails';
-import SinglePlayerQuestionDetails from '../SinglePlayerQuestionDetails';
 import QuestionRoundDuellModal from '../QuestionRoundDuellModal';
 import DeleteQuestionModal from '../DeleteQuestionModal';
 import LogoutModal from '../LogoutModal';
@@ -60,7 +59,6 @@ const Modal = () => {
                     {type === "Stop" && <StopModal />}
                     {type === "QuestionRoundSinglePlayer" && <QuestionRoundSinglePlayerModal/>}
                     {type === "QuestionDetails" && <QuestionDetails/>}
-                    {type === "SinglePlayerQuestionsDetails" && <SinglePlayerQuestionDetails />}
                     {type === "QuestionRoundDuell" && <QuestionRoundDuellModal />}
                     {type === "DeleteQuestion" && <DeleteQuestionModal />}
                     {type === "Logout" && <LogoutModal />}

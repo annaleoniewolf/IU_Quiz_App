@@ -39,7 +39,7 @@ const LandingTable = () => {
     //Details zu den Fragen Modal
     const openDetails = (id) => {
         dispatch(setQuestionId(id))
-        setType("SinglePlayerQuestionsDetails")
+        setType("QuestionDetails")
         setOpen(true)
     }
 
@@ -98,9 +98,10 @@ const LandingTable = () => {
                         : 
                             <S.Responsive>
                                 {questions &&
-                                    questions.map(({ question, selectedAnswer, correctAnswer}, index) => {
+                                    questions.map(({ question, correct_answer, uuid}, index) => {
                                         return(
                                             <S.ResponsiveItem key={index}>
+                                                <p>{uuid}</p>
                                                 <S.Question>
                                                     <h5>{index+1}. Frage</h5>
                                                     {selectedQuestions[index] === undefined ?
@@ -113,23 +114,23 @@ const LandingTable = () => {
                                                 <S.Options>
                                                     <S.Option>
                                                         <h6>Richtig beantwortet</h6>
-                                                        {correctAnswer === selectedQuestions[index] &&
+                                                        {correct_answer === selectedQuestions[index] &&
                                                             <S.CheckIcon>
                                                                 <FontAwesomeIcon icon={faCheck} />
                                                             </S.CheckIcon>
                                                         }
-                                                        {((correctAnswer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined)) &&
+                                                        {((correct_answer !== selectedQuestions[index] ) && (selectedQuestions[index] !== undefined)) &&
                                                             <S.XIcon>
                                                                 <FontAwesomeIcon icon={faX} />
                                                             </S.XIcon>
                                                         }
                                                     </S.Option>
                                                     <S.Option>
-                                                        <h6>Frage melden</h6>
-                                                        {selectedAnswer === undefined ?
+                                                        <h6>Details anzeigen</h6>
+                                                        {selectedQuestions[index] === undefined ?
                                                             <Button label="DETAILS" size="small" inactive/>
                                                         :
-                                                            <Button label="Details" size="small" onClick={() => openDetails()}/>
+                                                            <Button label="Details" size="small" onClick={() => openDetails(uuid)} />
                                                         }
                                                     </S.Option>
                                                 </S.Options>
