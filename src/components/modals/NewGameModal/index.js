@@ -56,12 +56,10 @@ const NewGameModal = () => {
             }
         }
     });
-    //console.log("questions", questionData.getRandomQuestionsForModule)
 
     //Select
     const selectHandler = (event) => {
         const value = event.value
-        console.log(value)
         setSelectedModul(value)
         refetch({filter: {module_uuid: selectedModul, amount: 10}})
     }

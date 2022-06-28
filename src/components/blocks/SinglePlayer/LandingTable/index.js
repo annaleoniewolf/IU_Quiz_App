@@ -101,7 +101,6 @@ const LandingTable = () => {
                                     questions.map(({ question, correct_answer, uuid}, index) => {
                                         return(
                                             <S.ResponsiveItem key={index}>
-                                                <p>{uuid}</p>
                                                 <S.Question>
                                                     <h5>{index+1}. Frage</h5>
                                                     {selectedQuestions[index] === undefined ?
