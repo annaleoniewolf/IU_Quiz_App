@@ -17,14 +17,13 @@ export const Content = styled.div`
     background-color: #fff;
     width: 100%;
     padding: 20px;
-    min-height: 650px;
-    max-height: 650px;
+    min-height: 70vh;
+    max-height: 70vh;
     @media(max-width: 1300px) {
-        min-height: 650px;
+        min-height: 70vh;
         height: auto;
     }
-
-    overflow-y: scroll; 
+    overflow-y: auto; 
 
 `
 export const Labels = styled.div`
