@@ -28,7 +28,8 @@ const Questions = ({ module }) => {
     }
  
      //Frage löschen Modal
-     const handleDeleteQuestionModal = () => {
+     const handleDeleteQuestionModal = (id) => {
+        dispatch(setQuestionId(id))
          setType("DeleteQuestion")
          setOpen(true)
      }
@@ -68,7 +69,7 @@ const Questions = ({ module }) => {
                                             <Button size="small" label="Details" onClick={() => openDetails(uuid)} />
                                         </td>
                                         <td>
-                                            <S.DeleteButton onClick={() => handleDeleteQuestionModal()}>
+                                            <S.DeleteButton onClick={() => handleDeleteQuestionModal(uuid)}>
                                                 <FontAwesomeIcon icon={faXmarkCircle} />
                                             </S.DeleteButton>
                                         </td>
@@ -97,7 +98,7 @@ const Questions = ({ module }) => {
                                     <S.Options>
                                         <S.Option>
                                             <h6>Frage entfernen</h6>
-                                            <S.DeleteButton onClick={() => handleDeleteQuestionModal()}>
+                                            <S.DeleteButton onClick={() => handleDeleteQuestionModal(uuid)}>
                                                 <FontAwesomeIcon icon={faXmarkCircle} />
                                             </S.DeleteButton>
                                         </S.Option>
