@@ -21,7 +21,7 @@ const Privacy = () => {
                 <h1>Datenschutz</h1>
                 <hr/>
                 <h2>Wer wir sind </h2>
-                <p>Die Adresse unserer Website ist: https://www. </p>
+                <p>Die Adresse unserer Website ist: https://iu-quiz-app-site.herokuapp.com/login </p>
                 <h2>Datenschutzerklärung</h2>
                 <p>Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist: Auftraggeber (IU.org) </p>
                 <h5>Ihre Betroffenenrechte</h5>

@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components"
-import theme from "../../../../styles/theme"
+import styled, { css } from "styled-components";
+import theme from "../../../../styles/theme";
 
 export const AddQuestion = styled.div`
     display: flex;
@@ -7,6 +7,9 @@ export const AddQuestion = styled.div`
     padding: 40px;
     @media(max-width: 600px) {
         padding: 20px 0px;
+    }
+    form {
+        width: 100%;
     }
 `
 
@@ -160,4 +163,3 @@ export const InputBox = styled.div``
 export const Header = styled.div``
 
 export const TextAreaContainer = styled.div``
-
