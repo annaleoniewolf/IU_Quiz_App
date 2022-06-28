@@ -9,8 +9,9 @@ import { faCheck, faX } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 import { ModalContext } from '../../../../context/ModalContext'
 
-import {  useSelector } from 'react-redux'
+import {  useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { setQuestionId }from '../../../../redux/questionSlice'
 
 
 const LandingTable = () => {
@@ -22,6 +23,7 @@ const LandingTable = () => {
     //Redux
     const { module, questions, selectedQuestions } = useSelector((state) => state.singlePlayerGame)
     const { activeGame } = useSelector((state) => state.singlePlayerGame)
+    const dispatch = useDispatch()
 
     //Spiel beenden Modal
     const { setOpen, setType} = useContext(ModalContext)
@@ -35,12 +37,11 @@ const LandingTable = () => {
         setOpen(true)
     }
     //Details zu den Fragen Modal
-    const openDetails = () => {
+    const openDetails = (id) => {
+        dispatch(setQuestionId(id))
         setType("SinglePlayerQuestionsDetails")
         setOpen(true)
     }
-    console.log(questions)
-
 
     return (
         <S.LandingTable>
@@ -58,7 +59,7 @@ const LandingTable = () => {
                                         <th>Details</th>
                                     </tr>
                                     {questions &&
-                                        questions.map(({ question, correct_answer}, index) => {
+                                        questions.map(({ question, correct_answer, uuid}, index) => {
                                             return (
                                                 <tr key={index}>
                                                     <td><S.Id>{index+1}</S.Id></td>
@@ -85,7 +86,7 @@ const LandingTable = () => {
                                                         {selectedQuestions[index] === undefined ?
                                                             <Button label="DETAILS" size="small" inactive/>
                                                         :
-                                                            <Button label="Details" size="small" onClick={() => openDetails()} />
+                                                            <Button label="Details" size="small" onClick={() => openDetails(uuid)} />
                                                         }
                                                     </td>
                                                 </tr>
