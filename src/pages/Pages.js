@@ -21,16 +21,16 @@ const Pages = () => {
 
     return (
         <Routes>
-            <Route path="/" element={(token || authToken !== null)? <Dashboard /> : <PageNotFound />} />
-            <Route path="/fragenkatalog" element={(token || authToken !== null) ? <Fragenkatalog /> : <PageNotFound />} />
+            <Route path="/" element={(token !== false || authToken !== null)? <Dashboard /> : <PageNotFound />} />
+            <Route path="/fragenkatalog" element={(token !== false || authToken !== null) ? <Fragenkatalog /> : <PageNotFound />} />
             <Route path="/datenschutz" element={<Datenschutz />}/>
             <Route path="/impressum" element={<Impressum />} />
-            <Route path="/chat" element={(token || authToken !== null) ? <Chat /> : <PageNotFound />} />
-            <Route path="/freunde" element={(token || authToken !== null) ? <Freunde /> : <PageNotFound />} />
-            <Route path="/einzelspieler" element={(token || authToken !== null) ? <Einzelspieler /> : <PageNotFound />} />
-            <Route path="/duell" element={(token || authToken !== null) ? <Duell /> : <PageNotFound />} />
+            <Route path="/chat" element={(token !== false || authToken !== null) ? <Chat /> : <PageNotFound />} />
+            <Route path="/freunde" element={(token !== false || authToken !== null) ? <Freunde /> : <PageNotFound />} />
+            <Route path="/einzelspieler" element={(token !== false || authToken !== null) ? <Einzelspieler /> : <PageNotFound />} />
+            <Route path="/duell" element={(token !== false || authToken !== null) ? <Duell /> : <PageNotFound />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/profil" element={(token || authToken !== null) ? <Profil /> : <PageNotFound />} />
+            <Route path="/profil" element={(token !== false || authToken !== null) ? <Profil /> : <PageNotFound />} />
         </Routes>
     )
 }

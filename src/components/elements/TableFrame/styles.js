@@ -23,12 +23,9 @@ export const Content = styled.div`
         min-height: 650px;
         height: auto;
     }
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
+
     overflow-y: scroll; 
-    ::-webkit-scrollbar {
-        display: none; 
-    }
+
 `
 export const Labels = styled.div`
     display: flex;

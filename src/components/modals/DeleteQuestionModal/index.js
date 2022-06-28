@@ -17,7 +17,6 @@ const DeleteQuestionModal = () => {
 
      //ausgewählte FragenID
     const { questionId } = useSelector((state) => state.question)
-    console.log(questionId)
 
     //AddQuestion Mutation
     const [removeQuestion] = useMutation(REMOVE_QUESTION)
@@ -29,9 +28,9 @@ const DeleteQuestionModal = () => {
             } })
             .then((data) => {
                 if (data.data.addQuestion.default.success){
-                   console.log("success")
+                   
                 } else {
-                    console.log("upsi")
+                    
                 }    
             })
             .catch((ex) => {

@@ -30,7 +30,7 @@ function App() {
             <ModalContext.Provider value={{open, setOpen, type, setType}}>
               <BrowserRouter>
                 <Modal />
-                  {(token || authToken !== 'null') && <Navigation />}
+                  {(token !== false || authToken !== null) && <Navigation />}
                 <Pages />
                 <Footer />
               </BrowserRouter>

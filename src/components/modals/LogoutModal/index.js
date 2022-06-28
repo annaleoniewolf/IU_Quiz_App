@@ -37,7 +37,7 @@ const LogoutModal = () => {
         setOpen(false)
 
         //löscht token
-        localStorage.setItem("token", null)
+        localStorage.removeItem('token')      
         setToken(false)
         navigate('/login')
     }
