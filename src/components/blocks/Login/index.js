@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/react-hooks'
 import LOGIN from '../../../apollo/mutations/login';
 import { AuthContext } from '../../../context/authContext';
 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 const Login = () => {
   
@@ -13,6 +13,7 @@ const Login = () => {
     const { setToken} = useContext(AuthContext)
     //form
     const { register, handleSubmit, formState: { errors }} = useForm()
+    const [error, setError] = useState()
 
     //Login Mutation
     const [loginUser] = useMutation(LOGIN)
@@ -26,7 +27,7 @@ const Login = () => {
                 setToken(true)
                 navigate('/')
             } else {
-                console.log(data.data.login.default.message)
+                setError(data.data.login.default.message)
             }    
         })
         .catch((ex) => {
@@ -84,8 +85,9 @@ const Login = () => {
                         />
                         <label htmlFor="password">Passwort</label>
                    </S.Element>
-                    {errors.password  && <p>Bitte geben Sie ihre Daten vollständig ein.</p>}
                     <S.SubmitButton type="submit" value="Anmelden"/>
+                    {error && <S.Error>{error}</S.Error>}
+                    {errors.password  && <S.Error>Bitte geben Sie ihre Daten vollständig ein.</S.Error>}
                 </S.Form>
             </S.Content>
         </S.Login>

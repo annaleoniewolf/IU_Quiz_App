@@ -195,3 +195,7 @@ export const SubmitButton = styled.input`
         opacity: 0.7;
     }
 `
+
+export const Error = styled.p`
+    color: ${theme.colors.red};
+`
