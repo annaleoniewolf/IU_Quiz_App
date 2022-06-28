@@ -16,6 +16,7 @@ export const Login = styled.div`
     overflow: hidden;
     @media(max-width: 1400px) {
         height: auto;
+        min-height: 93vh;
         flex-direction: column;
         align-items: center;
         justify-content: center;

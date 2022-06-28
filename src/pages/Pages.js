@@ -17,7 +17,7 @@ import PageNotFound from "../components/blocks/PageNotFound"
 const Pages = () => {
     //Auth token
     const { token } = useContext(AuthContext)
-    const [authToken] = localStorage.getItem("token")
+    const authToken = localStorage.getItem("token")
 
     return (
         <Routes>

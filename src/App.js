@@ -19,7 +19,8 @@ function App() {
   const [type, setType] = useState("")
   //Auth Token
   const [token, setToken] = useState(false)
-  const [authToken] = localStorage.getItem("token")
+  const authToken = localStorage.getItem("token")
+
   return (
 
       <ThemeProvider theme={theme}>
@@ -29,7 +30,7 @@ function App() {
             <ModalContext.Provider value={{open, setOpen, type, setType}}>
               <BrowserRouter>
                 <Modal />
-                  {(token || authToken !== null)  && <Navigation />}
+                  {(token || authToken !== 'null') && <Navigation />}
                 <Pages />
                 <Footer />
               </BrowserRouter>
