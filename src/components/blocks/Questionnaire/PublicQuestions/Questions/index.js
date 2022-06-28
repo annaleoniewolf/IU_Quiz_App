@@ -69,17 +69,12 @@ const Questions = ({ module }) => {
                 :
                     <S.Responsive>
                         {questionData &&
-                            questionData.getAllQuestions.map(({question, module : { name: moduleName }}, index) => {
+                            questionData.getAllQuestions.map(({question}, index) => {
                                 return(
                                     <S.ResponsiveItem key={index}>
                                         <S.Question>
                                             <h5>Frage</h5>
                                             <p>{question}</p>
-                                        </S.Question>
-                                        <hr className="itemLine" />
-                                        <S.Question>
-                                            <h5>Modul</h5>
-                                            <p>{moduleName}</p>
                                         </S.Question>
                                         <hr className="itemLine" />
                                         <S.Options>

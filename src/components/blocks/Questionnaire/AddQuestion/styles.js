@@ -10,6 +10,22 @@ export const AddQuestion = styled.div`
     }
     form {
         width: 100%;
+        input {
+            background-color: ${theme.colors.primary};
+            margin: 10px auto;
+            border: none;
+            color: #fff;
+            padding: 13px 31px;
+            font-size: 17px;
+            text-transform: uppercase;
+            :hover {
+                cursor: pointer;
+            }
+        }
+        h5 {
+            margin: -6px 0px 3px;
+            font-size: 17px;
+        }
     }
 `
 

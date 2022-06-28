@@ -28,13 +28,13 @@ const AddQuestion = () => {
     //AddQuestion Mutation
     const [addQuestion] = useMutation(ADD_QUESTION)
 
+    const [response, setResponse] = useState("")
+
     //Form
     const { register, handleSubmit } = useForm();
 
+    //OnSubmit
     const onSubmit = (d) => {
-        console.log("data.", d)
-        console.log("module", module)
-        console.log("correctAnswer", correctAnswer)
         addQuestion({ 
             variables: { 
                 addQuestionInput : {
@@ -50,9 +50,9 @@ const AddQuestion = () => {
             } })
             .then((data) => {
                 if (data.data.addQuestion.default.success){
-                   console.log("sucess")
+                   setResponse("Deine Frage wurde erfolgreich dem Fragenkatalog hinzugefügt.")
                 } else {
-                    console.log("upsi")
+                    setResponse("Leider ist beim Hinzufügen deiner Frage etwas schief gegangen.")
                 }    
             })
             .catch((ex) => {
@@ -67,6 +67,7 @@ const AddQuestion = () => {
 
      const [correctAnswer, setCorrectAnswer] = useState(false)
      const [module, setModule] = useState(moduleData.getModules[0].uuid)
+
 
 
 
@@ -149,7 +150,8 @@ const AddQuestion = () => {
                         </S.Textarea>
                     </S.Column>
                 </S.Columns>
-                <input type="submit" />
+                <h5>{response}</h5>
+                <input type="submit"/>
             </form>
         </S.AddQuestion>
     )
