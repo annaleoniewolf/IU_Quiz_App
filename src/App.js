@@ -19,7 +19,7 @@ function App() {
   const [type, setType] = useState("")
   //Auth Token
   const [token, setToken] = useState(false)
-
+  console.log("token", token)
   return (
 
       <ThemeProvider theme={theme}>
@@ -29,7 +29,7 @@ function App() {
             <ModalContext.Provider value={{open, setOpen, type, setType}}>
               <BrowserRouter>
                 <Modal />
-                <Navigation />
+                  {token && <Navigation />}
                 <Pages />
                 <Footer />
               </BrowserRouter>

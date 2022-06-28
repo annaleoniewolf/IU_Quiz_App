@@ -11,8 +11,11 @@ import { faDoorOpen } from '@fortawesome/free-solid-svg-icons'
 
 import { useDispatch } from 'react-redux'
 import { setActiveGame, setCurrentQuestion, clearQuestions, clearSelectedQuestions, clearModule } from '../../../redux/singlePlayerGame'
+import { AuthContext } from '../../../context/authContext';
 
 const LogoutModal = () => {
+
+    const { setToken} = useContext(AuthContext)
 
     //Modal
     const { setOpen } = useContext(ModalContext)
@@ -35,6 +38,7 @@ const LogoutModal = () => {
 
         //löscht token
         localStorage.setItem("token", null)
+        setToken(false)
         navigate('/login')
     }
 

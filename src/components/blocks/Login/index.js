@@ -3,11 +3,14 @@ import { useForm }from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks'
 import LOGIN from '../../../apollo/mutations/login';
+import { AuthContext } from '../../../context/authContext';
+
+import { useContext } from 'react'
 
 const Login = () => {
   
     let navigate = useNavigate()
-
+    const { setToken} = useContext(AuthContext)
     //form
     const { register, handleSubmit, formState: { errors }} = useForm()
 
@@ -20,6 +23,7 @@ const Login = () => {
         .then((data) => {
             if (data.data.login.default.success){
                 localStorage.setItem("token", data.data.login.jwt)
+                setToken(true)
                 navigate('/')
             } else {
                 console.log(data.data.login.default.message)
