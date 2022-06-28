@@ -19,7 +19,6 @@ function App() {
   const [type, setType] = useState("")
   //Auth Token
   const [token, setToken] = useState(false)
-  console.log("token", token)
   return (
 
       <ThemeProvider theme={theme}>

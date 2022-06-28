@@ -60,7 +60,7 @@ const Login = () => {
                 animate={{ x: 0, delay: 1.5 }} 
                 transition={{ duration: 1.5, type: 'tween' }}
             >
-                <h1>Anmeldung1</h1>
+                <h1>Anmeldung</h1>
                 <hr/>
                 <S.Form onSubmit={handleSubmit(onSubmit)}>
                     <S.Element>

@@ -3,21 +3,30 @@ import * as S from './styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../../context/authContext'
 
 
 const Privacy = () => {
+    //Auth token
+    const { token } = useContext(AuthContext)
+
     return (
-        <S.Privacy>
-            <S.Container
-                initial={{ y: "100vh" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.5, type: 'tween' }}
-            >
-                <NavLink to="/">
-                    <S.Icon>
-                        <FontAwesomeIcon icon={faArrowLeft} />
-                    </S.Icon>
-                </NavLink>
+        <S.Privacy token={!token}>
+            <S.Container>
+                {token ?
+                    <NavLink to="/">
+                        <S.Icon>
+                            <FontAwesomeIcon icon={faArrowLeft} />
+                        </S.Icon>
+                    </NavLink>
+                : 
+                    <NavLink to="/login">
+                        <S.Icon>
+                            <FontAwesomeIcon icon={faArrowLeft} />
+                        </S.Icon>
+                    </NavLink>
+                }
                 <h1>Datenschutz</h1>
                 <hr/>
                 <h2>Wer wir sind </h2>

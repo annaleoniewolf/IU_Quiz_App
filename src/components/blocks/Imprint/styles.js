@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { motion } from "framer-motion"
 import theme from "../../../styles/theme"
 
@@ -9,6 +9,11 @@ export const Imprint = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    ${({ token }) =>
+    token === true &&
+    css`
+        height: 93vh;
+    `}
     @media(max-width: 1400px) {
         height: auto;
     }

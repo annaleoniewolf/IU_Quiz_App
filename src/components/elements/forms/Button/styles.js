@@ -7,6 +7,7 @@ export const Button = styled.div`
     opacity: 1;
     transition: 0.7s;
     margin: 0px auto;
+    text-decoration: none;
     :hover {
         cursor: pointer;
         opacity: 0.7;
