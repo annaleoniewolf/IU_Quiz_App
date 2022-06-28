@@ -10,11 +10,12 @@ import { AuthContext } from '../../../context/authContext'
 const Privacy = () => {
     //Auth token
     const { token } = useContext(AuthContext)
+    const [authToken] = localStorage.getItem("token")
 
     return (
-        <S.Privacy token={!token}>
+        <S.Privacy token={(token || authToken !== null) ? true : false}>
             <S.Container>
-                {token ?
+                {(token || authToken !== null) ?
                     <NavLink to="/">
                         <S.Icon>
                             <FontAwesomeIcon icon={faArrowLeft} />

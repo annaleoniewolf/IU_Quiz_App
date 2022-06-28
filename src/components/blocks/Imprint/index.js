@@ -10,10 +10,11 @@ import { AuthContext } from '../../../context/authContext'
 const Imprint = () => {
     //Auth token
     const { token } = useContext(AuthContext)
+    const [authToken] = localStorage.getItem("token")
     return (
-        <S.Imprint token={!token}>
+        <S.Imprint token={(token || authToken !== null) ? true : false} >
             <S.Container>
-                {token ?
+                {(token || authToken !== null) ?
                     <NavLink to="/">
                         <S.Icon>
                             <FontAwesomeIcon icon={faArrowLeft} />

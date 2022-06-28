@@ -17,18 +17,20 @@ import PageNotFound from "../components/blocks/PageNotFound"
 const Pages = () => {
     //Auth token
     const { token } = useContext(AuthContext)
+    const [authToken] = localStorage.getItem("token")
+
     return (
         <Routes>
-            <Route path="/" element={token ? <Dashboard /> : <PageNotFound />} />
-            <Route path="/fragenkatalog" element={token ? <Fragenkatalog /> : <PageNotFound />} />
+            <Route path="/" element={(token || authToken !== null)? <Dashboard /> : <PageNotFound />} />
+            <Route path="/fragenkatalog" element={(token || authToken !== null) ? <Fragenkatalog /> : <PageNotFound />} />
             <Route path="/datenschutz" element={<Datenschutz />}/>
             <Route path="/impressum" element={<Impressum />} />
-            <Route path="/chat" element={token ? <Chat /> : <PageNotFound />} />
-            <Route path="/freunde" element={token ? <Freunde /> : <PageNotFound />} />
-            <Route path="/einzelspieler" element={token ? <Einzelspieler /> : <PageNotFound />} />
-            <Route path="/duell" element={token ? <Duell /> : <PageNotFound />} />
+            <Route path="/chat" element={(token || authToken !== null) ? <Chat /> : <PageNotFound />} />
+            <Route path="/freunde" element={(token || authToken !== null) ? <Freunde /> : <PageNotFound />} />
+            <Route path="/einzelspieler" element={(token || authToken !== null) ? <Einzelspieler /> : <PageNotFound />} />
+            <Route path="/duell" element={(token || authToken !== null) ? <Duell /> : <PageNotFound />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/profil" element={token ? <Profil /> : <PageNotFound />} />
+            <Route path="/profil" element={(token || authToken !== null) ? <Profil /> : <PageNotFound />} />
         </Routes>
     )
 }
