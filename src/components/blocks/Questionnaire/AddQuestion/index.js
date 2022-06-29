@@ -7,6 +7,7 @@ import GET_MODULES from '../../../../apollo/queries/getModules';
 import ADD_QUESTION from '../../../../apollo/mutations/addQuestion';
 import { useQuery, useMutation } from '@apollo/client';
 
+
 const AddQuestion = () => {
 
     //getModules Query
@@ -58,6 +59,15 @@ const AddQuestion = () => {
             .catch((ex) => {
                 console.log(ex)
             })
+        //cleart die input felder
+        setInputExplanation("")
+        setInputQuestion("")
+        setInputAnswerA("")
+        setInputAnswerB("")
+        setInputAnswerC("")
+        setInputAnswerD("")
+        setCorrectAnswer("")
+        
     }
     //Select
     const selectHandler = (event) => {
@@ -67,6 +77,13 @@ const AddQuestion = () => {
 
      const [correctAnswer, setCorrectAnswer] = useState(false)
      const [module, setModule] = useState(moduleData.getModules[0].uuid)
+
+     const [inputQuestion, setInputQuestion] = useState("")
+     const [inputExplanation, setInputExplanation] = useState("")
+     const [inputAnswerA, setInputAnswerA] = useState("")
+     const [inputAnswerB, setInputAnswerB] = useState("")
+     const [inputAnswerC, setInputAnswerC] = useState("")
+     const [inputAnswerD, setInputAnswerD] = useState("")
 
 
 
@@ -85,6 +102,8 @@ const AddQuestion = () => {
                             <textarea 
                                 {...register("question", { required: true })} 
                                 placeholder="Frage" 
+                                onChange={event => setInputQuestion(event.target.value)}
+                                value={inputQuestion}
                             />
                         </S.Textarea>
                         <S.Explanation>
@@ -92,6 +111,8 @@ const AddQuestion = () => {
                             <textarea 
                                 {...register("explanation", { required: false })} 
                                 placeholder="Erklärung" 
+                                onChange={event => setInputExplanation(event.target.value)}
+                                value={inputExplanation}
                             />
                         </S.Explanation>
                     </S.Column>
@@ -105,6 +126,8 @@ const AddQuestion = () => {
                             <S.AnswerSelector 
                                 selected={correctAnswer === "A" ? true : false}
                                 onClick={() => setCorrectAnswer("A")}
+                                onChange={event => setInputAnswerA(event.target.value)}
+                                value={inputAnswerA}
                             >
                                 A
                             </S.AnswerSelector>
@@ -114,6 +137,8 @@ const AddQuestion = () => {
                             <textarea 
                                 {...register("answerB", { required: true })} 
                                 placeholder="Antwort B" 
+                                onChange={event => setInputAnswerB(event.target.value)}
+                                value={inputAnswerB}
                             />
                             <S.AnswerSelector 
                                 selected={correctAnswer === "B" ? true : false}
@@ -127,6 +152,8 @@ const AddQuestion = () => {
                             <textarea 
                                 {...register("answerC", { required: true })} 
                                 placeholder="Antwort C" 
+                                onChange={event => setInputAnswerC(event.target.value)}
+                                value={inputAnswerC}
                             />
                             <S.AnswerSelector 
                                 selected={correctAnswer === "C" ? true : false}
@@ -140,6 +167,8 @@ const AddQuestion = () => {
                             <textarea 
                                 {...register("answerD", { required: true })} 
                                 placeholder="Antwort D" 
+                                onChange={event => setInputAnswerD(event.target.value)}
+                                value={inputAnswerD}
                             />
                             <S.AnswerSelector 
                                 selected={correctAnswer === "D" ? true : false}
