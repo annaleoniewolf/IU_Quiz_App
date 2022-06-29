@@ -104,6 +104,7 @@ const AddQuestion = () => {
                                 placeholder="Frage" 
                                 onChange={event => setInputQuestion(event.target.value)}
                                 value={inputQuestion}
+                                maxLength="250"
                             />
                         </S.Textarea>
                         <S.Explanation>
@@ -113,6 +114,7 @@ const AddQuestion = () => {
                                 placeholder="Erklärung" 
                                 onChange={event => setInputExplanation(event.target.value)}
                                 value={inputExplanation}
+                                maxLength="250"
                             />
                         </S.Explanation>
                     </S.Column>
@@ -122,12 +124,13 @@ const AddQuestion = () => {
                             <textarea 
                                 {...register("answerA", { required: true })} 
                                 placeholder="Antwort A" 
+                                maxLength="250"
+                                onChange={event => setInputAnswerA(event.target.value)}
+                                value={inputAnswerA}
                             />
                             <S.AnswerSelector 
                                 selected={correctAnswer === "A" ? true : false}
                                 onClick={() => setCorrectAnswer("A")}
-                                onChange={event => setInputAnswerA(event.target.value)}
-                                value={inputAnswerA}
                             >
                                 A
                             </S.AnswerSelector>
@@ -139,6 +142,7 @@ const AddQuestion = () => {
                                 placeholder="Antwort B" 
                                 onChange={event => setInputAnswerB(event.target.value)}
                                 value={inputAnswerB}
+                                maxLength="250"
                             />
                             <S.AnswerSelector 
                                 selected={correctAnswer === "B" ? true : false}
@@ -154,6 +158,7 @@ const AddQuestion = () => {
                                 placeholder="Antwort C" 
                                 onChange={event => setInputAnswerC(event.target.value)}
                                 value={inputAnswerC}
+                                maxLength="250"
                             />
                             <S.AnswerSelector 
                                 selected={correctAnswer === "C" ? true : false}
@@ -169,6 +174,7 @@ const AddQuestion = () => {
                                 placeholder="Antwort D" 
                                 onChange={event => setInputAnswerD(event.target.value)}
                                 value={inputAnswerD}
+                                maxLength="250"
                             />
                             <S.AnswerSelector 
                                 selected={correctAnswer === "D" ? true : false}
