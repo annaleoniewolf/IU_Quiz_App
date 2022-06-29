@@ -15,6 +15,7 @@ const Guidlines = () => {
                 <li>Die Fragen müssen dem richtigen Modul zugeordnet sein</li>
                 <li>Keine Verwendung von unangemessener Sprache</li>
                 <li>Berücksichtigung von Rechtschreibung und Grammatik</li>
+                <li>Die Fragen und Antworten, sollten so formuliert sein, dass sie in 45 Sekunden zu lesen sind</li>
             </ul>
             <br />
             <p>Danke, dass du dabei hilfst, den Fragenkatalog kontinuierlich zu erweitern!</p>

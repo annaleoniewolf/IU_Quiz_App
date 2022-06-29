@@ -23,7 +23,7 @@ const QuestionDetails = () => {
                     <h5>Frage:</h5>
                     <p>{question.getQuestionById.question}</p>
                     <hr/>
-                    <S.Answer correct={question.correct_answer === 'A' ? true : false}>
+                    <S.Answer correct={question.getQuestionById.correct_answer === 'A' ? true : false}>
                         <h6>Antwortmöglichkeit A:</h6>
                     </S.Answer>
                     <p>{question.getQuestionById.answer_a}</p>

@@ -13,6 +13,9 @@ export const QuestionDetails = styled.div`
             min-width: auto;
         }
     }
+    p {
+        max-width: 600px;
+    }
 `
 
 export const Answer = styled.div`
