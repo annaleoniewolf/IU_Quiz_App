@@ -35,7 +35,6 @@ const GameOverview = () => {
 
     //getGameById Query
     const { data: pastGames } = useQuery(GET_PAST_GAMES)  
-    console.log(pastGames)
 
     const getGameResult = () => {
         if (pastGames) {

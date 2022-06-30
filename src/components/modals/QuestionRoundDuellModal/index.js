@@ -33,7 +33,6 @@ const QuestionRoundDuellModal = () => {
             game_uuid: activeGame
         }
     });
-    console.log("turn", )
 
     //answerQuestion mutation
     //startGame Mutation
@@ -67,7 +66,6 @@ const QuestionRoundDuellModal = () => {
         //goes to new question
         nextQuestion()  
         //if all questions answerd run answerQuestionMutation
-        console.log("currentQuestion", currentQuestion)
         if (currentQuestion === 2) {
             answerQuestions({ 
                 variables: { 
