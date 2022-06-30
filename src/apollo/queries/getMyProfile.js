@@ -14,6 +14,13 @@ const GET_MY_PROFILE = gql`
           avatar_url
           degree
         }
+        stats {
+          total_games
+          total_questions
+          wins_percentage
+          correct_answers_percentage
+        }
+
     }
   }
 `

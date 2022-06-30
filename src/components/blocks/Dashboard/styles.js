@@ -115,3 +115,10 @@ export const SinglePlayOverview = styled.div`
         flex-direction: column;
     }
 `
+export const Amounts = styled.div`
+    p {
+        font-size: 14px;
+        color: ${theme.colors.primary};
+        font-weight: 300;
+    }
+`

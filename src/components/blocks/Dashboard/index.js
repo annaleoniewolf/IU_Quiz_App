@@ -8,6 +8,8 @@ import Button from '../../elements/forms/Button'
 import SinglePlayerGameOverview from '../../elements/SinglePlayerGameOverview'
 
 import { useSelector } from 'react-redux'
+import { useQuery } from '@apollo/react-hooks'
+import GET_MY_PROFILE from '../../../apollo/queries/getMyProfile'
 
 
 import * as S from './styles'
@@ -16,6 +18,17 @@ import { NavLink } from 'react-router-dom'
 const Dashboard = () => {
 
     const { activeGame, module } = useSelector((state) => state.singlePlayerGame)
+
+    //getMyProfile Query
+    const { data: profileData } = useQuery(GET_MY_PROFILE);  
+    
+    const calculatePercentage = (per) => {
+        if (per == null) {
+            return 0
+        } else {
+            return per*100
+        }
+    }
 
     return (
         <S.Dashboard>
@@ -50,23 +63,29 @@ const Dashboard = () => {
                         link="/chat"
                     />
                 </S.NavigationCards>
+
                 <S.Overview>
-                    <Card size="small">
-                        <S.CardContainer>
-                            <h4>Statistik</h4>
-                            <S.CakeCharts>
-                                <S.CakeChart>
-                                    <CakeChart percentage={80} />
-                                    <p>Du hast 80% der Fragen im Duell richtig beantwortet.</p>
-                                </S.CakeChart>
-                                <S.VerticalLine />
-                                <S.CakeChart>
-                                    <CakeChart percentage={55} />
-                                    <p>Du hast 55% der Duelle gewonnen.</p>
-                                </S.CakeChart>
-                            </S.CakeCharts>
-                        </S.CardContainer>
-                    </Card>
+                    {profileData &&
+                        <Card size="small">
+                            <S.CardContainer>
+                                <h4>Statistik</h4>
+                                <S.Amounts>
+                                    <p>Gespielte Spiele: {profileData.getMyProfile.stats.total_games} Anzahl der beantworteten Fragen: {profileData.getMyProfile.stats.total_questions}</p>
+                                </S.Amounts>
+                                <S.CakeCharts>
+                                    <S.CakeChart>
+                                        <CakeChart percentage={calculatePercentage(profileData.getMyProfile.stats.wins_percentage)} />
+                                        <p>Du hast {calculatePercentage(profileData.getMyProfile.stats.correct_answer_percentage)} der Fragen im Duell richtig beantwortet.</p>
+                                    </S.CakeChart>
+                                    <S.VerticalLine />
+                                    <S.CakeChart>
+                                        <CakeChart percentage={calculatePercentage(profileData.getMyProfile.stats.wins_percentage)} />
+                                        <p>Du hast {calculatePercentage(profileData.getMyProfile.stats.wins_percentage)} der Duelle gewonnen.</p>
+                                    </S.CakeChart>
+                                </S.CakeCharts>
+                            </S.CardContainer>
+                        </Card>
+                    }
                     <Card size="large">
                         <S.CardContainer>
                             <h4> Laufende Spiele</h4>
