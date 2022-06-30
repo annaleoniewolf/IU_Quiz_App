@@ -1,11 +1,13 @@
 import gql from 'graphql-tag'
 
 const GET_QUESTIONS_FOR_GAME = gql`
-  query GetGameById($game_uuid: UUID!) {
-    getGameById(game_uuid: $game_uuid) {
+  query GetQuestionsForGame($game_uuid: UUID!) {
+    getQuestionsForGame(game_uuid: $game_uuid) {
         uuid
         is_user_a_answer_correct
         is_user_b_answer_correct
+        is_played_by_user_a
+        is_played_by_user_b
         question {
             uuid
             question

@@ -29,7 +29,7 @@ export const Frame = styled.div`
     justify-content: center;
     padding: 20px 35px;
     width: 320px;
-    border: 1px solid ${theme.colors.primary};
+    border: 1px solid ${theme.colors.grey};
 `
 export const Buttons = styled.div`
     display: flex;
@@ -49,17 +49,17 @@ export const Answer = styled.div`
    margin: 10px 0px;
    background-color: ${theme.colors.grey};
    ${({ status }) =>
-        status === "none" &&
+        status === null &&
         css`
             background-color: ${theme.colors.grey};
         `}
     ${({ status }) =>
-    status === "false" &&
+    status === false &&
     css`
         background-color: ${theme.colors.red};
     `}
     ${({ status }) =>
-    status === "right" &&
+    status === true &&
     css`
         background-color: ${theme.colors.green};
     `}

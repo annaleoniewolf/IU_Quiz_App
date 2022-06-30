@@ -1,9 +1,19 @@
 import * as S from './styles'
-import Timer from '../../elements/Timer'
+//import Timer from '../../elements/Timer'
 import { useState } from 'react'
+
+//import { useQuery } from '@apollo/client'
+//import GET_QUESTIONS_FOR_GAME from '../../../apollo/queries/getQuestionsForGame'
 
 
 const QuestionRoundDuellModal = () => {
+
+    /*//getQuestionForGame Query
+    const { data: gameQuestion } = useQuery(GET_GAME_BY_ID, {
+        variables: {
+            game_uuid: activeGame
+        }
+    });  */
 
     const [selected, setSelected] = useState(null)
     const [currentQuestion] = useState(4)
@@ -101,11 +111,10 @@ const QuestionRoundDuellModal = () => {
         }
     ]
 
-
     return (
         <S.QuestionRoundDuellModal>
             <S.Content>
-                <Timer expiryTimestamp={1}/>
+                {/*<Timer expiryTimestamp={1}/>*/}
                 <h4>{questions[currentQuestion].question}</h4>
                 <S.Answers>
                     <S.Answer selected={selected === 'A' ? true : false} onClick={() => setSelected('A')}>

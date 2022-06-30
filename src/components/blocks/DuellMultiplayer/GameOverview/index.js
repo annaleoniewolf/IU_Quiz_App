@@ -8,6 +8,7 @@ import { ModalContext } from '../../../../context/ModalContext'
 
 import { useQuery } from "@apollo/client"
 import GET_GAME_BY_ID from '../../../../apollo/queries/getGameById'
+import GET_QUESTIONS_FOR_GAME from '../../../../apollo/queries/getQuestionsForGame'
 
 
 const GameOverview = () => {
@@ -21,37 +22,85 @@ const GameOverview = () => {
             game_uuid: activeGame
         }
     });   
-    console.log(game)
 
+    //getQuestionsForGame Query
+    const { data: gameQuestions } = useQuery(GET_QUESTIONS_FOR_GAME, {
+        variables: {
+            game_uuid: activeGame
+        }
+    }); 
 
-    const answersPlayerA = [
-        {id: "1", status: "right"},
-        {id: "2", status: "right"},
-        {id: "3", status: "false"},
-        {id: "4", status: "right"},
-        {id: "5", status: "right"},
-        {id: "6", status: "right"},
-        {id: "7", status: "right"},
-        {id: "8", status: "right"},
-        {id: "9", status: "right"},
-        {id: "10", status: "none"},
-        {id: "11", status: "none"},
-        {id: "12", status: "none"},
-    ]
-    const answersPlayerB = [
-        {id: "1", status: "right"},
-        {id: "2", status: "right"},
-        {id: "3", status: "false"},
-        {id: "4", status: "right"},
-        {id: "5", status: "false"},
-        {id: "6", status: "right"},
-        {id: "7", status: "right"},
-        {id: "8", status: "false"},
-        {id: "9", status: "right"},
-        {id: "10", status: "none"},
-        {id: "11", status: "none"},
-        {id: "12", status: "none"},
-    ]
+    //generates renderd answers for player a
+    const playerAAnswers = () => {
+        let answeredQuestions = []
+        let status = 'none'
+        let label = 0
+        if (gameQuestions) {
+            for (let gameQuestion of gameQuestions.getQuestionsForGame) {
+                if (gameQuestion.is_played_by_user_a === false) {
+                    status = null
+                } else if (gameQuestion.is_played_by_user_a === true && gameQuestion.is_user_a_answer_correct === true) {
+                    status = true
+                } else status = false
+                answeredQuestions.push({ label: label, status: status })
+                label++
+            }
+            while (answeredQuestions.length < 12) {
+                answeredQuestions.push({label: label, status: null})
+                label++
+            }
+        }
+        return answeredQuestions
+    }
+
+    //generates renderd answers for player a
+    const playerBAnswers = () => {
+        let answeredQuestions = []
+        let status = 'none'
+        let label = 0
+        if (gameQuestions) {
+            for (let gameQuestion of gameQuestions.getQuestionsForGame) {
+                if (gameQuestion.is_played_by_user_b === false) {
+                    status = null
+                } else if (gameQuestion.is_played_by_user_b === true && gameQuestion.is_user_b_answer_correct === true) {
+                    status = true
+                } else status = false
+                answeredQuestions.push({ label: label, status: status })
+                label++
+            }
+            while (answeredQuestions.length < 12) {
+                answeredQuestions.push({label: label, status: null})
+                label++
+            }
+        }
+        return answeredQuestions
+    }
+
+    //counts points for player a
+    const playerAPoints = () => {
+        let points = 0
+        if (gameQuestions) {
+            for (let gameQuestion of gameQuestions.getQuestionsForGame) {
+                //if question if player and correct answered increment points
+                if(gameQuestion.is_played_by_user_a === true && gameQuestion.is_user_a_answer_correct === true) 
+                    points++
+            }
+        }
+        return points
+    }
+
+    //counts points for player a
+    const playerBPoints = () => {
+        let points = 0
+        if (gameQuestions) {
+            for (let gameQuestion of gameQuestions.getQuestionsForGame) {
+                //if question if player and correct answered increment points
+                if(gameQuestion.is_played_by_user_b === true && gameQuestion.is_user_b_answer_correct === true) 
+                    points++
+            }
+        }
+        return points
+    }
 
     //Modals
     const { setOpen, setType} = useContext(ModalContext)
@@ -65,12 +114,13 @@ const GameOverview = () => {
         setType("StopDuell")
         setOpen(true)
     }
+    playerAAnswers()
 
     return (
         <S.GameOverview>
             {game &&
                 <S.Content>
-                    <h1>6 : 7</h1>
+                    <h1>{playerAPoints()} : {playerBPoints()}</h1>
                     <p>{game.getGameById.module.name}</p>
                     <S.Frames>
                         <S.Frame>
@@ -80,8 +130,7 @@ const GameOverview = () => {
                                 image={game.getGameById.user_sent_by.avatar_url} 
                             />
                             <S.AnswersOverview>
-                                {answersPlayerA &&
-                                    answersPlayerA.map(({ status }, index) => {
+                                { playerAAnswers().map(({ status }, index) => {
                                         return (
                                             <S.Answer key={index} status={status} />
                                         )
@@ -96,8 +145,7 @@ const GameOverview = () => {
                                 image={game.getGameById.user_sent_to.avatar_url} 
                             />
                             <S.AnswersOverview>
-                                {answersPlayerB &&
-                                    answersPlayerB.map(({ status }, index) => {
+                                { playerBAnswers().map(({ status }, index) => {
                                         return (
                                             <S.Answer key={index} status={status} />
                                         )
