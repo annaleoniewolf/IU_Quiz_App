@@ -9,6 +9,7 @@ import { ModalContext } from '../../../../context/ModalContext'
 import { useQuery } from "@apollo/client"
 import GET_GAME_BY_ID from '../../../../apollo/queries/getGameById'
 import GET_QUESTIONS_FOR_GAME from '../../../../apollo/queries/getQuestionsForGame'
+import GET_MY_PROFILE from '../../../../apollo/queries/getMyProfile'
 
 
 const GameOverview = () => {
@@ -28,6 +29,9 @@ const GameOverview = () => {
             game_uuid: activeGame
         }
     }); 
+
+    //getMyProfile Query
+    const { data: profile } = useQuery(GET_MY_PROFILE)
 
     //generates renderd answers for player a
     const playerAAnswers = () => {
@@ -113,7 +117,6 @@ const GameOverview = () => {
         setType("StopDuell")
         setOpen(true)
     }
-    playerAAnswers()
 
     return (
         <S.GameOverview>
@@ -154,7 +157,9 @@ const GameOverview = () => {
                         </S.Frame>
                     </S.Frames>
                     <S.Buttons>
-                        <Button label="Spielen" onClick={() => handleQuestionRoundDuell()} />
+                        {(game.getGameById.current_player.uuid === profile?.getMyProfile.uuid && game?.getGameById.is_game_over === false) &&
+                            <Button label="Spielen" onClick={() => handleQuestionRoundDuell()} />
+                        }
                         <Button label="Beenden" onClick={() => handleStopModal()} />
                     </S.Buttons>
                 </S.Content>

@@ -33,7 +33,7 @@ const QuestionRoundDuellModal = () => {
 
     //goes to new question
     const nextQuestion = () => {
-        console.log("currentQuestion", currentQuestion)
+
         if (currentQuestion < 3) {
             setCurrentQuestion(currentQuestion+1)
             setSelected('')
@@ -76,7 +76,7 @@ const QuestionRoundDuellModal = () => {
                     }
                 } 
             })
-            console.log("schick weg")
+            //window.location.reload();
         }
     }
 

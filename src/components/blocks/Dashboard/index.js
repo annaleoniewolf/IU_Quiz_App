@@ -29,7 +29,6 @@ const Dashboard = () => {
 
     //getMyOngoingGamesQuery
     const { data: ongoingGames } = useQuery(GET_MY_ONGOING_GAMES);  
-    console.log(ongoingGames)
 
     
     const calculatePercentage = (per) => {
