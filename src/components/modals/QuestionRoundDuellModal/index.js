@@ -5,6 +5,7 @@ import { ModalContext } from '../../../context/ModalContext'
 import { useQuery, useMutation } from '@apollo/client'
 import GET_QUESTIONS_FOR_GAME from '../../../apollo/queries/getQuestionsForGame'
 import ANSWER_GAME_QUESTION from '../../../apollo/mutations/answerGameQuestion'
+import GET_GAME_BY_ID from '../../../apollo/queries/getGameById'
 
 
 
@@ -26,10 +27,28 @@ const QuestionRoundDuellModal = () => {
             game_uuid: activeGame
         }
     }); 
+    //getQuestionsForGame Query
+    const { data: game } = useQuery(GET_GAME_BY_ID, {
+        variables: {
+            game_uuid: activeGame
+        }
+    });
+    console.log("turn", )
 
     //answerQuestion mutation
     //startGame Mutation
     const [answerQuestions] = useMutation(ANSWER_GAME_QUESTION)
+
+    const calculateGameQuestion = () => {
+        if (game?.getGameById.turn === 0)
+            return 0
+        if (game?.getGameById.turn === 1)
+            return 3
+        if (game?.getGameById.turn === 2)
+            return 6
+        if (game?.getGameById.turn === 3)
+            return 9
+    }
 
     //goes to new question
     const nextQuestion = () => {
@@ -48,12 +67,13 @@ const QuestionRoundDuellModal = () => {
         //goes to new question
         nextQuestion()  
         //if all questions answerd run answerQuestionMutation
+        console.log("currentQuestion", currentQuestion)
         if (currentQuestion === 2) {
             answerQuestions({ 
                 variables: { 
                     answerGameQuestionInput: {
                         game_uuid: activeGame,
-                        game_question_uuid: gameQuestions.getQuestionsForGame[0].uuid,
+                        game_question_uuid: gameQuestions.getQuestionsForGame[calculateGameQuestion()].uuid,
                         answer: choosenQuestions[0]
                     }
                 } 
@@ -62,7 +82,7 @@ const QuestionRoundDuellModal = () => {
                 variables: { 
                     answerGameQuestionInput: {
                         game_uuid: activeGame,
-                        game_question_uuid: gameQuestions.getQuestionsForGame[1].uuid,
+                        game_question_uuid: gameQuestions.getQuestionsForGame[(calculateGameQuestion()+1)].uuid,
                         answer: choosenQuestions[1]
                     }
                 } 
@@ -71,7 +91,7 @@ const QuestionRoundDuellModal = () => {
                 variables: { 
                     answerGameQuestionInput: {
                         game_uuid: activeGame,
-                        game_question_uuid: gameQuestions.getQuestionsForGame[2].uuid,
+                        game_question_uuid: gameQuestions.getQuestionsForGame[(calculateGameQuestion()+2)].uuid,
                         answer: choosenQuestions[2]
                     }
                 } 
