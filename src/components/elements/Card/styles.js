@@ -9,7 +9,7 @@ export const Card = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px;
+    padding: 10px 20px;
     margin: 20px;
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
       scrollbar-width: none; /* for Firefox */

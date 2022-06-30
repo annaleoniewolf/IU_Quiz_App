@@ -46,6 +46,7 @@ export const CardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 
     hr {
         width: 100%;
@@ -103,6 +104,9 @@ export const GameOverview = styled.div`
     @media(max-width: 800px) {
         flex-direction: column;
     }
+`
+export const GameOverviewContainer = styled.div`
+    width: 100%;
 `
 
 export const SinglePlayOverview = styled.div`

@@ -6,6 +6,7 @@ import UserOverview from '../../elements/UserOverview'
 import CakeChart from '../../elements/CakeChart'
 import Button from '../../elements/forms/Button'
 import SinglePlayerGameOverview from '../../elements/SinglePlayerGameOverview'
+import { useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 import { useQuery } from '@apollo/react-hooks'
@@ -17,7 +18,10 @@ import * as S from './styles'
 import { NavLink } from 'react-router-dom'
 
 const Dashboard = () => {
+    //navigate
+    const navigate = useNavigate()
 
+    //active game single player
     const { activeGame, module } = useSelector((state) => state.singlePlayerGame)
 
     //getMyProfile Query
@@ -26,6 +30,7 @@ const Dashboard = () => {
     //getMyOngoingGamesQuery
     const { data: ongoingGames } = useQuery(GET_MY_ONGOING_GAMES);  
     console.log(ongoingGames)
+
     
     const calculatePercentage = (per) => {
         if (per == null) {
@@ -33,6 +38,11 @@ const Dashboard = () => {
         } else {
             return per*100
         }
+    }
+
+    const handlePlayGame = (id) => {
+        localStorage.setItem("activeGame", id)
+        navigate("/duell")
     }
 
     return (
@@ -105,14 +115,44 @@ const Dashboard = () => {
                                     <hr/>
                                 </>
                             }
-                            <S.GameOverview>
-                                <UserOverview
-                                    userName="Annika"
-                                    module="Betriebssysteme, Rechennetze und verteilte Systeme"
-                                />
-                                <Button size="small" label="Spielen" />
-                            </S.GameOverview>
-                            <hr />
+                            {ongoingGames &&
+                                ongoingGames.getMyOngoingGames.map(({ uuid, user_sent_by, user_sent_to, module, current_player, turn }, index) => {
+                                    return (
+                                        <S.GameOverviewContainer  key={index}>
+                                            {user_sent_to.uuid === profileData.getMyProfile.uuid ?
+                                                <S.GameOverview>
+                                                    <UserOverview
+                                                        userName={`${user_sent_by.first_name} ${user_sent_by.last_name}`}
+                                                        image={user_sent_by.avatar_url}
+                                                        module={`Runde: ${turn}, ${module.name}`}
+                                                    />
+                                                    <Button 
+                                                        size="small" 
+                                                        label={current_player.uuid === profileData.getMyProfile.uuid ? "Spielen" : "Ausstehend"}
+                                                        onClick={() => handlePlayGame(uuid)}
+                                                    />
+                                                </S.GameOverview>
+                                            :
+                                                <S.GameOverview>
+                                                    <UserOverview
+                                                        userName={`${user_sent_to.first_name} ${user_sent_to.last_name}`}
+                                                        image={user_sent_to.avatar_url}
+                                                        module={`Runde: ${turn+1}, ${module.name}`}
+                                                    />
+                                                    <Button 
+                                                        size="small" 
+                                                        label={current_player.uuid === profileData.getMyProfile.uuid ? "Spielen" : "Ausstehend"}
+                                                        onClick={() => handlePlayGame(uuid)}
+                                                    />
+                                                </S.GameOverview>
+                                            }
+                                            
+                                            <hr />
+                                        </S.GameOverviewContainer>
+                                    )
+                                })
+                            }
+
                         </S.CardContainer>
                     </Card>
                 </S.Overview>
