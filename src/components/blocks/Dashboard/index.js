@@ -3,7 +3,6 @@ import { faChess, faBookOpen, faUserGroup, faComments } from '@fortawesome/free-
 import NavigationCard from "../../elements/NavigationCard"
 import Card from '../../elements/Card'
 import UserOverview from '../../elements/UserOverview'
-import CakeChart from '../../elements/CakeChart'
 import Button from '../../elements/forms/Button'
 import SinglePlayerGameOverview from '../../elements/SinglePlayerGameOverview'
 import { useNavigate } from 'react-router-dom'
@@ -75,19 +74,11 @@ const Dashboard = () => {
                             <S.CardContainer>
                                 <h4>Statistik</h4>
                                 <S.Amounts>
-                                    <p>Gespielte Spiele: {profileData.getMyProfile.stats.total_games} Anzahl der beantworteten Fragen: {profileData.getMyProfile.stats.total_questions}</p>
+                                    <h5>
+                                        Gespielte Spiele: {profileData.getMyProfile.stats.total_games} <br/>
+                                        Anzahl der beantworteten Fragen: {profileData.getMyProfile.stats.total_questions}
+                                        </h5>
                                 </S.Amounts>
-                                <S.CakeCharts>
-                                    <S.CakeChart>
-                                        <CakeChart percentage={Math.round(profileData.getMyProfile.stats.wins_percentage)} />
-                                        <p>Du hast {Math.round(profileData.getMyProfile.stats.correct_answer_percentage)}% der Fragen im Duell richtig beantwortet.</p>
-                                    </S.CakeChart>
-                                    <S.VerticalLine />
-                                    <S.CakeChart>
-                                        <CakeChart percentage={Math.round(profileData.getMyProfile.stats.wins_percentage)} />
-                                        <p>Du hast {Math.round(profileData.getMyProfile.stats.wins_percentage)}% der Duelle gewonnen.</p>
-                                    </S.CakeChart>
-                                </S.CakeCharts>
                             </S.CardContainer>
                         </Card>
                     }

@@ -120,9 +120,8 @@ export const SinglePlayOverview = styled.div`
     }
 `
 export const Amounts = styled.div`
-    p {
-        font-size: 14px;
-        color: ${theme.colors.primary};
-        font-weight: 300;
+    h5 {
+        text-align: center;
+        line-height: 29px;
     }
 `
