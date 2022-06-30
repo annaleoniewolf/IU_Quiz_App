@@ -46,21 +46,28 @@ const GameOverview = () => {
                             <S.Icon>
                                 <FontAwesomeIcon icon={faChess} />
                             </S.Icon>
-                            <S.Users>
+                            {(pastGame.loser || pastGame.winner) ?
+                                <S.Users>
+                                    <S.User>
+                                        <S.ProfileImage>
+                                            <img src={pastGame.winner.avatar_url} alt="userimage" />
+                                        </S.ProfileImage>
+                                        <h5>Gewonnen hat: {pastGame.winner.first_name} {pastGame.winner.last_name}</h5>
+                                    </S.User>
+                                    <S.VerticalLine />
+                                    <S.User>
+                                        <S.ProfileImage>
+                                            <img src={pastGame.loser.avatar_url} alt="userimage" />
+                                        </S.ProfileImage>
+                                        <h5>Verloren hat: {pastGame.loser.first_name} {pastGame.loser.last_name}</h5>
+                                    </S.User>
+                                </S.Users>
+                            : 
                                 <S.User>
-                                    <S.ProfileImage>
-                                        <img src={pastGame.winner.avatar_url} alt="userimage" />
-                                    </S.ProfileImage>
-                                    <h5>Gewonnen hat: {pastGame.winner.first_name} {pastGame.winner.last_name}</h5>
+                                    <h5>Unentschieden!</h5>
                                 </S.User>
-                                <S.VerticalLine />
-                                <S.User>
-                                    <S.ProfileImage>
-                                        <img src={pastGame.loser.avatar_url} alt="userimage" />
-                                    </S.ProfileImage>
-                                    <h5>Verloren hat: {pastGame.loser.first_name} {pastGame.loser.last_name}</h5>
-                                </S.User>
-                            </S.Users>
+                            }
+
                         </S.Result>
                     )
                 }

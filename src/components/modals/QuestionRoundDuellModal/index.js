@@ -105,19 +105,19 @@ const QuestionRoundDuellModal = () => {
             {(gameQuestions && currentQuestion < 3) &&
                 <S.Content>
                     {/*<Timer expiryTimestamp={1}/>*/}
-                    <h4>{gameQuestions.getQuestionsForGame[currentQuestion].question.question}</h4>
+                    <h4>{gameQuestions.getQuestionsForGame[(calculateGameQuestion()+currentQuestion)].question.question}</h4>
                     <S.Answers>
                         <S.Answer selected={selected === 'A' ? true : false} onClick={() => handleSelect('A')}>
-                            <p>{gameQuestions.getQuestionsForGame[currentQuestion].question.answer_a}</p>
+                            <p>{gameQuestions.getQuestionsForGame[(calculateGameQuestion()+currentQuestion)].question.answer_a}</p>
                         </S.Answer>
                         <S.Answer selected={selected === 'B' ? true : false}  onClick={() => handleSelect('B')}>
-                            <p>{gameQuestions.getQuestionsForGame[currentQuestion].question.answer_b}</p>
+                            <p>{gameQuestions.getQuestionsForGame[(calculateGameQuestion()+currentQuestion)].question.answer_b}</p>
                         </S.Answer>
                         <S.Answer selected={selected === 'C' ? true : false}  onClick={() => handleSelect('C')}>
-                            <p>{gameQuestions.getQuestionsForGame[currentQuestion].question.answer_c}</p>
+                            <p>{gameQuestions.getQuestionsForGame[(calculateGameQuestion()+currentQuestion)].question.answer_c}</p>
                         </S.Answer>
                         <S.Answer selected={selected === 'D' ? true : false}  onClick={() => handleSelect('D')}>
-                            <p>{gameQuestions.getQuestionsForGame[currentQuestion].question.answer_d}</p>
+                            <p>{gameQuestions.getQuestionsForGame[(calculateGameQuestion()+currentQuestion)].question.answer_d}</p>
                         </S.Answer>
                     </S.Answers>
                 </S.Content>   
