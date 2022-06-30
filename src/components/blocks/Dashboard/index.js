@@ -79,13 +79,13 @@ const Dashboard = () => {
                                 </S.Amounts>
                                 <S.CakeCharts>
                                     <S.CakeChart>
-                                        <CakeChart percentage={profileData.getMyProfile.stats.wins_percentage} />
-                                        <p>Du hast {profileData.getMyProfile.stats.correct_answer_percentage}% der Fragen im Duell richtig beantwortet.</p>
+                                        <CakeChart percentage={Math.round(profileData.getMyProfile.stats.wins_percentage)} />
+                                        <p>Du hast {Math.round(profileData.getMyProfile.stats.correct_answer_percentage)}% der Fragen im Duell richtig beantwortet.</p>
                                     </S.CakeChart>
                                     <S.VerticalLine />
                                     <S.CakeChart>
-                                        <CakeChart percentage={profileData.getMyProfile.stats.wins_percentage} />
-                                        <p>Du hast {profileData.getMyProfile.stats.wins_percentage}% der Duelle gewonnen.</p>
+                                        <CakeChart percentage={Math.round(profileData.getMyProfile.stats.wins_percentage)} />
+                                        <p>Du hast {Math.round(profileData.getMyProfile.stats.wins_percentage)}% der Duelle gewonnen.</p>
                                     </S.CakeChart>
                                 </S.CakeCharts>
                             </S.CardContainer>
