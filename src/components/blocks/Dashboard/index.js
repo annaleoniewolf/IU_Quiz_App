@@ -123,7 +123,7 @@ const Dashboard = () => {
                                                     <UserOverview
                                                         userName={`${user_sent_by.first_name} ${user_sent_by.last_name}`}
                                                         image={user_sent_by.avatar_url}
-                                                        module={`Runde: ${turn}, ${module.name}`}
+                                                        module={`Runde: ${turn+1}, ${module.name}`}
                                                     />
                                                     <Button 
                                                         size="small" 
