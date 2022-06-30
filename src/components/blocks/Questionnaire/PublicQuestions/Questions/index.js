@@ -11,14 +11,14 @@ import { useDispatch } from 'react-redux'
 import { setQuestionId } from '../../../../../redux/questionSlice'
 
 const Questions = ({ module }) => {
-     //Dimension für Responsive
+     //dimension for responsive
      const { width } = useWindowDimensions();
      //Redux
      const dispatch = useDispatch()
 
-     //Details Modal
+     //details Modal
      const { setOpen, setType} = useContext(ModalContext)
-       //Details zu den Fragen Modal
+
     const openDetails = (id) => {
         dispatch(setQuestionId(id))
         setType("QuestionDetails")

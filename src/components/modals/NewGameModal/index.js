@@ -99,21 +99,21 @@ const NewGameModal = () => {
     const handleButton = () => {
         if (modus === "einzelspieler") {
             
-            //updated ausgewähltes Modul für den Spielmodus
+
             dispatch(setModule(selectedModul.value))
 
             dispatch(clearQuestions())
             dispatch(clearSelectedQuestions())
-            //wählt random Fragen für die Runde aus
+            
             dispatch(setQuestions(questionData.getRandomQuestionsForModule))
 
-            //setzt aktuelle Frage auf die erste
+           
             dispatch(setCurrentQuestion(0))
 
-            //setzt acitveGame auf active
+            
             dispatch(setActiveGame(true))
 
-            //schließt modal
+            
             setOpen(false)
             navigate("/einzelspieler")
 

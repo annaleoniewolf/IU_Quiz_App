@@ -26,17 +26,17 @@ const LogoutModal = () => {
     let navigate = useNavigate()
 
     const handleButton = () => {
-        //löscht local storage
+        //delete local storage
         dispatch(clearModule())
         dispatch(clearQuestions())
         dispatch(clearSelectedQuestions())
         dispatch(setCurrentQuestion(0))
         dispatch(setActiveGame(false))
 
-        //schließt modal
+        //close modal
         setOpen(false)
 
-        //löscht token
+        //deletes tokes
         localStorage.removeItem('token')      
         setToken(false)
         navigate('/login')

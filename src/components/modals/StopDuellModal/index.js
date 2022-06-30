@@ -13,7 +13,7 @@ const StopDuellModal = () => {
      const { setOpen } = useContext(ModalContext)
 
     const handleButton = () => {
-        //schließt modal
+        //closed modal
         setOpen(false)
     }
 

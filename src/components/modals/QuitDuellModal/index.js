@@ -9,11 +9,11 @@ import { ModalContext } from '../../../context/ModalContext';
 
 const QuitDuellModal = () => {
 
-     //Modal
+
      const { setOpen } = useContext(ModalContext)
 
     const handleButton = () => {
-        //schließt modal
+     
         setOpen(false)
     }
 

@@ -24,7 +24,7 @@ const MyQuestions = () => {
             return generatedModules
         }
     }
-    //Wählt module aus
+    //selects module
     const [module, setModule] = useState(null)
     const selectHandler = (event) => {
         const value = event.value

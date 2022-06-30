@@ -15,7 +15,7 @@ const DeleteQuestionModal = () => {
      //Modal
      const { setOpen } = useContext(ModalContext)
 
-     //ausgewählte FragenID
+
     const { questionId } = useSelector((state) => state.question)
 
     //AddQuestion Mutation
@@ -36,7 +36,7 @@ const DeleteQuestionModal = () => {
             .catch((ex) => {
                 console.log(ex)
             })
-        //schließt modal
+
         setOpen(false)
         window.setTimeout(function(){window.location.reload()},1000)
     }

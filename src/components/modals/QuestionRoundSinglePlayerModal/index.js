@@ -17,19 +17,18 @@ const QuestionRoundSinglePlayerModal = () => {
 
     const [selected, setSelected] = useState(null)
 
-    //weiter button handler
+
     const handleButton = () => {
 
-        //wählt die Antwortmöglichkeit aus, für die sich entschieden wurde
+
         dispatch(setSelectedQuestions(selected))
 
-        //inkrementiert aktuelle Frage
         dispatch(setCurrentQuestion(currentQuestion+1))
       
         setSelected(null)
     }
 
-    //Zählt Ergebnispunkte zusammen
+ 
     const countPoints = () => {
         let count = 0
         for (let i = 0; i < questions.length; i++) {

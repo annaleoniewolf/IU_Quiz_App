@@ -18,7 +18,7 @@ const Login = () => {
     //Login Mutation
     const [loginUser] = useMutation(LOGIN)
     
-    //führt login mutation aus, wenn form submitted wird  
+    //führt login mutation when form submitted
     const onSubmit = (abc) => {
         loginUser({ variables: { email: abc.email, password:abc.password } })
         .then((data) => {

@@ -151,12 +151,12 @@ const GameOverview = () => {
 
     //Modals
     const { setOpen, setType} = useContext(ModalContext)
-    //--Fragen Modal
+    //--question modal
     const handleQuestionRoundDuell = () => {
         setType("QuestionRoundDuell")
         setOpen(true)
     }
-    //--Beenden Modal
+    //--stop modal
     const handleStopModal = () => {
         setType("StopDuell")
         setOpen(true)

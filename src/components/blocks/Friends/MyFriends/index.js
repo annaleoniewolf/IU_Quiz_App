@@ -10,7 +10,7 @@ import { useQuery } from "@apollo/client"
 
 const MyFriends = () => {
 
-    //Dimension für Responsive
+    //dimension for responsive
     const { width } = useWindowDimensions();
 
     //getMyProfile Query

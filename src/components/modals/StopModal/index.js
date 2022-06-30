@@ -13,7 +13,7 @@ const StopModal = () => {
      const { setOpen } = useContext(ModalContext)
 
     const handleButton = () => {
-        //schließt modal
+       
         setOpen(false)
     }
 

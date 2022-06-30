@@ -16,7 +16,7 @@ import { setQuestionId }from '../../../../redux/questionSlice'
 
 const LandingTable = () => {
 
-    //Dimension für Responsive
+    //dimension for responsive
     const { width } = useWindowDimensions();
 
 
@@ -25,13 +25,13 @@ const LandingTable = () => {
     const { activeGame } = useSelector((state) => state.singlePlayerGame)
     const dispatch = useDispatch()
 
-    //Spiel beenden Modal
+ 
     const { setOpen, setType} = useContext(ModalContext)
     const handleStopModal = () => {
         setType("Stop")
         setOpen(true)
     }
-    //Fragen Modal
+
     const handleQuestionRoundSinglePlayerModal = () => {
         setType("QuestionRoundSinglePlayer")
         setOpen(true)

@@ -12,7 +12,7 @@ const AddQuestion = () => {
 
     //getModules Query
     const { data: moduleData } = useQuery(GET_MODULES);
-    //--generiert die Moduloptionen fürs Select
+    //-mopdul options for select
     const generateModuleOptions = () => {
         if (moduleData) {
             const generatedModules = moduleData.getModules.map(item => {
@@ -59,7 +59,7 @@ const AddQuestion = () => {
             .catch((ex) => {
                 console.log(ex)
             })
-        //cleart die input felder
+        //cleart input fields
         setInputExplanation("")
         setInputQuestion("")
         setInputAnswerA("")

@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 import { setQuestionId } from '../../../../../redux/questionSlice'
 
 const Questions = ({ module }) => {
-     //Dimension für Responsive
+     //dimension for responsive
      const { width } = useWindowDimensions();
 
      //Details Modal
@@ -20,14 +20,14 @@ const Questions = ({ module }) => {
      //Redux
      const dispatch = useDispatch()
 
-     //Details zu den Fragen Modal
+     //details 
     const openDetails = (id) => {
         dispatch(setQuestionId(id))
         setType("QuestionDetails")
         setOpen(true)
     }
  
-     //Frage löschen Modal
+     //delete question
      const handleDeleteQuestionModal = (id) => {
         dispatch(setQuestionId(id))
          setType("DeleteQuestion")

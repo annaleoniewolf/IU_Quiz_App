@@ -16,7 +16,7 @@ const Navigation = () => {
     const { data } = useQuery(GET_MY_PROFILE);  
 
 
-    //Abmelden Modal
+    //logout Modal
     const { setOpen, setType} = useContext(ModalContext)
 
     const openLogoutModal = () => {

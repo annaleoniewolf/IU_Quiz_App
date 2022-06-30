@@ -9,7 +9,7 @@ const MyProfile = () => {
     //getMyProfile Query
     const { data } = useQuery(GET_MY_PROFILE);   
     
-    //Konvertiert Datum in das richtige Format
+    //converts date
     const converteDate = (oldDate) => {
         if (oldDate) {
             const date = new Date(oldDate)
