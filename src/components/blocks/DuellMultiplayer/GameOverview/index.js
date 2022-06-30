@@ -14,7 +14,6 @@ import GET_QUESTIONS_FOR_GAME from '../../../../apollo/queries/getQuestionsForGa
 const GameOverview = () => {
 
     const activeGame = localStorage.getItem("activeGame")
-    console.log("activeGame", activeGame)
 
     //getGameById Query
     const { data: game } = useQuery(GET_GAME_BY_ID, {

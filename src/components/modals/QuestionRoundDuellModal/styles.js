@@ -6,6 +6,9 @@ export const QuestionRoundDuellModal = styled.div`
 `
 
 export const Content = styled.div`
+    h4 {
+        max-width: 750px;
+    }
     width: 100%;
     display: flex;
     flex-direction: column; 
@@ -42,6 +45,7 @@ export const Answer = styled.div`
 
     @media(max-width: 1300px) {
         width: 45%;
+        min-width:375px;
     }
     @media(max-width: 800px) {
         width: 100%;
