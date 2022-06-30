@@ -36,9 +36,9 @@ export const Button = styled.div`
     ${({ size }) =>
         size === "small" &&
         css`
-            padding: 10px;
+            padding: 10px 0px;
             height: 33px;
-            width: 90px;
+            width: 130px;
             font-size: 12px;
             line-height: 14px;
             text-transform: uppercase;
@@ -55,6 +55,13 @@ export const Button = styled.div`
                 cursor: default;
                 opacity: 0.5;
             }
+        `}
+        ${({ waiting }) =>
+        waiting &&
+        css`
+            background-color: #fff;
+            border: 1px solid ${theme.colors.primary};
+            color: ${theme.colors.primary};
         `}
         ${({ red }) =>
         red  &&

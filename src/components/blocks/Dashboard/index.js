@@ -6,16 +6,34 @@ import UserOverview from '../../elements/UserOverview'
 import CakeChart from '../../elements/CakeChart'
 import Button from '../../elements/forms/Button'
 import SinglePlayerGameOverview from '../../elements/SinglePlayerGameOverview'
+import { useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
+import { useQuery } from '@apollo/react-hooks'
+import GET_MY_PROFILE from '../../../apollo/queries/getMyProfile'
+import GET_MY_ONGOING_GAMES from '../../../apollo/queries/getMyOngoingGames'
 
 
 import * as S from './styles'
 import { NavLink } from 'react-router-dom'
 
 const Dashboard = () => {
+    //navigate
+    const navigate = useNavigate()
 
+    //active game single player
     const { activeGame, module } = useSelector((state) => state.singlePlayerGame)
+
+    //getMyProfile Query
+    const { data: profileData } = useQuery(GET_MY_PROFILE);  
+
+    //getMyOngoingGamesQuery
+    const { data: ongoingGames } = useQuery(GET_MY_ONGOING_GAMES);  
+
+    const handlePlayGame = (id) => {
+        localStorage.setItem("activeGame", id)
+        navigate("/duell")
+    }
 
     return (
         <S.Dashboard>
@@ -50,23 +68,29 @@ const Dashboard = () => {
                         link="/chat"
                     />
                 </S.NavigationCards>
+
                 <S.Overview>
-                    <Card size="small">
-                        <S.CardContainer>
-                            <h4>Statistik</h4>
-                            <S.CakeCharts>
-                                <S.CakeChart>
-                                    <CakeChart percentage={80} />
-                                    <p>Du hast 80% der Fragen im Duell richtig beantwortet.</p>
-                                </S.CakeChart>
-                                <S.VerticalLine />
-                                <S.CakeChart>
-                                    <CakeChart percentage={55} />
-                                    <p>Du hast 55% der Duelle gewonnen.</p>
-                                </S.CakeChart>
-                            </S.CakeCharts>
-                        </S.CardContainer>
-                    </Card>
+                    {profileData &&
+                        <Card size="small">
+                            <S.CardContainer>
+                                <h4>Statistik</h4>
+                                <S.Amounts>
+                                    <p>Gespielte Spiele: {profileData.getMyProfile.stats.total_games} Anzahl der beantworteten Fragen: {profileData.getMyProfile.stats.total_questions}</p>
+                                </S.Amounts>
+                                <S.CakeCharts>
+                                    <S.CakeChart>
+                                        <CakeChart percentage={profileData.getMyProfile.stats.wins_percentage} />
+                                        <p>Du hast {profileData.getMyProfile.stats.correct_answer_percentage}% der Fragen im Duell richtig beantwortet.</p>
+                                    </S.CakeChart>
+                                    <S.VerticalLine />
+                                    <S.CakeChart>
+                                        <CakeChart percentage={profileData.getMyProfile.stats.wins_percentage} />
+                                        <p>Du hast {profileData.getMyProfile.stats.wins_percentage}% der Duelle gewonnen.</p>
+                                    </S.CakeChart>
+                                </S.CakeCharts>
+                            </S.CardContainer>
+                        </Card>
+                    }
                     <Card size="large">
                         <S.CardContainer>
                             <h4> Laufende Spiele</h4>
@@ -81,14 +105,44 @@ const Dashboard = () => {
                                     <hr/>
                                 </>
                             }
-                            <S.GameOverview>
-                                <UserOverview
-                                    userName="Annika"
-                                    module="Betriebssysteme, Rechennetze und verteilte Systeme"
-                                />
-                                <Button size="small" label="Spielen" />
-                            </S.GameOverview>
-                            <hr />
+                            {(ongoingGames && profileData) &&
+                                ongoingGames.getMyOngoingGames.map(({ uuid, user_sent_by, user_sent_to, module, current_player, turn }, index) => {
+                                    return (
+                                        <S.GameOverviewContainer  key={index}>
+                                            {user_sent_to.uuid === profileData.getMyProfile.uuid ?
+                                                <S.GameOverview>
+                                                    <UserOverview
+                                                        userName={`${user_sent_by.first_name} ${user_sent_by.last_name}`}
+                                                        image={user_sent_by.avatar_url}
+                                                        module={`Runde: ${turn+1}, ${module.name}`}
+                                                    />
+                                                    <Button 
+                                                        size="small" 
+                                                        label={current_player.uuid === profileData.getMyProfile.uuid ? "Spielen" : "Ausstehend"}
+                                                        onClick={() => handlePlayGame(uuid)}
+                                                    />
+                                                </S.GameOverview>
+                                            :
+                                                <S.GameOverview>
+                                                    <UserOverview
+                                                        userName={`${user_sent_to.first_name} ${user_sent_to.last_name}`}
+                                                        image={user_sent_to.avatar_url}
+                                                        module={`Runde: ${turn+1}, ${module.name}`}
+                                                    />
+                                                    <Button 
+                                                        size="small" 
+                                                        label={current_player.uuid === profileData.getMyProfile.uuid ? "Spielen" : "Ausstehend"}
+                                                        onClick={() => handlePlayGame(uuid)}
+                                                    />
+                                                </S.GameOverview>
+                                            }
+                                            
+                                            <hr />
+                                        </S.GameOverviewContainer>
+                                    )
+                                })
+                            }
+
                         </S.CardContainer>
                     </Card>
                 </S.Overview>
