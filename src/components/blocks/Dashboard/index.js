@@ -10,6 +10,7 @@ import SinglePlayerGameOverview from '../../elements/SinglePlayerGameOverview'
 import { useSelector } from 'react-redux'
 import { useQuery } from '@apollo/react-hooks'
 import GET_MY_PROFILE from '../../../apollo/queries/getMyProfile'
+import GET_MY_ONGOING_GAMES from '../../../apollo/queries/getMyOngoingGames'
 
 
 import * as S from './styles'
@@ -21,6 +22,10 @@ const Dashboard = () => {
 
     //getMyProfile Query
     const { data: profileData } = useQuery(GET_MY_PROFILE);  
+
+    //getMyOngoingGamesQuery
+    const { data: ongoingGames } = useQuery(GET_MY_ONGOING_GAMES);  
+    console.log(ongoingGames)
     
     const calculatePercentage = (per) => {
         if (per == null) {
