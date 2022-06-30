@@ -43,7 +43,12 @@ const NewGameModal = () => {
     const { data : profile } = useQuery(GET_MY_PROFILE); 
 
     //startGame Mutation
-    const [startGame] = useMutation(START_GAME)
+    const [startGame] = useMutation(START_GAME, {
+        onCompleted(data) {
+            //sets activeGame to new game id 
+            localStorage.setItem("activeGame", data.startGame.game.uuid)
+        }
+    })
   
     //generated list of modules for modul select
     const generateModuleOptions = () => {
@@ -119,17 +124,10 @@ const NewGameModal = () => {
                         user_uuid: selectedFriend.value,
                         module_uuid: selectedModul.value
                     }
-                } })
-                .then((data) => {
-                    if (data.data.addQuestion.default.success){
-                       console.log("yey")
-                    } else {
-                        console.log("upsi")
-                    }    
-                })
-                .catch((ex) => {
-                    console.log(ex)
-                })
+                } 
+            })
+
+
             //closes modal
             setOpen(false)
             navigate("/duell")

@@ -24,6 +24,7 @@ export const Content = styled.div`
         height: auto;
     }
     overflow-y: auto; 
+    
 
 `
 export const Labels = styled.div`
