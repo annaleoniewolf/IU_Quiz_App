@@ -1,7 +1,6 @@
 import * as S from './styles'
 import { faChess, faBookOpenReader, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { useState, useContext } from 'react'
-import { NavLink } from 'react-router-dom'
 
 import Button from '../../elements/forms/Button'
 import Select from '../../elements/forms/Select'
@@ -9,16 +8,22 @@ import SelectGameCard from '../../elements/SelectGameCard'
 
 import { useDispatch } from 'react-redux'
 import { setModule, setActiveGame, setQuestions, setCurrentQuestion, clearQuestions, clearSelectedQuestions } from '../../../redux/singlePlayerGame'
+import { useNavigate } from 'react-router-dom';
 
 import { ModalContext } from '../../../context/ModalContext';
 
 import GET_MODULES from '../../../apollo/queries/getModules'
 import GET_RANDOM_QUESTIONS_FOR_MODULE from "../../../apollo/queries/getRandomQuestionsForModule";
-import { useQuery } from "@apollo/client"
+import GET_MY_PROFILE from '../../../apollo/queries/getMyProfile'
+import { useQuery, useMutation } from "@apollo/client"
+import START_GAME from '../../../apollo/mutations/startGame'
 
 const NewGameModal = () => {
     //Redux
     const dispatch = useDispatch()
+
+    //navigate
+    let navigate = useNavigate()
 
     //Modal
     const { setOpen } = useContext(ModalContext)
@@ -29,11 +34,18 @@ const NewGameModal = () => {
 
     //Selektiertes Modul
     const [selectedModul, setSelectedModul] = useState('')
-    const [selectedFriend] = useState('')
+    const [selectedFriend, setSelectedFriend] = useState('')
 
-    //getMyProfile Query
+    //getModules Query
     const { data } = useQuery(GET_MODULES); 
+
+    //getProfileData Query
+    const { data : profile } = useQuery(GET_MY_PROFILE); 
+
+    //startGame Mutation
+    const [startGame] = useMutation(START_GAME)
   
+    //generated list of modules for modul select
     const generateModuleOptions = () => {
         if (data) {
             const generatedModules = data.getModules.map(item => {
@@ -41,6 +53,20 @@ const NewGameModal = () => {
                 container.label = item.name;
                 container.value = item.uuid
             
+                return container;
+            })
+            return generatedModules
+        }
+    }
+    //generate list of friends for lernpartner select
+    const generateFriendOptions = () => {
+        if (data) {
+            const generatedModules = profile.getMyProfile.friends.map(item => {
+                const container = {};
+                const fullName = `${item.first_name} ${item.last_name}`
+                container.label = fullName
+                container.value = item.uuid
+
                 return container;
             })
             return generatedModules
@@ -64,7 +90,7 @@ const NewGameModal = () => {
         refetch({filter: {module_uuid: selectedModul, amount: 10}})
     }
 
-    //Spiel Starten Button Handler
+    //button handler start game
     const handleButton = () => {
         if (modus === "einzelspieler") {
             
@@ -84,10 +110,32 @@ const NewGameModal = () => {
 
             //schließt modal
             setOpen(false)
+            navigate("/einzelspieler")
+
         } else if (modus === "duell") {
+            startGame({ 
+                variables: { 
+                    startGameInput: {
+                        user_uuid: selectedFriend.value,
+                        module_uuid: selectedModul.value
+                    }
+                } })
+                .then((data) => {
+                    if (data.data.addQuestion.default.success){
+                       console.log("yey")
+                    } else {
+                        console.log("upsi")
+                    }    
+                })
+                .catch((ex) => {
+                    console.log(ex)
+                })
+            //closes modal
             setOpen(false)
+            navigate("/duell")
         }
     }
+
 
     return (
         <S.NewGameModal>
@@ -139,7 +187,12 @@ const NewGameModal = () => {
                         </S.SelectionContainer>
                         <S.SelectionContainer>
                             <label>Lernpartner auswählen</label>
-                            <Select placeholder="Lernpartner" options={generateModuleOptions()}/>
+                            <Select 
+                                defaultValue={selectedFriend}
+                                onChange={setSelectedFriend} 
+                                placeholder="Lernpartner" 
+                                options={generateFriendOptions()}
+                            />
                         </S.SelectionContainer>
                     </S.DuellSelect>
                 }
@@ -150,14 +203,10 @@ const NewGameModal = () => {
                 }
             </S.Selection>
             {(modus === "einzelspieler" && selectedModul !== '') &&
-                    <NavLink to={"/einzelspieler"}>
-                        <Button label="Spiel Starten" onClick={() => {handleButton()}}/>
-                    </NavLink>
+                <Button label="Spiel Starten" onClick={() => {handleButton()}}/>
             }
             {(modus === "duell" && selectedModul !== '' && selectedFriend !== '') &&
-                    <NavLink to={"/duell"}>
-                        <Button label="Spiel Starten" onClick={() => {handleButton()}} />
-                    </NavLink>
+                <Button label="Spiel Starten" onClick={() => {handleButton()}} />
             }
         </S.NewGameModal>
     )
