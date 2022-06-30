@@ -30,15 +30,6 @@ const Dashboard = () => {
     //getMyOngoingGamesQuery
     const { data: ongoingGames } = useQuery(GET_MY_ONGOING_GAMES);  
 
-    
-    const calculatePercentage = (per) => {
-        if (per == null) {
-            return 0
-        } else {
-            return per*100
-        }
-    }
-
     const handlePlayGame = (id) => {
         localStorage.setItem("activeGame", id)
         navigate("/duell")
@@ -88,13 +79,13 @@ const Dashboard = () => {
                                 </S.Amounts>
                                 <S.CakeCharts>
                                     <S.CakeChart>
-                                        <CakeChart percentage={calculatePercentage(profileData.getMyProfile.stats.wins_percentage)} />
-                                        <p>Du hast {calculatePercentage(profileData.getMyProfile.stats.correct_answer_percentage)} der Fragen im Duell richtig beantwortet.</p>
+                                        <CakeChart percentage={profileData.getMyProfile.stats.wins_percentage} />
+                                        <p>Du hast {profileData.getMyProfile.stats.correct_answer_percentage}% der Fragen im Duell richtig beantwortet.</p>
                                     </S.CakeChart>
                                     <S.VerticalLine />
                                     <S.CakeChart>
-                                        <CakeChart percentage={calculatePercentage(profileData.getMyProfile.stats.wins_percentage)} />
-                                        <p>Du hast {calculatePercentage(profileData.getMyProfile.stats.wins_percentage)} der Duelle gewonnen.</p>
+                                        <CakeChart percentage={profileData.getMyProfile.stats.wins_percentage} />
+                                        <p>Du hast {profileData.getMyProfile.stats.wins_percentage}% der Duelle gewonnen.</p>
                                     </S.CakeChart>
                                 </S.CakeCharts>
                             </S.CardContainer>
@@ -114,7 +105,7 @@ const Dashboard = () => {
                                     <hr/>
                                 </>
                             }
-                            {ongoingGames &&
+                            {(ongoingGames && profileData) &&
                                 ongoingGames.getMyOngoingGames.map(({ uuid, user_sent_by, user_sent_to, module, current_player, turn }, index) => {
                                     return (
                                         <S.GameOverviewContainer  key={index}>

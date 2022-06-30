@@ -5,11 +5,14 @@ import Button from '../../../elements/forms/Button'
 
 import { useContext } from 'react'
 import { ModalContext } from '../../../../context/ModalContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChess } from '@fortawesome/free-solid-svg-icons'
 
 import { useQuery } from "@apollo/client"
 import GET_GAME_BY_ID from '../../../../apollo/queries/getGameById'
 import GET_QUESTIONS_FOR_GAME from '../../../../apollo/queries/getQuestionsForGame'
 import GET_MY_PROFILE from '../../../../apollo/queries/getMyProfile'
+import GET_PAST_GAMES from '../../../../apollo/queries/getPastGames'
 
 
 const GameOverview = () => {
@@ -29,6 +32,41 @@ const GameOverview = () => {
             game_uuid: activeGame
         }
     }); 
+
+    //getGameById Query
+    const { data: pastGames } = useQuery(GET_PAST_GAMES)  
+    console.log(pastGames)
+
+    const getGameResult = () => {
+        if (pastGames) {
+            for (let pastGame of pastGames.getPastGames) {
+                if (pastGame.uuid === activeGame) {
+                    return (
+                        <S.Result>
+                            <S.Icon>
+                                <FontAwesomeIcon icon={faChess} />
+                            </S.Icon>
+                            <S.Users>
+                                <S.User>
+                                    <S.ProfileImage>
+                                        <img src={pastGame.winner.avatar_url} alt="userimage" />
+                                    </S.ProfileImage>
+                                    <h5>Gewonnen hat: {pastGame.winner.first_name} {pastGame.winner.last_name}</h5>
+                                </S.User>
+                                <S.VerticalLine />
+                                <S.User>
+                                    <S.ProfileImage>
+                                        <img src={pastGame.loser.avatar_url} alt="userimage" />
+                                    </S.ProfileImage>
+                                    <h5>Verloren hat: {pastGame.loser.first_name} {pastGame.loser.last_name}</h5>
+                                </S.User>
+                            </S.Users>
+                        </S.Result>
+                    )
+                }
+            
+        }}
+    }
 
     //getMyProfile Query
     const { data: profile } = useQuery(GET_MY_PROFILE)
@@ -120,7 +158,7 @@ const GameOverview = () => {
 
     return (
         <S.GameOverview>
-            {game &&
+            {game ?
                 <S.Content>
                     <h1>{playerAPoints()} : {playerBPoints()}</h1>
                     <p>{game.getGameById.module.name}</p>
@@ -162,6 +200,10 @@ const GameOverview = () => {
                         }
                         <Button label="Beenden" onClick={() => handleStopModal()} />
                     </S.Buttons>
+                </S.Content>
+            : 
+                <S.Content>
+                    {getGameResult()}
                 </S.Content>
             }
         </S.GameOverview>
